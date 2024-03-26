@@ -1,16 +1,16 @@
 import { AuthForm } from "@/components/auth/auth-form";
-import { CardWrapper } from "@/components/auth/card-wrapper";
+import { LoginCardWrapper } from "@/components/auth/login-card-wrapper";
 
 const LoginPage = () => {
   return (
-    <CardWrapper
+    <LoginCardWrapper
       headerLabel="Welcome back 👋"
       headerDescription="Glad to see you again!"
-      backButtonLabel="Don't have a account?"
-      backButtonHref="/auth/register"
+      backButtonLabel="Return to home?"
+      backButtonHref="/"
     >
       <AuthForm />
-    </CardWrapper>
+    </LoginCardWrapper>
   );
 };
 
