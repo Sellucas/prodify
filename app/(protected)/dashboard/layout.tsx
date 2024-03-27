@@ -1,7 +1,10 @@
+import Navigation from "@/components/dashboard/navigation";
+
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex items-center justify-center w-full h-screen bg-neutral-200">
-      {children}
+    <div className="w-full h-screen bg-neutral-200">
+      <Navigation />
+      <div className="ml-24 pt-6">{children}</div>
     </div>
   );
 };
