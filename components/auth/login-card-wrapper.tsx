@@ -31,7 +31,7 @@ export const LoginCardWrapper = ({
           <CardHeader className="space-y-10">
             <div className="flex flex-row gap-2">
               <FaChartSimple className="h-6 w-6 text-blue-500" />
-              <h1 className="text-xl font-semibold">Profidy</h1>
+              <h1 className="text-xl font-semibold">Prodify</h1>
             </div>
             <div className="space-y-2">
               <CardTitle className="text-4xl">{headerLabel}</CardTitle>
