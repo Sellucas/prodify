@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -75,6 +75,13 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+  safelist: [
+    {
+      pattern:
+        /^bg-(?:neutral|red|blue|green|amber|violet|slate)-(?:\d{3})(?:\/(?:20|40))?$/,
+    },
+    { pattern: /^text-(?:red|blue|green|amber|violet|slate)-(?:\d{3})$/ },
+  ],
+};
 
-export default config
+export default config;

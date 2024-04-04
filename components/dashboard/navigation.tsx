@@ -13,7 +13,6 @@ import {
   Route,
   SlidersHorizontal,
 } from "lucide-react";
-import { UserDetails } from "./user-details";
 
 const containerVariants = {
   close: {
@@ -71,17 +70,10 @@ const Navigation = () => {
         variants={containerVariants}
         animate={containerControls}
         initial="close"
-        className="bg-white flex flex-col z-10 gap-10 p-5 absolute top-0 left-0 h-full drop-shadow-md"
+        className="bg-white flex flex-col z-10 gap-10 p-5 fixed top-0 left-0 h-full drop-shadow-lg border-r-2 border-solid border-gray-300"
       >
         <div className="flex flex-row w-full justify-between place-items-center">
-          <motion.div
-            initial={{ x: "-100%", opacity: 0 }}
-            animate={{ x: isOpen ? "0%" : "-100%", opacity: isOpen ? 1 : 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            style={{ display: isOpen ? "block" : "none" }}
-          >
-            <UserDetails />
-          </motion.div>
+          <div className="w-10 h-10 rounded-full" />
           <button
             className="p-1 rounded-full flex"
             onClick={() => handleOpenClose()}
@@ -92,7 +84,7 @@ const Navigation = () => {
               viewBox="0 0 24 24"
               strokeWidth={1}
               stroke="currentColor"
-              className="w-8 h-8 stroke-gray-800"
+              className="w-8 h-8 stroke-gray-700"
             >
               <motion.path
                 strokeLinecap="round"
@@ -110,41 +102,40 @@ const Navigation = () => {
         </div>
         <div className="flex flex-col justify-between h-full">
           <div className="flex flex-col gap-3">
-            <p className="text-sm text-gray-400">MAIN</p>
             <NavigationLink href="/dashboard" name="Overview">
-              <LayoutDashboard className="min-w-8 w-8" />
+              <LayoutDashboard className="min-w-8" />
             </NavigationLink>
             <NavigationLink href="/dashboard/schedule" name="Schedule">
-              <CalendarCheck className="min-w-8 w-8" />
+              <CalendarCheck className="min-w-8" />
             </NavigationLink>
             <NavigationLink href="/dashboard/notes" name="Notes">
-              <NotebookPen className="min-w-8 w-8" />
+              <NotebookPen className="min-w-8" />
             </NavigationLink>
             <NavigationLink href="/dashboard/roadmap" name="Roadmap">
-              <Route className="min-w-8 w-8" />
+              <Route className="min-w-8" />
             </NavigationLink>
             <NavigationLink href="/dashboard/analytics" name="Analytics">
-              <BarChartBig className="min-w-8 w-8" />
+              <BarChartBig className="min-w-8" />
             </NavigationLink>
           </div>
           <div className="flex flex-col gap-3">
             <p className="text-sm text-gray-400">TASKS</p>
-            <NavigationLink href="/dashboard" name="Work">
-              <FolderOpen className="min-w-8 w-8" fill="#16a34a" />
+            <NavigationLink href="/dashboard/board/test" name="Work">
+              <FolderOpen className="min-w-8" fill="#16a34a" />
             </NavigationLink>
-            <NavigationLink href="/dashboard" name="Plans">
-              <FolderOpen className="min-w-8 w-8" fill="#2563eb" />
+            <NavigationLink href="/dashboard/board" name="Plans">
+              <FolderOpen className="min-w-8" fill="#2563eb" />
             </NavigationLink>
-            <NavigationLink href="/dashboard" name="Everyday">
-              <FolderOpen className="min-w-8 w-8" fill="#f59e0b" />
+            <NavigationLink href="/dashboard/board" name="Everyday">
+              <FolderOpen className="min-w-8" fill="#d97706" />
             </NavigationLink>
-            <NavigationLink href="/dashboard" name="Studies">
-              <FolderOpen className="min-w-8 w-8" fill="#dc2626" />
+            <NavigationLink href="/dashboard/board" name="Studies">
+              <FolderOpen className="min-w-8" fill="#dc2626" />
             </NavigationLink>
           </div>
           <div>
             <NavigationLink href="/dashboard/settings" name="Settings">
-              <SlidersHorizontal className="min-w-8 w-8" />
+              <SlidersHorizontal className="min-w-8" />
             </NavigationLink>
           </div>
         </div>
