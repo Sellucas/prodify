@@ -78,9 +78,15 @@ const config: Config = {
   safelist: [
     {
       pattern:
-        /^bg-(?:neutral|red|blue|green|amber|violet|slate)-(?:\d{3})(?:\/(?:20|40))?$/,
+        /^bg-(?:neutral|red|blue|green|amber|violet|slate|neutral)-(?:\d{3})(?:\/(?:20|40))?$/,
     },
-    { pattern: /^text-(?:red|blue|green|amber|violet|slate)-(?:\d{3})$/ },
+    {
+      pattern: /^text-(?:red|blue|green|amber|violet|slate|neutral)-(?:\d{3})$/,
+    },
+    {
+      pattern:
+        /^border-(?:red|blue|green|amber|violet|slate|neutral)-(?:\d{3})$/,
+    },
   ],
 };
 

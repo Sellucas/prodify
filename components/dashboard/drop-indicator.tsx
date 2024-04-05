@@ -5,7 +5,7 @@ export const DropIndicator = ({ beforeId, column }: DropIndicatorProps) => {
     <div
       data-before={beforeId || "-1"}
       data-column={column}
-      className="my-1 h-1 w-full rounded-full bg-blue-600 opacity-0"
+      className="my-1 h-1 w-full rounded-full bg-gray-400 opacity-0"
     />
   );
 };

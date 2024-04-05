@@ -21,7 +21,7 @@ export const CardBoard = ({
         layoutId={id}
         draggable={true}
         onDragStart={(e) => handleDragStart(e, { title, id, column })}
-        className="cursor-grab border-y drop-shadow-md rounded-lg border-neutral-200 bg-white p-3 active:cursor-grabbing"
+        className="cursor-grab border-y drop-shadow-md rounded-lg border-2 border-neutral-200 bg-white p-3 active:cursor-grabbing"
       >
         <div className="flex items-center justify-between my-1">
           <h1 className="font-semibold">{title}</h1>

@@ -114,8 +114,10 @@ export const Column = ({
   const filteredCards = cards.filter((c) => c.column === column);
 
   return (
-    <div className="w-72 shrink-0 rounded-t drop-shadow-lg">
-      <div className="m-3 flex items-center gap-2">
+    <div className="w-72 shrink-0 rounded-t">
+      <div
+        className={`m-3 flex items-center gap-2 border-solid border-b-4 pb-1 border-${color}-600`}
+      >
         <h3 className="font-semibold text-gray-700">{title}</h3>
         <span className="rounded-full text-sm bg-neutral-200 h-5 w-5 flex items-center justify-center font-semibold">
           {filteredCards.length}
@@ -126,7 +128,7 @@ export const Column = ({
         onDragLeave={handleDragLeave}
         onDragOver={handleDragOver}
         className={`flex flex-col h-full w-full p-2 rounded-lg transition-colors ${
-          active ? `bg-${color}-600/40` : `bg-${color}-600/20`
+          active ? `bg-gray-600/10` : `bg-white`
         }`}
       >
         {filteredCards.map((card) => {
