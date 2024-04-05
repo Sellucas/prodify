@@ -8,7 +8,7 @@ export const SearchBar = () => {
       <Input
         type="text"
         placeholder="Search..."
-        className="pl-10 pr-4 bg-gray-100"
+        className="pl-10 pr-4 md:w-full w-52 bg-gray-100"
       />
       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
         <Search className="text-gray-700 w-5" />

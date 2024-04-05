@@ -16,7 +16,7 @@ import {
 
 const containerVariants = {
   close: {
-    width: "5rem",
+    width: "3.2rem",
     transition: {
       type: "spring",
       damping: 15,
@@ -24,7 +24,7 @@ const containerVariants = {
     },
   },
   open: {
-    width: "16rem",
+    width: "12rem",
     transition: {
       type: "spring",
       damping: 15,
@@ -44,7 +44,6 @@ const svgVariants = {
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   const containerControls = useAnimationControls();
   const svgControls = useAnimationControls();
@@ -61,7 +60,6 @@ const Navigation = () => {
 
   const handleOpenClose = () => {
     setIsOpen(!isOpen);
-    setSelectedProject(null);
   };
 
   return (
@@ -70,7 +68,7 @@ const Navigation = () => {
         variants={containerVariants}
         animate={containerControls}
         initial="close"
-        className="bg-white flex flex-col z-10 gap-10 p-5 fixed top-0 left-0 h-full drop-shadow-lg border-r-2 border-solid border-gray-300"
+        className="bg-white flex flex-col z-10 gap-5 py-5 px-1 fixed top-0 left-0 h-full drop-shadow-lg border-r-2 border-solid border-gray-300"
       >
         <div className="flex flex-row w-full justify-between place-items-center">
           <div className="w-10 h-10 rounded-full" />
@@ -119,7 +117,6 @@ const Navigation = () => {
             </NavigationLink>
           </div>
           <div className="flex flex-col gap-3">
-            <p className="text-sm text-gray-400">TASKS</p>
             <NavigationLink href="/dashboard/board/test" name="Work">
               <FolderOpen className="min-w-8" fill="#16a34a" />
             </NavigationLink>
