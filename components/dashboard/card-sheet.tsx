@@ -18,7 +18,7 @@ export const CardSheet = () => {
         <Button size="sm" className="rounded-xl bg-blue-600" asChild>
           <span className="flex gap-1">
             <Plus className="w-4" />
-            <span className="hidden md:block">Add task</span>
+            <span className="hidden md:block">Add card</span>
           </span>
         </Button>
       </SheetTrigger>
