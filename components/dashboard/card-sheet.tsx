@@ -23,7 +23,7 @@ export const CardSheet = () => {
         </Button>
       </SheetTrigger>
       <SheetContent className="w-full">
-        <SheetHeader className="mb-4">
+        <SheetHeader className="mb-4 text-left">
           <SheetTitle className="text-2xl">Add a new card</SheetTitle>
         </SheetHeader>
         <CardForm />

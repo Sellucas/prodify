@@ -43,7 +43,10 @@ export const CardForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-4 md:space-y-8"
+      >
         <FormField
           control={form.control}
           name="title"
@@ -57,7 +60,7 @@ export const CardForm = () => {
             </FormItem>
           )}
         />
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-left gap-4 md:flex-row md:items-center md:gap-0 w-full justify-between">
           <FormField
             control={form.control}
             name="status"
@@ -96,7 +99,7 @@ export const CardForm = () => {
                 <FormLabel>Priority</FormLabel>
                 <FormControl>
                   <Select {...field}>
-                    <SelectTrigger className="w-[140px]">
+                    <SelectTrigger className="w-full md:w-[140px]">
                       <SelectValue placeholder="Priority" />
                     </SelectTrigger>
                     <SelectContent>

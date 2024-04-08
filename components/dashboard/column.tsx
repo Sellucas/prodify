@@ -116,7 +116,7 @@ export const Column = ({
   return (
     <div className="w-72 shrink-0 rounded-t">
       <div
-        className={`m-3 flex items-center gap-2 border-solid border-b-4 pb-1 border-${color}-600`}
+        className={`flex items-center gap-2 border-solid border-b-4 pb-1 border-${color}-600`}
       >
         <h3 className="font-semibold text-gray-700">{title}</h3>
         <span className="rounded-full text-sm bg-neutral-200 h-5 w-5 flex items-center justify-center font-semibold">
