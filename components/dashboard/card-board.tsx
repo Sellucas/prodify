@@ -28,7 +28,7 @@ export const CardBoard = ({
           <FaEllipsisVertical className="cursor-pointer" />
         </div>
         <p className="text-sm py-1">{description}</p>
-        <div className="space-x-2 my-3">
+        <div className="flex gap-2 my-3">
           {tags &&
             tags.map((tag, index) => (
               <CardTag
