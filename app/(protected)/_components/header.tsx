@@ -2,7 +2,7 @@ import { Bell } from "lucide-react";
 import { FaChartSimple } from "react-icons/fa6";
 import Link from "next/link";
 
-import { UserDetails } from "@/components/dashboard/user-details";
+import { UserDetails } from "@/components/user-details";
 
 export const Header = () => {
   return (

@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { CardBoardProps, ColumnProps } from "@/types";
-import { CardBoard } from "@/components/dashboard/card-board";
+import { CardBoard } from "@/app/(protected)/_components/card-board";
 import { DropIndicator } from "./drop-indicator";
 
 export const Column = ({

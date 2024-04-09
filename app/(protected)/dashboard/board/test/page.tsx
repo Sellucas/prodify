@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 import { DEFAULT_CARDS } from "@/constants";
-import { Column } from "@/components/dashboard/column";
+import { Column } from "@/app/(protected)/_components/column";
 
 const TestPage = () => {
   const [cards, setCards] = useState(DEFAULT_CARDS);

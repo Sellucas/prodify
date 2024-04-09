@@ -1,5 +1,5 @@
-import { Header } from "@/components/dashboard/header";
-import Navigation from "@/components/dashboard/navigation";
+import { Header } from "@/app/(protected)/_components/header";
+import Navigation from "@/app/(protected)/_components/navigation";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (

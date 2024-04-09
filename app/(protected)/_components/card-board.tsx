@@ -2,7 +2,7 @@ import { FaEllipsisVertical } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
 import { CardBoardProps } from "@/types";
-import { CardTag } from "@/components/dashboard/card-tag";
+import { CardTag } from "@/app/(protected)/_components/card-tag";
 import { DropIndicator } from "./drop-indicator";
 
 export const CardBoard = ({

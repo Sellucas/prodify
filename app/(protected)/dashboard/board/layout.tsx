@@ -1,4 +1,4 @@
-import { Board } from "@/components/dashboard/board";
+import { Board } from "@/app/(protected)/_components/board";
 
 const BoardLayout = ({ children }: { children: React.ReactNode }) => {
   return <Board>{children}</Board>;

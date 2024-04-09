@@ -1,4 +1,4 @@
-import { BoardHeader } from "@/components/dashboard/board-header";
+import { BoardHeader } from "@/app/(protected)/_components/board-header";
 
 export const Board = ({ children }: { children: React.ReactNode }) => {
   return (

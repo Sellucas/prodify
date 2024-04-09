@@ -23,7 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "../../../components/ui/textarea";
 
 export const CardForm = () => {
   const form = useForm<z.infer<typeof CardSchema>>({

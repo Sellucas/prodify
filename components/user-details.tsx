@@ -11,7 +11,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogoutButton } from "@/components/dashboard/logout-button";
+import { LogoutButton } from "@/components/logout-button";
 import Link from "next/link";
 
 export const UserDetails = () => {
