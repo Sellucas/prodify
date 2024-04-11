@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { BackButton } from "./back-button";
-import { FaChartSimple } from "react-icons/fa6";
+import { Logo } from "@/components/logo";
 
 interface CardWrapperProps {
   children: React.ReactNode;
@@ -28,11 +28,8 @@ export const LoginCardWrapper = ({
     <div className="flex flex-row">
       <Card className="flex flex-row p-4 drop-shadow-2xl">
         <section>
-          <CardHeader className="space-y-10">
-            <div className="flex flex-row gap-2">
-              <FaChartSimple className="h-6 w-6 text-blue-500" />
-              <h1 className="text-xl font-semibold">Prodify</h1>
-            </div>
+          <CardHeader className="space-y-8">
+            <Logo />
             <div className="space-y-2">
               <CardTitle className="text-4xl">{headerLabel}</CardTitle>
               <CardDescription className="text-gray-500 text-sm">
