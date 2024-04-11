@@ -1,4 +1,5 @@
 import { Settings } from "lucide-react";
+
 import { CardSheet } from "@/app/(protected)/_components/card-sheet";
 
 export const BoardHeader = () => {

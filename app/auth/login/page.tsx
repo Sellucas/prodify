@@ -4,7 +4,7 @@ import { LoginCardWrapper } from "@/components/auth/login-card-wrapper";
 const LoginPage = () => {
   return (
     <LoginCardWrapper
-      headerLabel="Welcome back 👋"
+      headerLabel="Welcome back"
       headerDescription="Glad to see you again!"
       backButtonLabel="Return to home?"
       backButtonHref="/"

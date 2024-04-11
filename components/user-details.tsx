@@ -1,6 +1,7 @@
 "use client";
 
 import { LogOut, SlidersHorizontal, User } from "lucide-react";
+import Link from "next/link";
 
 import useCurrentUser from "@/hooks/use-current-user";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -12,7 +13,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LogoutButton } from "@/components/logout-button";
-import Link from "next/link";
 
 export const UserDetails = () => {
   const user = useCurrentUser();

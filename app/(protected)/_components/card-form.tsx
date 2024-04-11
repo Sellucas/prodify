@@ -8,7 +8,6 @@ import { CardSchema } from "@/schemas";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -23,7 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "../../../components/ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 
 export const CardForm = () => {
   const form = useForm<z.infer<typeof CardSchema>>({
