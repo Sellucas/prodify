@@ -68,7 +68,7 @@ const Navigation = () => {
         variants={containerVariants}
         animate={containerControls}
         initial="close"
-        className="bg-white flex flex-col z-10 gap-5 pt-16 pb-5 px-1 fixed top-0 left-0 h-full drop-shadow-lg border-r-2 border-solid border-gray-300"
+        className="bg-white flex flex-col z-10 gap-5 pt-16 pb-5 px-1 fixed top-0 left-0 h-full drop-shadow-md"
       >
         <div className="flex flex-row w-full justify-between place-items-center">
           <div className="w-10 h-10 rounded-full" />

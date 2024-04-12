@@ -2,34 +2,26 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { BackButton } from "./back-button";
-import { Logo } from "@/components/logo";
 
 interface CardWrapperProps {
   children: React.ReactNode;
   headerLabel: string;
-  backButtonLabel: string;
-  backButtonHref: string;
   headerDescription: string;
 }
 
 export const LoginCardWrapper = ({
   children,
-  backButtonHref,
-  backButtonLabel,
   headerLabel,
   headerDescription,
 }: CardWrapperProps) => {
   return (
     <div className="flex flex-row">
       <Card className="flex flex-row p-4 drop-shadow-2xl">
-        <section>
+        <section className="my-auto">
           <CardHeader className="space-y-8">
-            <Logo />
             <div className="space-y-2">
               <CardTitle className="text-4xl">{headerLabel}</CardTitle>
               <CardDescription className="text-gray-500 text-sm">
@@ -38,9 +30,6 @@ export const LoginCardWrapper = ({
             </div>
           </CardHeader>
           <CardContent>{children}</CardContent>
-          <CardFooter>
-            <BackButton href={backButtonHref} label={backButtonLabel} />
-          </CardFooter>
         </section>
         <section className="hidden lg:block">
           <video width="420" preload="none" loop autoPlay muted>
