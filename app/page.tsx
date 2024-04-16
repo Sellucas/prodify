@@ -18,30 +18,31 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Logo } from "@/components/logo";
+import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 const HomePage = () => {
   const benefits = [
     {
       icon: <Laptop size={48} />,
-      title: "Work <br /> from anywhere",
+      title: "Work from anywhere",
       description:
-        "Keep essential information accessible—your notes sync automatically across all your devices.",
+        "Keep information accessible. Your notes sync automatically across all your devices.",
     },
     {
       icon: <CalendarClock size={48} />,
-      title: "Recall <br /> everything",
+      title: "Recall everything",
       description:
         "Enhance your notes with dynamic content for comprehensive management.",
     },
     {
       icon: <FileSearch size={48} />,
-      title: "Discover <br /> swiftly",
+      title: "Discover swiftly",
       description:
         "Access what you require, precisely when you need it, with robust and flexible search capabilities.",
     },
     {
       icon: <AlarmClockCheck size={48} />,
-      title: "Convert <br /> to completion",
+      title: "Convert to completion",
       description:
         "Unify your notes, tasks, and schedules to accomplish tasks more efficiently.",
     },
@@ -106,7 +107,7 @@ const HomePage = () => {
             </h1>
             <h1>all integrated in one app</h1>
           </div>
-          <p className="text-base md:text-xl text-center">
+          <p className="text-base md:text-xl text-center text-gray-700">
             Unlock your potential: powerful personal <br /> management at your
             fingertips.
           </p>
@@ -115,7 +116,7 @@ const HomePage = () => {
               <Link href={"/auth/login"}>Try for free</Link>
             </Button>
           </p>
-          <p className="text-base md:text-xl mb-6">
+          <p className="text-base md:text-xl mb-6 ">
             Already have an account?
             <Button variant={"ghost"}>
               <Link
@@ -134,19 +135,27 @@ const HomePage = () => {
             />
           </div>
         </section>
-        <section className="flex flex-col lg:flex-row lg:gap-6 px-4 gap-12 items-left mb-48">
+        <section className="flex flex-col lg:flex-row lg:gap-2 mb-48">
           {benefits.map(({ icon, title, description }, index) => (
-            <div
-              className="flex flex-col gap-4 bg-white p-2 drop-shadow-lg"
-              key={index}
-            >
-              <span>{icon}</span>
-              <h2
-                className="text-2xl font-medium"
-                dangerouslySetInnerHTML={{ __html: title }}
-              />
-              <p>{description}</p>
-            </div>
+            <CardContainer key={index} className="inter-var py-6">
+              <CardBody className="bg-white relative group/card border-gray-300 text-gray-700 space-y-4 w-auto h-auto rounded-xl p-6 border drop-shadow-lg">
+                <CardItem
+                  translateZ="20"
+                  className="text-xl font-bold dark:text-white"
+                >
+                  {icon}
+                </CardItem>
+                <CardItem
+                  translateZ="50"
+                  className="text-2xl font-bold dark:text-white"
+                >
+                  {title}
+                </CardItem>
+                <CardItem as="p" translateZ="60" className="max-w-sm mt-2">
+                  {description}
+                </CardItem>
+              </CardBody>
+            </CardContainer>
           ))}
         </section>
         <section className="mb-48">
@@ -154,7 +163,7 @@ const HomePage = () => {
             <h1 className="text-2xl md:text-3xl lg:text-5xl">
               Frequently Asked Questions
             </h1>
-            <p className="text-lg">
+            <p className="text-lg text-gray-700">
               Quick answers to questions you may have about Prodify. Can&apos;t
               find <br /> what you&apos;re looking for?{" "}
               <Button variant={"ghost"} className="underline">
@@ -168,7 +177,7 @@ const HomePage = () => {
             {faq.map(({ value, title, description }, index) => (
               <AccordionItem key={index} value={value}>
                 <AccordionTrigger className="text-xl">{title}</AccordionTrigger>
-                <AccordionContent className="text-lg">
+                <AccordionContent className="text-lg text-gray-700">
                   {description}
                 </AccordionContent>
               </AccordionItem>
@@ -180,7 +189,7 @@ const HomePage = () => {
           <h1 className="text-xl md:text-2xl lg:text-4xl text-blue-600">
             Get started with Prodify now!
           </h1>
-          <p className="text-xl">
+          <p className="text-xl text-gray-700">
             Unlock your potential: powerful personal <br /> management at your
             fingertips.
           </p>
