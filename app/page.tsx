@@ -195,7 +195,7 @@ const HomePage = () => {
           </p>
           <div className="flex gap-4">
             <Button size={"lg"} className="text-lg font-normal">
-              <Link href={"/"}>Try it now - for free</Link>
+              <Link href={"/auth/login"}>Try it now - for free</Link>
             </Button>
             <Button variant={"outline"} size={"lg"} className="text-lg">
               <Link href={"/"}>Contact Us</Link>

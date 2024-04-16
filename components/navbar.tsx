@@ -47,7 +47,7 @@ export const Navbar = () => {
             </div>
             <div className="flex gap-4 items-center tracking-tight">
               <Button variant={"link"} size={"sm"} asChild>
-                <Link href="/">Login</Link>
+                <Link href="/auth/login">Login</Link>
               </Button>
               <Button className="rounded-full px-4" size={"sm"} asChild>
                 <Link href="/auth/login">Try for free</Link>
@@ -79,7 +79,7 @@ export const Navbar = () => {
             </div>
             <div className="flex gap-4 items-center tracking-tight">
               <Button variant={"link"} size={"sm"} asChild>
-                <Link className="text-xl" href="/">
+                <Link className="text-xl" href="/auth/login">
                   Login
                 </Link>
               </Button>
