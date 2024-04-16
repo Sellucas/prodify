@@ -60,7 +60,7 @@ export const Navbar = () => {
           </div>
 
           <nav
-            className={`fixed md:hidden left-0 top-0 w-[60%] flex flex-col justify-between h-full py-2 border-r border-r-gray-700 bg-white ease-in-out duration-500 ${
+            className={`fixed md:hidden left-0 top-0 w-[60%] flex flex-col justify-between h-screen py-2 border-r border-r-gray-700 bg-white ease-in-out duration-500 ${
               nav ? "" : "left-[-100%]"
             }`}
           >
