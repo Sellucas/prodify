@@ -21,14 +21,18 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import useUserBoards from "@/hooks/use-user-boards";
 
 const BoardPage = () => {
   const [progress, setProgress] = useState(0);
+  const boards = useUserBoards();
 
   useEffect(() => {
     const timer = setTimeout(() => setProgress(66), 500);
     return () => clearTimeout(timer);
   }, []);
+
+  console.log("User boards:", boards);
 
   return (
     <div className="mt-16 pr-4">
