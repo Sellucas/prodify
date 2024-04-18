@@ -1,7 +1,7 @@
 "use client";
 
-import { LogOut, SlidersHorizontal, User } from "lucide-react";
 import Link from "next/link";
+import { LogOut, SlidersHorizontal, User } from "lucide-react";
 
 import useCurrentUser from "@/hooks/use-current-user";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";

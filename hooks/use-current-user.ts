@@ -15,7 +15,7 @@ export default function useCurrentUser() {
         const { data: userData, error } = await supabase
           .from("profiles")
           .select("*")
-          .eq("id", data.session.user.id)
+          .eq("user_id", data.session.user.id)
           .single();
 
         if (error) {
