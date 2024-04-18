@@ -4,12 +4,13 @@ import { useState } from "react";
 
 import { DEFAULT_CARDS } from "@/constants";
 import { Column } from "@/app/(protected)/_components/column";
+import { Board } from "@/app/(protected)/_components/board";
 
 const TestPage = () => {
   const [cards, setCards] = useState(DEFAULT_CARDS);
 
   return (
-    <>
+    <Board>
       <Column
         title="Backlog"
         column="backlog"
@@ -45,7 +46,7 @@ const TestPage = () => {
         cards={cards}
         setCards={setCards}
       />
-    </>
+    </Board>
   );
 };
 

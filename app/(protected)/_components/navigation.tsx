@@ -115,19 +115,8 @@ const Navigation = () => {
             <NavigationLink href="/dashboard/analytics" name="Analytics">
               <BarChartBig className="min-w-8" />
             </NavigationLink>
-          </div>
-          <div className="flex flex-col gap-3">
-            <NavigationLink href="/dashboard/board/test" name="Work">
-              <FolderOpen className="min-w-8" fill="#16a34a" />
-            </NavigationLink>
-            <NavigationLink href="/dashboard/board" name="Plans">
-              <FolderOpen className="min-w-8" fill="#2563eb" />
-            </NavigationLink>
-            <NavigationLink href="/dashboard/board" name="Everyday">
-              <FolderOpen className="min-w-8" fill="#d97706" />
-            </NavigationLink>
-            <NavigationLink href="/dashboard/board" name="Studies">
-              <FolderOpen className="min-w-8" fill="#dc2626" />
+            <NavigationLink href="/dashboard/board" name="Projects">
+              <FolderOpen className="min-w-8" />
             </NavigationLink>
           </div>
           <div>
