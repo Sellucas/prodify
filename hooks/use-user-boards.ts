@@ -15,7 +15,7 @@ export default function useUserBoards() {
         const { data: userBoards, error } = await supabase
           .from("boards")
           .select("*")
-          .eq("board_id", data.session.user.id);
+          .eq("user_id", data.session.user.id);
 
         if (error) {
           console.error("Error fetching user boards:", error.message);
