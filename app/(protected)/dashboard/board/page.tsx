@@ -12,7 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CardSheet } from "@/app/(protected)/_components/card-sheet";
+import { CardSheet } from "@/app/(protected)/_components/manage-sheet";
 import { SearchBar } from "@/app/(protected)/_components/search-bar";
 import { Progress } from "@/components/ui/progress";
 import {
@@ -25,6 +25,7 @@ import useUserBoards from "@/hooks/use-user-boards";
 import { formatCreatedAt } from "@/utils/formatCreatedAt ";
 import Image from "next/image";
 import { LoadingCard } from "@/components/loading-card";
+import { BoardForm } from "../../_components/board-form";
 
 const BoardPage = () => {
   const [progress, setProgress] = useState(0);
@@ -44,10 +45,12 @@ const BoardPage = () => {
   }, [boards]);
 
   return (
-    <div className="mt-16 pr-4">
-      <div className="flex justify-between gap-24">
+    <div className="mt-16 max-w-7xl mx-auto pr-4">
+      <div className="flex justify-between gap-8">
         <SearchBar />
-        <CardSheet />
+        <CardSheet label={"Add board"} title={"Add new board"}>
+          <BoardForm />
+        </CardSheet>
       </div>
       {isLoading ? (
         <LoadingCard />

@@ -26,7 +26,7 @@ export const Navbar = () => {
   ];
 
   return (
-    <div className="fixed top-0 py-2 h-12 z-20 flex justify-between items-center w-full px-4 bg-white drop-shadow-md">
+    <div className="fixed top-0 py-2 h-12 z-20 flex justify-between items-center w-full px-4 bg-white border-b-[1px] border-gray-200">
       <Logo />
 
       {user && pathname !== "/auth/login" && pathname !== "/" && (

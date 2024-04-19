@@ -9,3 +9,8 @@ export const CardSchema = z.object({
   priority: z.enum(["Low", "Medium", "High"]).optional(),
   type: z.enum(["Bug", "Feature", "Task"]).optional(),
 });
+
+export const BoardSchema = z.object({
+  title: z.string().min(3),
+  description: z.string().max(60),
+});

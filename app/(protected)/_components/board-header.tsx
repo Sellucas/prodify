@@ -1,6 +1,7 @@
 import { Settings } from "lucide-react";
 
-import { CardSheet } from "@/app/(protected)/_components/card-sheet";
+import { CardSheet } from "@/app/(protected)/_components/manage-sheet";
+import { CardForm } from "./card-form";
 
 export const BoardHeader = () => {
   return (
@@ -9,7 +10,9 @@ export const BoardHeader = () => {
         Daily Tasks
       </h1>
       <div className="flex items-center gap-4">
-        <CardSheet />
+        <CardSheet label={"Add card"} title={"Add new card"}>
+          <CardForm />
+        </CardSheet>
         <Settings className="text-gray-700 cursor-pointer" />
       </div>
     </div>

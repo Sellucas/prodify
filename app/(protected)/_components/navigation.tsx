@@ -58,8 +58,12 @@ const Navigation = () => {
     }
   }, [containerControls, isOpen, svgControls]);
 
-  const handleOpenClose = () => {
-    setIsOpen(!isOpen);
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -68,41 +72,19 @@ const Navigation = () => {
         variants={containerVariants}
         animate={containerControls}
         initial="close"
-        className="bg-white flex flex-col z-10 gap-5 pt-16 pb-5 px-1 fixed top-0 left-0 h-full drop-shadow-md"
+        className="bg-white flex flex-col z-10 gap-5 pt-16 pb-5 px-1 fixed top-0 left-0 h-full border-r-[1px] border-gray-200"
+        onMouseEnter={handleOpen}
+        onMouseLeave={handleClose}
       >
-        <div className="flex flex-row w-full justify-between place-items-center">
-          <div className="w-10 h-10 rounded-full" />
-          <button
-            className="p-1 rounded-full flex"
-            onClick={() => handleOpenClose()}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1}
-              stroke="currentColor"
-              className="w-8 h-8 stroke-gray-700"
-            >
-              <motion.path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                variants={svgVariants}
-                animate={svgControls}
-                d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                transition={{
-                  duration: 0.5,
-                  ease: "easeInOut",
-                }}
-              />
-            </svg>
-          </button>
-        </div>
         <div className="flex flex-col justify-between h-full">
           <div className="flex flex-col gap-3">
             <NavigationLink href="/dashboard" name="Overview">
               <LayoutDashboard className="min-w-8" />
             </NavigationLink>
+            <NavigationLink href="/dashboard/analytics" name="Analytics">
+              <BarChartBig className="min-w-8" />
+            </NavigationLink>
+            <hr className="mx-2 bg-gray-500 h-[1px]" />
             <NavigationLink href="/dashboard/schedule" name="Schedule">
               <CalendarCheck className="min-w-8" />
             </NavigationLink>
@@ -112,9 +94,7 @@ const Navigation = () => {
             <NavigationLink href="/dashboard/roadmap" name="Roadmap">
               <Route className="min-w-8" />
             </NavigationLink>
-            <NavigationLink href="/dashboard/analytics" name="Analytics">
-              <BarChartBig className="min-w-8" />
-            </NavigationLink>
+            <hr className="mx-2 bg-gray-500 h-[1px]" />
             <NavigationLink href="/dashboard/board" name="Projects">
               <FolderOpen className="min-w-8" />
             </NavigationLink>

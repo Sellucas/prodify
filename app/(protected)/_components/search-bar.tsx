@@ -1,18 +1,15 @@
 import { Search } from "lucide-react";
 
+import { Input } from "@/components/ui/input";
+
 export const SearchBar = () => {
   return (
-    <div className="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden border-gray-300 border-solid border-2">
-      <div className="grid place-items-center h-full w-12 text-gray-300">
+    <div className="relative flex items-center w-full h-10 rounded-lg bg-white border-solid">
+      <div className="ml-2 absolute text-gray-300">
         <Search />
       </div>
 
-      <input
-        className="h-full w-full outline-none text-sm text-gray-700 pr-2"
-        type="text"
-        id="search"
-        placeholder="Search projects.."
-      />
+      <Input className="pl-10" placeholder="Search boards.." />
     </div>
   );
 };
