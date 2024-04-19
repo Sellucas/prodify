@@ -20,7 +20,7 @@ export const CardSheet = ({ children, title, label }: CardSheetProps) => {
   return (
     <Sheet>
       <SheetTrigger>
-        <Button size="sm" className="rounded-xl bg-blue-600" asChild>
+        <Button size="sm" className="rounded-xl h-10 bg-blue-600" asChild>
           <span className="flex gap-1">
             <Plus className="w-4" />
             <span className="hidden md:block">{label}</span>
