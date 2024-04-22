@@ -12,5 +12,5 @@ export const CardSchema = z.object({
 
 export const BoardSchema = z.object({
   title: z.string().min(3),
-  description: z.string().max(60),
+  description: z.string().max(60).optional(),
 });

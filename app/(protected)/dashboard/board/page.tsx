@@ -103,6 +103,7 @@ const BoardPage = () => {
                   src={"/no-data.svg"}
                   alt="UI Representation of Dashboard Prodify"
                   fill
+                  priority
                 />
               </div>
             </div>

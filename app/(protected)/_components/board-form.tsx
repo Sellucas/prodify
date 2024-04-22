@@ -16,18 +16,36 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import useAddBoard from "@/hooks/use-add-board";
+import useCurrentUser from "@/hooks/use-current-user";
 
 export const BoardForm = () => {
+  const currentUser = useCurrentUser();
+
   const form = useForm<z.infer<typeof BoardSchema>>({
     resolver: zodResolver(BoardSchema),
     defaultValues: {
-      title: undefined,
+      title: "",
       description: undefined,
     },
   });
 
-  const onSubmit = (values: z.infer<typeof BoardSchema>) => {
-    console.log(values);
+  const { insertNewBoard, isLoading, error } = useAddBoard();
+
+  const onSubmit = async (values: z.infer<typeof BoardSchema>) => {
+    try {
+      if (!currentUser) {
+        throw new Error("User not found");
+      }
+      const boardData = {
+        ...values,
+        user_id: currentUser.user_id,
+      };
+      await insertNewBoard(boardData);
+      form.reset();
+    } catch (error) {
+      console.error("Error inserting the board:", error);
+    }
   };
 
   return (
