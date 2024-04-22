@@ -3,6 +3,7 @@
 import { FaEllipsisVertical } from "react-icons/fa6";
 import { Settings, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import {
   Card,
@@ -12,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CardSheet } from "@/app/(protected)/_components/manage-sheet";
+import { ManageSheet } from "@/app/(protected)/_components/manage-sheet";
 import { SearchBar } from "@/app/(protected)/_components/search-bar";
 import { Progress } from "@/components/ui/progress";
 import {
@@ -23,7 +24,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import useUserBoards from "@/hooks/use-user-boards";
 import { formatCreatedAt } from "@/utils/formatCreatedAt ";
-import Image from "next/image";
 import { LoadingCard } from "@/components/loading-card";
 import { BoardForm } from "../../_components/board-form";
 
@@ -48,9 +48,9 @@ const BoardPage = () => {
     <div className="mt-16 max-w-7xl mx-auto pr-4">
       <div className="flex justify-between gap-8">
         <SearchBar />
-        <CardSheet label={"Add board"} title={"Add new board"}>
+        <ManageSheet label={"Add board"} title={"Add new board"}>
           <BoardForm />
-        </CardSheet>
+        </ManageSheet>
       </div>
       {isLoading ? (
         <LoadingCard />

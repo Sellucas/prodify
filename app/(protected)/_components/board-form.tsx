@@ -30,7 +30,7 @@ export const BoardForm = () => {
     },
   });
 
-  const { insertNewBoard, isLoading, error } = useAddBoard();
+  const { insertNewBoard } = useAddBoard();
 
   const onSubmit = async (values: z.infer<typeof BoardSchema>) => {
     try {
@@ -43,8 +43,9 @@ export const BoardForm = () => {
       };
       await insertNewBoard(boardData);
       form.reset();
+      window.location.reload();
     } catch (error) {
-      console.error("Error inserting the board:", error);
+      console.error("Error inserting the board:");
     }
   };
 

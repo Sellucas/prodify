@@ -19,8 +19,6 @@ export default function useAddBoard() {
       if (insertError) {
         throw insertError;
       }
-
-      console.log("Board inserted successfully:", data);
     } catch (error) {
       if (error instanceof Error) {
         console.error("Error inserting the board:", error);

@@ -10,13 +10,13 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
-interface CardSheetProps {
+interface ManageSheetProps {
   children: ReactNode;
   title: String;
   label: String;
 }
 
-export const CardSheet = ({ children, title, label }: CardSheetProps) => {
+export const ManageSheet = ({ children, title, label }: ManageSheetProps) => {
   return (
     <Sheet>
       <SheetTrigger>
