@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { LogOut, SlidersHorizontal, User } from "lucide-react";
 
-import useCurrentUser from "@/hooks/use-current-user";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -13,9 +12,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LogoutButton } from "@/components/logout-button";
+import { useUser } from "@/context/user-context";
 
 export const UserDetails = () => {
-  const user = useCurrentUser();
+  const { user, loading } = useUser();
 
   return (
     <DropdownMenu>

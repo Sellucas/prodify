@@ -6,8 +6,6 @@ const LoginPage = () => {
     <LoginCardWrapper
       headerLabel="Welcome back"
       headerDescription="Glad to see you again!"
-      backButtonLabel="Return to home?"
-      backButtonHref="/"
     >
       <AuthForm />
     </LoginCardWrapper>

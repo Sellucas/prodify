@@ -1,9 +1,7 @@
-import { Flag } from "lucide-react";
-
 import { cn } from "@/lib/utils";
-import { CardTagProps } from "@/types";
+import { ICardTagProps } from "@/types";
 
-export const CardTag = ({ option, className }: CardTagProps) => {
+export const CardTag = ({ option, className }: ICardTagProps) => {
   return (
     <span
       className={cn(

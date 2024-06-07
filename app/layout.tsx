@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
+import { UserProvider } from "@/context/user-context";
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />
-        <div className="w-full h-full bg-white bg-grid-black/[0.2] relative flex items-center justify-center">
-          {children}
-        </div>
+        <UserProvider>
+          <Navbar />
+          <div className="w-full h-full bg-white bg-grid-black/[0.2] relative flex items-center justify-center">
+            {children}
+          </div>
+        </UserProvider>
       </body>
     </html>
   );

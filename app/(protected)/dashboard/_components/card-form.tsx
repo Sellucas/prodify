@@ -23,21 +23,39 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { useUser } from "@/context/user-context";
+import { addCard } from "@/actions/add-card";
 
-export const CardForm = () => {
+export const CardForm = ({ boardId }: { boardId: string }) => {
+  const { user, loading } = useUser();
+
   const form = useForm<z.infer<typeof CardSchema>>({
     resolver: zodResolver(CardSchema),
     defaultValues: {
-      title: undefined,
-      description: undefined,
-      status: "Backlog",
-      priority: undefined,
-      type: undefined,
+      title: "",
+      description: "",
+      status: "backlog",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof CardSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof CardSchema>) => {
+    try {
+      if (!user) {
+        throw new Error("User not found");
+      }
+
+      const cardData = {
+        ...values,
+        board_id: boardId,
+        user_id: user.user_id,
+      };
+
+      await addCard(cardData);
+
+      form.reset();
+    } catch (error) {
+      console.error("Error inserting the card:", error);
+    }
   };
 
   return (
@@ -67,70 +85,19 @@ export const CardForm = () => {
               <FormItem>
                 <FormLabel>Status</FormLabel>
                 <FormControl>
-                  <Select {...field}>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
                     <SelectTrigger className="w-[140px]">
                       <SelectValue placeholder="Status" />
                     </SelectTrigger>
                     <SelectContent>
-                      {[
-                        "Backlog",
-                        "To Do",
-                        "In Progress",
-                        "To Review",
-                        "Complete",
-                      ].map((status) => (
-                        <SelectItem key={status} value={status}>
-                          {status}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="priority"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Priority</FormLabel>
-                <FormControl>
-                  <Select {...field}>
-                    <SelectTrigger className="w-full md:w-[140px]">
-                      <SelectValue placeholder="Priority" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {["High", "Medium", "Low"].map((priority) => (
-                        <SelectItem key={priority} value={priority}>
-                          {priority}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="type"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Tag</FormLabel>
-                <FormControl>
-                  <Select {...field}>
-                    <SelectTrigger className="w-[140px]">
-                      <SelectValue placeholder="Tag" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {["Bug", "Feature", "Task"].map((tag) => (
-                        <SelectItem key={tag} value={tag}>
-                          {tag}
-                        </SelectItem>
-                      ))}
+                      <SelectItem value="backlog">Backlog</SelectItem>
+                      <SelectItem value="todo">To Do</SelectItem>
+                      <SelectItem value="doing">In Progress</SelectItem>
+                      <SelectItem value="reviewing">To Review</SelectItem>
+                      <SelectItem value="done">Complete</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormControl>

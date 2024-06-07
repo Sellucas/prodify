@@ -1,4 +1,4 @@
-import Navigation from "@/app/(protected)/_components/navigation";
+import Navigation from "@/app/(protected)/dashboard/_components/navigation";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (

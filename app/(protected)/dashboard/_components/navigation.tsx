@@ -3,7 +3,7 @@
 import { motion, useAnimationControls } from "framer-motion";
 import { useState, useEffect } from "react";
 
-import NavigationLink from "@/app/(protected)/_components/navigation-link";
+import NavigationLink from "@/app/(protected)/dashboard/_components/navigation-link";
 import {
   BarChartBig,
   CalendarCheck,

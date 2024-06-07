@@ -1,6 +1,6 @@
-import { DropIndicatorProps } from "@/types";
+import { IDropIndicatorProps } from "@/types";
 
-export const DropIndicator = ({ beforeId, column }: DropIndicatorProps) => {
+export const DropIndicator = ({ beforeId, column }: IDropIndicatorProps) => {
   return (
     <div
       data-before={beforeId || "-1"}

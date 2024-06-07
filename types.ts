@@ -1,27 +1,47 @@
-// Board Interfaces
-export interface ColumnProps {
+export interface ICard {
+  board_id: string;
+  card_id: string;
+  title: string;
+  description: string;
+  status: "backlog" | "todo" | "doing" | "reviewing" | "done";
+  position: number;
+}
+
+export interface IColumnProps {
   title: string;
   color: string;
-  column: string;
-  cards: CardBoardProps[];
-  setCards: React.Dispatch<React.SetStateAction<CardBoardProps[]>>;
+  status: "backlog" | "todo" | "doing" | "reviewing" | "done";
+  cards: ICard[];
+  setCards: React.Dispatch<React.SetStateAction<ICard[]>>;
 }
 
-export interface CardBoardProps {
+export type CardBoardProps = {
   title: string;
   id: string;
-  column: string;
   description: string;
-  tags?: CardTagProps[];
-  handleDragStart: () => void;
-}
+  status: "backlog" | "todo" | "doing" | "reviewing" | "done";
+  card: ICard;
+  tags?: ICardTagProps[];
+  handleDragStart: (
+    event: React.DragEvent<HTMLDivElement>,
+    card: ICard
+  ) => void;
+};
 
-export interface CardTagProps {
+export interface ICardTagProps {
   option: string;
   className?: string;
 }
 
-export interface DropIndicatorProps {
+export interface IDropIndicatorProps {
   beforeId: string;
   column: string;
+}
+
+export interface IUserProfile {
+  created_at: string;
+  display_name: string | null;
+  email: string;
+  image_url: string | null;
+  user_id: string;
 }

@@ -1,54 +1,47 @@
 "use client";
 
-import { FaEllipsisVertical } from "react-icons/fa6";
-import { Settings, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { ManageSheet } from "@/app/(protected)/_components/manage-sheet";
-import { SearchBar } from "@/app/(protected)/_components/search-bar";
-import { Progress } from "@/components/ui/progress";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import useUserBoards from "@/hooks/use-user-boards";
-import { formatCreatedAt } from "@/utils/formatCreatedAt ";
 import { LoadingCard } from "@/components/loading-card";
-import { BoardForm } from "../../_components/board-form";
+import { getAllBoards } from "@/actions/get-user-board";
+import { useUser } from "@/context/user-context";
+import { SearchBar } from "@/app/(protected)/dashboard/_components/search-bar";
+import { ManageSheet } from "@/app/(protected)/dashboard/_components/manage-sheet";
+import { BoardForm } from "@/app/(protected)/dashboard/_components/board-form";
+import { BoardItem } from "@/app/(protected)/dashboard/_components/board-item";
 
 const BoardPage = () => {
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
-  const boards = useUserBoards();
-
-  useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500);
-    return () => clearTimeout(timer);
-  }, []);
+  const [boards, setBoards] = useState<any[] | null>(null);
+  const { user } = useUser();
 
   useEffect(() => {
-    if (boards !== null) {
-      setIsLoading(false);
-    }
-  }, [boards]);
+    const fetchBoards = async () => {
+      try {
+        if (user?.user_id) {
+          const fetchedBoards = await getAllBoards(user.user_id);
+          setBoards(fetchedBoards);
+          setIsLoading(false);
+        } else {
+          console.error("User ID is undefined");
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.error("Error fetching user boards:", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchBoards();
+  }, [user?.user_id]);
 
   return (
     <div className="mt-16 max-w-7xl mx-auto pr-4">
       <div className="flex justify-between gap-8">
         <SearchBar />
-        <ManageSheet label={"Add board"} title={"Add new board"}>
+        <ManageSheet label="Add board" title="Add new board">
           <BoardForm />
         </ManageSheet>
       </div>
@@ -57,50 +50,24 @@ const BoardPage = () => {
       ) : (
         <div className="mt-12 gap-4 flex flex-wrap">
           {boards && boards.length > 0 ? (
-            boards.map(({ title, description, created_at }, i) => (
-              <Card key={i} className="w-full max-w-96 border-gray-300">
-                <CardHeader>
-                  <div className="flex justify-between">
-                    <CardTitle>{title}</CardTitle>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger>
-                        <FaEllipsisVertical />
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent>
-                        <DropdownMenuLabel className="flex items-center gap-2">
-                          <Trash2 className="w-4 h-4" /> Delete
-                        </DropdownMenuLabel>
-                        <DropdownMenuLabel className="flex items-center gap-2">
-                          <Settings className="w-4 h-4" /> Settings
-                        </DropdownMenuLabel>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </div>
-                  <CardDescription>{description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div>
-                    <p className="flex justify-between text-sm mb-2">
-                      <span>50% Completed</span>
-                      <span>1/2 tasks</span>
-                    </p>
-                    <Progress value={progress} className="w-[100%]" />
-                  </div>
-                </CardContent>
-                <CardFooter className="text-sm text-muted-foreground flex items-center">
-                  Created at:{" "}
-                  <span className="ml-2 bg-gray-300 rounded-xl px-2 py-1">
-                    {formatCreatedAt(created_at)}
-                  </span>
-                </CardFooter>
-              </Card>
-            ))
+            boards.map(
+              ({ title, description, created_at, board_id }, i) => (
+                <BoardItem
+                  slug={board_id}
+                  title={title}
+                  description={description}
+                  progress={75}
+                  key={i}
+                  created_at={created_at}
+                />
+              )
+            )
           ) : (
             <div className="mx-auto space-y-12 w-96 text-center text-xl text-gray-500">
               <h1>No board created yet!</h1>
               <div className="aspect-video w-full relative">
                 <Image
-                  src={"/no-data.svg"}
+                  src="/no-data.svg"
                   alt="UI Representation of Dashboard Prodify"
                   fill
                   priority

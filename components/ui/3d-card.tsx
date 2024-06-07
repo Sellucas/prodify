@@ -47,10 +47,7 @@ export const CardContainer = ({
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
-        className={cn(
-          "flex items-center justify-center",
-          containerClassName
-        )}
+        className={cn("flex items-center justify-center", containerClassName)}
         style={{
           perspective: "1000px",
         }}
@@ -122,6 +119,7 @@ export const CardItem = ({
 
   useEffect(() => {
     handleAnimations();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMouseEntered]);
 
   const handleAnimations = () => {

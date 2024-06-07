@@ -16,11 +16,11 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import useAddBoard from "@/hooks/use-add-board";
-import useCurrentUser from "@/hooks/use-current-user";
+import { useUser } from "@/context/user-context";
+import { addBoard } from "@/actions/add-board";
 
 export const BoardForm = () => {
-  const currentUser = useCurrentUser();
+  const { user, loading } = useUser();
 
   const form = useForm<z.infer<typeof BoardSchema>>({
     resolver: zodResolver(BoardSchema),
@@ -30,22 +30,23 @@ export const BoardForm = () => {
     },
   });
 
-  const { insertNewBoard } = useAddBoard();
-
   const onSubmit = async (values: z.infer<typeof BoardSchema>) => {
     try {
-      if (!currentUser) {
+      if (!user) {
         throw new Error("User not found");
       }
+
       const boardData = {
         ...values,
-        user_id: currentUser.user_id,
+        user_id: user.user_id,
       };
-      await insertNewBoard(boardData);
+
+      await addBoard(boardData);
+
       form.reset();
       window.location.reload();
     } catch (error) {
-      console.error("Error inserting the board:");
+      console.error("Error inserting the board:", error);
     }
   };
 

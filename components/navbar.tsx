@@ -8,12 +8,12 @@ import { usePathname } from "next/navigation";
 import { Logo } from "./logo";
 import { Button } from "./ui/button";
 import { UserDetails } from "./user-details";
-import useCurrentUser from "@/hooks/use-current-user";
+import { useUser } from "@/context/user-context";
 
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const user = useCurrentUser();
   const pathname = usePathname();
+  const { user, loading } = useUser();
 
   const handleNav = () => {
     setNav(!nav);
