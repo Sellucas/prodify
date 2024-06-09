@@ -25,7 +25,7 @@ export const AuthForm = () => {
     <div className="flex flex-col gap-4 py-4">
       <Button
         variant={"outline"}
-        className="space-x-4 w-full transition duration-300 ease-in-out hover:drop-shadow-xl"
+        className="p-6 space-x-4 w-full"
         onClick={() => handleLoginWithOAuth("github")}
       >
         <FaGithub className="h-8 w-8" />
@@ -33,7 +33,7 @@ export const AuthForm = () => {
       </Button>
       <Button
         variant={"outline"}
-        className="space-x-4 w-full transition duration-300 ease-in-out hover:drop-shadow-xl"
+        className="p-6 space-x-4 w-full"
         onClick={() => handleLoginWithOAuth("google")}
       >
         <FcGoogle className="h-8 w-8" />

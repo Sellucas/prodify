@@ -26,6 +26,7 @@ import Particles from "@/components/ui/particles";
 import { Cta } from "@/components/cta";
 import { Pricing } from "@/components/pricing";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { Navbar } from "@/components/navbar";
 
 const HomePage = () => {
   const faq = [
@@ -113,7 +114,8 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-black grow cursor-default">
+    <div className="bg-black cursor-default">
+      <Navbar />
       <div className="z-10 pt-40">
         <section className="relative">
           <div className="container flex flex-col gap-32 items-center mb-48 text-center">
@@ -286,7 +288,7 @@ const HomePage = () => {
               <span className="relative">Try for free</span>
             </Link>
           </div>
-          <div className="absolute top-0 h-full w-full bg-black">
+          <div className="absolute top-0 h-full w-full">
             <div className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(59,130,246,0.5)] opacity-50 blur-[80px]"></div>
           </div>
         </section>

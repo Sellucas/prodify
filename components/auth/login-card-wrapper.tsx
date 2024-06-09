@@ -1,11 +1,3 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-
 interface CardWrapperProps {
   children: React.ReactNode;
   headerLabel: string;
@@ -18,26 +10,18 @@ export const LoginCardWrapper = ({
   headerDescription,
 }: CardWrapperProps) => {
   return (
-    <div className="flex flex-row">
-      <Card className="flex flex-row p-4 drop-shadow-2xl">
-        <section className="my-auto">
-          <CardHeader className="space-y-8">
-            <div className="space-y-2">
-              <CardTitle className="text-4xl">{headerLabel}</CardTitle>
-              <CardDescription className="text-gray-500 text-sm">
-                {headerDescription}
-              </CardDescription>
-            </div>
-          </CardHeader>
-          <CardContent>{children}</CardContent>
-        </section>
-        <section className="hidden lg:block">
-          <video width="420" preload="none" loop autoPlay muted>
-            <source src="/prodify-login2.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </section>
-      </Card>
+    <div className="flex flex-col p-4 gap-4">
+      <div className="space-y-8">
+        <div className="space-y-2">
+          <h1 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl z-10">
+            {headerLabel}
+          </h1>
+          <p className="text-sm tracking-tight text-gray-400 md:text-base">
+            {headerDescription}
+          </p>
+        </div>
+      </div>
+      <div>{children}</div>
     </div>
   );
 };
