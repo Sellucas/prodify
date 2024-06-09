@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import { motion } from "framer-motion";
 
 type Type = "circle" | "ellipse";
 
@@ -71,7 +72,15 @@ const RadialGradient = ({
     backgroundImage: `radial-gradient(${type} ${size}px at ${origin}, ${from}, ${to})`,
   };
 
-  return <div className={className} style={styles} />;
+  return (
+    <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ ease: "easeInOut", duration: 0.75 }}
+      className={className}
+      style={styles}
+    />
+  );
 };
 
 export default RadialGradient;

@@ -27,6 +27,7 @@ import { Cta } from "@/components/cta";
 import { Pricing } from "@/components/pricing";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { Navbar } from "@/components/navbar";
+import { AnimateView } from "@/components/animate-view";
 
 const HomePage = () => {
   const faq = [
@@ -114,28 +115,40 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="bg-black cursor-default">
+    <div className="bg-black cursor-default w-full">
       <Navbar />
       <div className="z-10 pt-40">
         <section className="relative">
           <div className="container flex flex-col gap-32 items-center mb-48 text-center">
             <div className="relative">
-              <span className="inline-flex cursor-pointer items-center justify-center rounded-full border border-[#272726] bg-black px-3 py-1 text-xs font-medium text-gray-300 backdrop-blur-3xl">
-                <span className="bg-gradient-to-t from-[#fff] to-gray-800 bg-clip-text text-transparent">
-                  Start your free account today
+              <AnimateView direction="up">
+                <span className="inline-flex cursor-pointer items-center justify-center rounded-full border border-[#272726] bg-black px-3 py-1 text-xs font-medium text-gray-300 backdrop-blur-3xl">
+                  <span className="bg-gradient-to-t from-[#fff] to-gray-800 bg-clip-text text-transparent">
+                    Start your free account today
+                  </span>
                 </span>
-              </span>
-              <h1 className="bg-gradient-to-br from-white from-30% to-white/40 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent text-balance sm:text-6xl md:text-7xl lg:text-8xl">
-                Simplify tasks, manage time for more efficient results.
-              </h1>
-              <p className="mb-12 text-lg tracking-tight text-gray-400 md:text-xl">
-                Organize your tasks, ensure completion of activities, and
-                maintain <br />
-                oversight to ensure your projects stay on track.
-              </p>
-              <Cta />
+              </AnimateView>
+              <AnimateView direction="up">
+                <h1 className="bg-gradient-to-br from-white from-30% to-white/40 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent text-balance sm:text-6xl md:text-7xl lg:text-8xl">
+                  Simplify tasks, manage time for more efficient results.
+                </h1>
+              </AnimateView>
+              <AnimateView direction="up" transition={{ delay: 0.4 }}>
+                <p className="mb-12 text-lg tracking-tight text-gray-400 md:text-xl">
+                  Organize your tasks, ensure completion of activities, and
+                  maintain <br />
+                  oversight to ensure your projects stay on track.
+                </p>
+              </AnimateView>
+              <AnimateView direction="up" transition={{ delay: 0.6 }}>
+                <Cta />
+              </AnimateView>
             </div>
-            <div className="relative z-10 aspect-video w-11/12 rounded-xl border-2 border-[#1e1e1e]">
+            <AnimateView
+              direction="down"
+              transition={{ delay: 0.8 }}
+              className="relative z-10 aspect-video w-11/12 rounded-xl border-2 border-[#1e1e1e]"
+            >
               <Image
                 src={"/holder.jpg"}
                 alt="UI Representation of Dashboard Prodify"
@@ -143,7 +156,7 @@ const HomePage = () => {
                 className="rounded-xl"
               />
               <BorderBeam />
-            </div>
+            </AnimateView>
           </div>
           <RadialGradient />
           <LinearGradient className="absolute bottom-0 left-0 z-10" />
@@ -151,142 +164,172 @@ const HomePage = () => {
         </section>
         <section className="container flex flex-col justify-center items-center lg:gap-12 mb-48">
           <div className="text-center space-y-2">
-            <span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#1e293b,55%,#939393)] bg-[length:250%_100%] bg-clip-text  text-transparent font-bold uppercase text-sm tracking-wider">
-              Benefit Features
-            </span>
-            <h2 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
-              Powerful personal planner to boost your conversion rate.
-            </h2>
+            <AnimateView direction="up">
+              <span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#1e293b,55%,#939393)] bg-[length:250%_100%] bg-clip-text  text-transparent font-bold uppercase text-sm tracking-wider">
+                Benefit Features
+              </span>
+            </AnimateView>
+            <AnimateView direction="up" transition={{ delay: 0.4 }}>
+              <h2 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
+                Powerful personal planner to boost your conversion rate.
+              </h2>
+            </AnimateView>
           </div>
-          <Cta />
+          <AnimateView direction="up" transition={{ delay: 0.6 }}>
+            <Cta />
+          </AnimateView>
           <div className="container">
-            <HoverEffect items={benefits} />
+            <AnimateView direction="down" transition={{ delay: 0.8 }}>
+              <HoverEffect items={benefits} />
+            </AnimateView>
           </div>
         </section>
         <section className="container flex flex-col justify-center items-center lg:gap-12 mb-48">
           <div className="text-center space-y-2">
-            <span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#1e293b,55%,#939393)] bg-[length:250%_100%] bg-clip-text  text-transparent font-bold uppercase text-sm tracking-wider">
-              Pricing
-            </span>
-            <h2 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
-              it&apos;s easy to Get started
-            </h2>
-            <p className="text-sm tracking-tight text-gray-400 md:text-base pt-4">
-              Choose a plan tailored to your needs
-            </p>
+            <AnimateView direction="up">
+              <span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#1e293b,55%,#939393)] bg-[length:250%_100%] bg-clip-text  text-transparent font-bold uppercase text-sm tracking-wider">
+                Pricing
+              </span>
+            </AnimateView>
+            <AnimateView direction="up" transition={{ delay: 0.4 }}>
+              <h2 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
+                it&apos;s easy to Get started
+              </h2>
+            </AnimateView>
+            <AnimateView direction="up" transition={{ delay: 0.6 }}>
+              <p className="text-sm tracking-tight text-gray-400 md:text-base pt-4">
+                Choose a plan tailored to your needs
+              </p>
+            </AnimateView>
           </div>
-          <div className="flex flex-col xl:flex-row gap-16 mt-12">
-            <Pricing title="Starter" price="0.00">
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>2 Projects</span>
-              </li>
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Unlimited Tasks</span>
-              </li>
-              <li className="flex gap-2 items-center text-gray-400">
-                <BadgeCheck className="w-4 h-4" />
-                <span>Roadmap feature</span>
-              </li>
-              <li className="flex gap-2 items-center text-gray-400">
-                <BadgeCheck className="w-4 h-4" />
-                <span>Access to all features</span>
-              </li>
-              <li className="flex gap-2 items-center text-gray-400">
-                <BadgeCheck className="w-4 h-4" />
-                <span>Full support</span>
-              </li>
-            </Pricing>
-            <Pricing className="scale-110" title="Premium" price="7.99">
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Many Projects</span>
-              </li>
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Unlimited Tasks</span>
-              </li>
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Roadmap feature</span>
-              </li>
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Access to all features</span>
-              </li>
-              <li className="flex gap-2 items-center text-gray-400">
-                <BadgeCheck className="w-4 h-4" />
-                <span>Full support</span>
-              </li>
-            </Pricing>
-            <Pricing title="Ultimate" price="49.99">
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Many Projects</span>
-              </li>
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Unlimited Tasks</span>
-              </li>
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Roadmap feature</span>
-              </li>
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Access to all features</span>
-              </li>
-              <li className="flex gap-2 items-center">
-                <BadgeCheck className="text-blue-400 w-4 h-4" />
-                <span>Full support</span>
-              </li>
-            </Pricing>
-          </div>
+          <AnimateView direction="down" transition={{ delay: 0.8 }}>
+            <div className="flex flex-col xl:flex-row gap-16 mt-12">
+              <Pricing title="Starter" price="0.00">
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>2 Projects</span>
+                </li>
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Unlimited Tasks</span>
+                </li>
+                <li className="flex gap-2 items-center text-gray-400">
+                  <BadgeCheck className="w-4 h-4" />
+                  <span>Roadmap feature</span>
+                </li>
+                <li className="flex gap-2 items-center text-gray-400">
+                  <BadgeCheck className="w-4 h-4" />
+                  <span>Access to all features</span>
+                </li>
+                <li className="flex gap-2 items-center text-gray-400">
+                  <BadgeCheck className="w-4 h-4" />
+                  <span>Full support</span>
+                </li>
+              </Pricing>
+              <Pricing className="scale-110" title="Premium" price="7.99">
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Many Projects</span>
+                </li>
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Unlimited Tasks</span>
+                </li>
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Roadmap feature</span>
+                </li>
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Access to all features</span>
+                </li>
+                <li className="flex gap-2 items-center text-gray-400">
+                  <BadgeCheck className="w-4 h-4" />
+                  <span>Full support</span>
+                </li>
+              </Pricing>
+              <Pricing title="Ultimate" price="49.99">
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Many Projects</span>
+                </li>
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Unlimited Tasks</span>
+                </li>
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Roadmap feature</span>
+                </li>
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Access to all features</span>
+                </li>
+                <li className="flex gap-2 items-center">
+                  <BadgeCheck className="text-blue-400 w-4 h-4" />
+                  <span>Full support</span>
+                </li>
+              </Pricing>
+            </div>
+          </AnimateView>
         </section>
         <section className="mb-48">
           <div className="text-center space-y-4 mb-12">
-            <h1 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
-              Frequently Asked Questions
-            </h1>
-            <p className="text-sm tracking-tight text-gray-400 md:text-base pt-4">
-              Quick answers to questions you may have about Prodify. Can&apos;t
-              find <br /> what you&apos;re looking for?{" "}
-              <Link className="underline" href={"/"}>
-                Contact Us
-              </Link>
-            </p>
+            <AnimateView direction="up">
+              <h1 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
+                Frequently Asked Questions
+              </h1>
+            </AnimateView>
+            <AnimateView direction="up" transition={{ delay: 0.4 }}>
+              <p className="text-sm tracking-tight text-gray-400 md:text-base pt-4">
+                Quick answers to questions you may have about Prodify.
+                Can&apos;t find <br /> what you&apos;re looking for?{" "}
+                <Link className="underline" href={"/"}>
+                  Contact Us
+                </Link>
+              </p>
+            </AnimateView>
           </div>
-          <Accordion type="single" collapsible className="max-w-4xl mx-auto">
-            {faq.map(({ value, title, description }, index) => (
-              <AccordionItem key={index} value={value}>
-                <AccordionTrigger className="text-lg">{title}</AccordionTrigger>
-                <AccordionContent className="text-gray-400">
-                  {description}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <AnimateView direction="down" transition={{ delay: 0.6 }}>
+            <Accordion type="single" collapsible className="max-w-4xl mx-auto">
+              {faq.map(({ value, title, description }, index) => (
+                <AccordionItem key={index} value={value}>
+                  <AccordionTrigger className="text-lg">
+                    {title}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-400">
+                    {description}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </AnimateView>
         </section>
         <section className="relative">
           <div className="flex flex-col items-center gap-8 text-center mb-48">
-            <Image
-              src={"/logo.png"}
-              alt="Prodify Logo"
-              width={96}
-              height={96}
-              className="z-10"
-            />
-            <h1 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl z-10">
-              Get started with <br /> Prodify now.
-            </h1>
-            <Link
-              className="group relative inline-flex h-9 items-center justify-center overflow-hidden rounded-xl bg-[#111111] px-4 text-neutral-50 text-sm z-10"
-              href="/auth/login"
-            >
-              <span className="absolute h-0 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:h-56 group-hover:w-32"></span>
-              <span className="relative">Try for free</span>
-            </Link>
+            <AnimateView direction="up">
+              <Image
+                src={"/logo.png"}
+                alt="Prodify Logo"
+                width={96}
+                height={96}
+                className="z-10"
+              />
+            </AnimateView>
+            <AnimateView direction="up" transition={{ delay: 0.4 }}>
+              <h1 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl z-10">
+                Get started with <br /> Prodify now.
+              </h1>
+            </AnimateView>
+            <AnimateView direction="up" transition={{ delay: 0.6 }}>
+              <Link
+                className="group relative inline-flex h-9 items-center justify-center overflow-hidden rounded-xl bg-[#111111] px-4 text-neutral-50 text-sm z-10"
+                href="/auth/login"
+              >
+                <span className="absolute h-0 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:h-56 group-hover:w-32"></span>
+                <span className="relative">Try for free</span>
+              </Link>
+            </AnimateView>
           </div>
           <div className="absolute top-0 h-full w-full">
             <div className="absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[30%] translate-y-[20%] rounded-full bg-[rgba(59,130,246,0.5)] opacity-50 blur-[80px]"></div>

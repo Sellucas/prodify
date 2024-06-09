@@ -4,10 +4,15 @@ import Link from "next/link";
 
 import { Logo } from "./logo";
 import { Button } from "./ui/button";
+import { AnimateView } from "./animate-view";
 
 export const Navbar = () => {
   return (
-    <div className="fixed top-0 h-14 z-50 w-full bg-black/95 border-b-[0.1px] border-[#1e1e1e]">
+    <AnimateView
+      direction="up"
+      transition={{ delay: 1 }}
+      className="fixed top-0 z-50 bg-black/95 border-b-[0.1px] border-[#1e1e1e] h-14 w-full "
+    >
       <div className="container flex justify-between items-center h-full">
         <div>
           <Logo />
@@ -26,6 +31,6 @@ export const Navbar = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </AnimateView>
   );
 };
