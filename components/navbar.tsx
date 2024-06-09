@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { Logo } from "./logo";
@@ -11,87 +9,37 @@ import { UserDetails } from "./user-details";
 import { useUser } from "@/context/user-context";
 
 export const Navbar = () => {
-  const [nav, setNav] = useState(false);
   const pathname = usePathname();
-  const { user, loading } = useUser();
-
-  const handleNav = () => {
-    setNav(!nav);
-  };
-
-  const navItems = [
-    { id: 1, text: "Why Prodify" },
-    { id: 2, text: "How it works" },
-    { id: 3, text: "Pricing" },
-  ];
+  const { user } = useUser();
 
   return (
-    <div className="fixed top-0 py-2 h-12 z-20 flex justify-between items-center w-full px-4 bg-white border-b-[1px] border-gray-200">
-      <Logo />
-
-      {user && pathname !== "/auth/login" && pathname !== "/" && (
-        <div className="flex items-center">
-          <UserDetails />
+    <div className="fixed top-0 h-14 z-50 w-full bg-black/95 border-b-[0.1px] border-[#1e1e1e]">
+      <div className="container flex justify-between items-center h-full">
+        <div>
+          <Logo />
         </div>
-      )}
 
-      {pathname === "/" && (
-        <>
-          <nav className="hidden md:flex justify-between w-full ml-16">
-            <div className="flex gap-4 items-center tracking-tight">
-              {navItems.map((item) => (
-                <Button key={item.id} variant={"link"} size={"sm"} asChild>
-                  <Link href="/">{item.text}</Link>
-                </Button>
-              ))}
-            </div>
-            <div className="flex gap-4 items-center tracking-tight">
-              <Button variant={"link"} size={"sm"} asChild>
-                <Link href="/auth/login">Login</Link>
-              </Button>
-              <Button className="rounded-full px-4" size={"sm"} asChild>
-                <Link href="/auth/login">Try for free</Link>
-              </Button>
-            </div>
-          </nav>
-
-          <div onClick={handleNav} className="block md:hidden">
-            {nav ? <X /> : <Menu />}
+        {user && pathname !== "/auth/login" && pathname !== "/" && (
+          <div className="flex items-center">
+            <UserDetails />
           </div>
+        )}
 
-          <nav
-            className={`fixed md:hidden left-0 top-0 w-[60%] flex flex-col justify-between h-screen py-2 border-r border-r-gray-700 bg-white ease-in-out duration-500 ${
-              nav ? "" : "left-[-100%]"
-            }`}
-          >
-            <div className="flex flex-col items-start gap-6 tracking-tight">
-              {navItems.map((item) => (
-                <Button
-                  className="text-xl"
-                  key={item.id}
-                  variant={"link"}
-                  size={"sm"}
-                  asChild
-                >
-                  <Link href="/">{item.text}</Link>
-                </Button>
-              ))}
-            </div>
-            <div className="flex gap-4 items-center tracking-tight">
-              <Button variant={"link"} size={"sm"} asChild>
-                <Link className="text-xl" href="/auth/login">
-                  Login
-                </Link>
-              </Button>
-              <Button className="rounded-full px-4" size={"sm"} asChild>
-                <Link className="text-xl" href="/auth/login">
-                  Try for free
-                </Link>
-              </Button>
-            </div>
-          </nav>
-        </>
-      )}
+        {pathname === "/" && (
+          <div className="flex gap-4 items-center tracking-tight">
+            <Button variant={"link"} size={"sm"} asChild>
+              <Link href="/auth/login">Log in</Link>
+            </Button>
+            <Link
+              className="group relative inline-flex h-9 items-center justify-center overflow-hidden rounded-xl bg-[#111111] px-4 text-neutral-50 text-sm"
+              href="/auth/login"
+            >
+              <span className="absolute h-0 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:h-56 group-hover:w-32"></span>
+              <span className="relative">Try for free</span>
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

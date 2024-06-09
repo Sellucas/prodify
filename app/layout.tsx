@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={font.className}>
         <UserProvider>
           <Navbar />
-          <div className="w-full h-full bg-white bg-grid-black/[0.2] relative flex items-center justify-center">
+          <div className="w-full h-full relative flex items-center justify-center bg-black">
             {children}
           </div>
         </UserProvider>
