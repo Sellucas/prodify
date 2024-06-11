@@ -38,10 +38,10 @@ const BoardPage = () => {
   }, [user?.user_id]);
 
   return (
-    <div className="mt-16 max-w-7xl mx-auto pr-4">
+    <div className="container">
       <div className="flex justify-between gap-8">
         <SearchBar />
-        <ManageSheet label="Add board" title="Add new board">
+        <ManageSheet label="New board" title="Add new board">
           <BoardForm />
         </ManageSheet>
       </div>
@@ -50,18 +50,16 @@ const BoardPage = () => {
       ) : (
         <div className="mt-12 gap-4 flex flex-wrap">
           {boards && boards.length > 0 ? (
-            boards.map(
-              ({ title, description, created_at, board_id }, i) => (
-                <BoardItem
-                  slug={board_id}
-                  title={title}
-                  description={description}
-                  progress={75}
-                  key={i}
-                  created_at={created_at}
-                />
-              )
-            )
+            boards.map(({ title, description, created_at, board_id }, i) => (
+              <BoardItem
+                slug={board_id}
+                title={title}
+                description={description}
+                progress={75}
+                key={i}
+                created_at={created_at}
+              />
+            ))
           ) : (
             <div className="mx-auto space-y-12 w-96 text-center text-xl text-gray-500">
               <h1>No board created yet!</h1>

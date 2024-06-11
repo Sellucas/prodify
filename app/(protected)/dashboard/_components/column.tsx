@@ -1,5 +1,6 @@
 "use client";
 
+import { FaEllipsisVertical } from "react-icons/fa6";
 import { useState } from "react";
 
 import { ICard, IColumnProps } from "@/types";
@@ -8,6 +9,7 @@ import { DropIndicator } from "./drop-indicator";
 import { Database } from "@/lib/types/supabase";
 import { updateCardStatus } from "@/actions/update-card-status";
 import { updateCardPositions } from "@/actions/update-card-position";
+import { Plus } from "lucide-react";
 
 export const Column = ({
   title,
@@ -142,22 +144,30 @@ export const Column = ({
     .sort((a, b) => a.position - b.position);
 
   return (
-    <div className="w-72 shrink-0 min-h-[70vh] rounded-t">
+    <div
+      className={`flex flex-col min-h-[70vh] w-72 p-3 transition-colors rounded-xl shrink-0 ${
+        active ? `bg-muted` : `bg-background2`
+      }`}
+    >
       <div
-        className={`flex items-center gap-2 border-solid border-b-4 pb-1 border-${color}-600`}
+        className={`flex items-center gap-2 justify-between border-l-4 pl-2 border-${color}-500`}
       >
-        <h3 className="font-semibold text-gray-700">{title}</h3>
-        <span className="rounded-full text-sm bg-neutral-200 h-5 w-5 flex items-center justify-center font-semibold">
-          {filteredCards.length}
-        </span>
+        <div className="flex items-center gap-2">
+          <h3 className="font-semibold text-muted-foreground">{title}</h3>
+          <div className="text-sm bg-foreground2 flex items-center px-2 justify-center text-muted-foreground rounded-[4px]">
+            {filteredCards.length}
+          </div>
+        </div>
+        <div className="flex items-center gap-2">
+          <Plus className="w-5 text-muted-foreground" />
+          <FaEllipsisVertical className="w-4 text-muted-foreground" />
+        </div>
       </div>
       <div
         onDrop={handleDrop}
         onDragLeave={handleDragLeave}
         onDragOver={handleDragOver}
-        className={`flex flex-col h-full w-full p-2 rounded-lg transition-colors ${
-          active ? `bg-gray-600/10` : `bg-white`
-        }`}
+        className="grow mt-2"
       >
         {filteredCards.map((card) => {
           return (
@@ -165,7 +175,6 @@ export const Column = ({
               key={card.card_id}
               title={card.title}
               id={card.card_id}
-              description={card.description}
               status={card.status}
               card={card}
               handleDragStart={handleDragStart}

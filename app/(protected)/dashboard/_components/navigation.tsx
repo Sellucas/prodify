@@ -2,8 +2,6 @@
 
 import { motion, useAnimationControls } from "framer-motion";
 import { useState, useEffect } from "react";
-
-import NavigationLink from "@/app/(protected)/dashboard/_components/navigation-link";
 import {
   BarChartBig,
   CalendarCheck,
@@ -13,6 +11,8 @@ import {
   Route,
   SlidersHorizontal,
 } from "lucide-react";
+
+import NavigationLink from "@/app/(protected)/dashboard/_components/navigation-link";
 
 const containerVariants = {
   close: {
@@ -33,80 +33,59 @@ const containerVariants = {
   },
 };
 
-const svgVariants = {
-  close: {
-    rotate: 360,
-  },
-  open: {
-    rotate: 180,
-  },
-};
-
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const containerControls = useAnimationControls();
   const svgControls = useAnimationControls();
 
   useEffect(() => {
-    if (isOpen) {
-      containerControls.start("open");
-      svgControls.start("open");
-    } else {
-      containerControls.start("close");
-      svgControls.start("close");
-    }
-  }, [containerControls, isOpen, svgControls]);
+    const state = isOpen ? "open" : "close";
+    containerControls.start(state);
+    svgControls.start(state);
+  }, [isOpen, containerControls, svgControls]);
 
-  const handleOpen = () => {
-    setIsOpen(true);
-  };
+  const handleMouseEnter = () => setIsOpen(true);
+  const handleMouseLeave = () => setIsOpen(false);
 
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  const navItemsTop = [
+    { href: "/dashboard", name: "Overview", icon: LayoutDashboard },
+    { href: "/dashboard/analytics", name: "Analytics", icon: BarChartBig },
+    { href: "/dashboard/schedule", name: "Schedule", icon: CalendarCheck },
+    { href: "/dashboard/notes", name: "Notes", icon: NotebookPen },
+    { href: "/dashboard/roadmap", name: "Roadmap", icon: Route },
+    { href: "/dashboard/board", name: "Projects", icon: FolderOpen },
+  ];
+
+  const navItemsBottom = [
+    { href: "/dashboard/settings", name: "Settings", icon: SlidersHorizontal },
+  ];
 
   return (
-    <>
-      <motion.nav
-        variants={containerVariants}
-        animate={containerControls}
-        initial="close"
-        className="bg-white flex flex-col z-10 gap-5 pt-16 pb-5 px-1 fixed top-0 left-0 h-full border-r-[1px] border-gray-200"
-        onMouseEnter={handleOpen}
-        onMouseLeave={handleClose}
-      >
-        <div className="flex flex-col justify-between h-full">
-          <div className="flex flex-col gap-3">
-            <NavigationLink href="/dashboard" name="Overview">
-              <LayoutDashboard className="min-w-8" />
+    <motion.nav
+      variants={containerVariants}
+      animate={containerControls}
+      initial="close"
+      className="bg-background2 flex flex-col z-10 gap-5 pt-16 pb-5 px-1 fixed top-0 left-0 h-full border-r border-muted"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col gap-3">
+          {navItemsTop.map(({ href, name, icon: Icon }) => (
+            <NavigationLink key={href} href={href} name={name}>
+              <Icon className="min-w-8" absoluteStrokeWidth />
             </NavigationLink>
-            <NavigationLink href="/dashboard/analytics" name="Analytics">
-              <BarChartBig className="min-w-8" />
-            </NavigationLink>
-            <hr className="mx-2 bg-gray-500 h-[1px]" />
-            <NavigationLink href="/dashboard/schedule" name="Schedule">
-              <CalendarCheck className="min-w-8" />
-            </NavigationLink>
-            <NavigationLink href="/dashboard/notes" name="Notes">
-              <NotebookPen className="min-w-8" />
-            </NavigationLink>
-            <NavigationLink href="/dashboard/roadmap" name="Roadmap">
-              <Route className="min-w-8" />
-            </NavigationLink>
-            <hr className="mx-2 bg-gray-500 h-[1px]" />
-            <NavigationLink href="/dashboard/board" name="Projects">
-              <FolderOpen className="min-w-8" />
-            </NavigationLink>
-          </div>
-          <div>
-            <NavigationLink href="/dashboard/settings" name="Settings">
-              <SlidersHorizontal className="min-w-8" />
-            </NavigationLink>
-          </div>
+          ))}
         </div>
-      </motion.nav>
-    </>
+        <div>
+          {navItemsBottom.map(({ href, name, icon: Icon }) => (
+            <NavigationLink key={href} href={href} name={name}>
+              <Icon className="min-w-8" absoluteStrokeWidth />
+            </NavigationLink>
+          ))}
+        </div>
+      </div>
+    </motion.nav>
   );
 };
 

@@ -18,7 +18,6 @@ export interface IColumnProps {
 export type CardBoardProps = {
   title: string;
   id: string;
-  description: string;
   status: "backlog" | "todo" | "doing" | "reviewing" | "done";
   card: ICard;
   tags?: ICardTagProps[];
@@ -29,7 +28,7 @@ export type CardBoardProps = {
 };
 
 export interface ICardTagProps {
-  option: string;
+  children: React.ReactNode;
   className?: string;
 }
 

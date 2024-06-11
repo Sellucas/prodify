@@ -1,4 +1,4 @@
-import { FaEllipsisVertical } from "react-icons/fa6";
+import { History, Link, MessageCircle, Tag } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { CardBoardProps } from "@/types";
@@ -8,7 +8,6 @@ import { DropIndicator } from "./drop-indicator";
 export const CardBoard = ({
   id,
   title,
-  description,
   status,
   card,
   tags,
@@ -27,22 +26,32 @@ export const CardBoard = ({
             card
           )
         }
-        className="cursor-grab h-32 border-y drop-shadow-md rounded-lg border-2 border-neutral-200 bg-white p-3 active:cursor-grabbing"
+        className="cursor-grab h-44 rounded-xl border-2 border-muted bg-foreground2 active:cursor-grabbing"
       >
-        <div className="flex items-center justify-between my-1">
-          <h1 className="font-semibold">{title}</h1>
-          <FaEllipsisVertical className="cursor-pointer" />
+        <div className="px-3 py-2 text-xs text-muted-foreground/75">
+          Priority: <span className="text-foreground">High</span>
         </div>
-        <p className="text-sm py-1">{description}</p>
-        <div className="flex gap-2 my-3">
-          {tags &&
-            tags.map((tag, index) => (
-              <CardTag
-                key={index}
-                option={tag.option}
-                className={tag.className}
-              />
-            ))}
+        <hr className="border-muted" />
+        <div className="relative p-3">
+          <h1 className="first-letter:capitalize tracking-wide">{title}</h1>
+          <div className="flex items-center gap-2 mt-4">
+            <Tag className="w-4 text-muted-foreground/75" absoluteStrokeWidth />
+            <CardTag className="bg-yellow-700/15 text-yellow-500">Saas</CardTag>
+            <CardTag className="bg-cyan-700/15 text-cyan-500">Web</CardTag>
+          </div>
+          <div className="flex items-center justify-between gap-2 mt-8">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-white">
+                <MessageCircle className="w-3" absoluteStrokeWidth />4
+              </div>
+              <div className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-white">
+                <Link className="w-3" absoluteStrokeWidth />3
+              </div>
+            </div>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-white">
+              <History className="w-3" absoluteStrokeWidth /> 4d
+            </div>
+          </div>
         </div>
       </motion.div>
     </>

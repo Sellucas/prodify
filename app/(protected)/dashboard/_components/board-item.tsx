@@ -38,27 +38,28 @@ export const BoardItem = ({
 
   return (
     <Link href={url}>
-      <Card className="w-full max-w-96 border-gray-300">
-        <CardHeader>
-          <div className="flex justify-between">
-            <CardTitle>{title}</CardTitle>
+      <Card className="w-[322px] h-60 border-2 border-muted bg-primary-foreground hover:bg-primary-foreground/50 relative transition-all ease-in-out duration-300">
+        <CardHeader className="h-20 py-4">
+          <div className="flex justify-between items-center">
+            <CardTitle className="capitalize">{title}</CardTitle>
             <DropdownMenu>
-              <DropdownMenuTrigger>
+              <DropdownMenuTrigger className="hover:bg-muted p-2 rounded-full">
                 <FaEllipsisVertical />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel className="flex items-center gap-2">
-                  <Trash2 className="w-4 h-4" /> Delete
+                  <Settings className="w-4 h-4" /> Settings
                 </DropdownMenuLabel>
                 <DropdownMenuLabel className="flex items-center gap-2">
-                  <Settings className="w-4 h-4" /> Settings
+                  <Trash2 className="w-4 h-4" /> Delete
                 </DropdownMenuLabel>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          <CardDescription>{description}</CardDescription>
+          <CardDescription className="text-xs">{description}</CardDescription>
         </CardHeader>
-        <CardContent>
+        <hr />
+        <CardContent className="mt-6">
           <div>
             <p className="flex justify-between text-sm mb-2">
               <span>50% Completed</span>
@@ -67,9 +68,9 @@ export const BoardItem = ({
             <Progress value={progress} className="w-[100%]" />
           </div>
         </CardContent>
-        <CardFooter className="text-sm text-muted-foreground flex items-center">
+        <CardFooter className="text-xs text-muted-foreground flex items-center absolute bottom-0">
           Created at:{" "}
-          <span className="ml-2 bg-gray-300 rounded-xl px-2 py-1">
+          <span className="ml-1 bg-muted rounded-xl px-2 py-1">
             {formatCreatedAt(created_at)}
           </span>
         </CardFooter>

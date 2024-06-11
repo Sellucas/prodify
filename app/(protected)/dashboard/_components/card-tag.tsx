@@ -1,15 +1,15 @@
 import { cn } from "@/lib/utils";
 import { ICardTagProps } from "@/types";
 
-export const CardTag = ({ option, className }: ICardTagProps) => {
+export const CardTag = ({ children, className }: ICardTagProps) => {
   return (
     <span
       className={cn(
-        "flex flex-row items-center text-sm px-2 py-1 rounded font-medium",
+        "flex flex-row items-center text-xs px-2 py-1 rounded-full",
         className
       )}
     >
-      {option}
+      {children}
     </span>
   );
 };

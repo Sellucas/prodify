@@ -29,7 +29,7 @@ const TestPage = ({ params }: { params: { slug: string } }) => {
   return (
     <>
       <BoardHeader boardId={params.slug} />
-      <div className="flex flex-row w-full h-full gap-8 overflow-scroll lg:px-12 px-4 pt-6 no-scrollbar">
+      <div className="flex flex-row w-full h-full gap-8 overflow-x-scroll lg:px-12 px-4 no-scrollbar">
         <Column
           title="Backlog"
           status="backlog"
