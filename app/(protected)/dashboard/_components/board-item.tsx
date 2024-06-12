@@ -34,14 +34,16 @@ export const BoardItem = ({
   progress,
   slug,
 }: BoardItemProps) => {
-  const url = `/dashboard/board/${slug}`;
+  const url = `/dashboard/board/${slug}?title=${encodeURIComponent(title)}`;
 
   return (
     <Link href={url}>
       <Card className="w-[322px] h-60 border-2 border-muted bg-primary-foreground hover:bg-primary-foreground/50 relative transition-all ease-in-out duration-300">
         <CardHeader className="h-20 py-4">
           <div className="flex justify-between items-center">
-            <CardTitle className="capitalize">{title}</CardTitle>
+            <CardTitle className="capitalize">
+              {title.length > 13 ? `${title.slice(0, 13)}...` : title}
+            </CardTitle>
             <DropdownMenu>
               <DropdownMenuTrigger className="hover:bg-muted p-2 rounded-full">
                 <FaEllipsisVertical />
@@ -62,7 +64,7 @@ export const BoardItem = ({
         <CardContent className="mt-6">
           <div>
             <p className="flex justify-between text-sm mb-2">
-              <span>50% Completed</span>
+              <span>{progress}% Completed</span>
               <span>1/2 tasks</span>
             </p>
             <Progress value={progress} className="w-[100%]" />

@@ -1,5 +1,6 @@
 import { History, Link, MessageCircle, Tag } from "lucide-react";
 import { motion } from "framer-motion";
+import { formatDistanceToNow, parseISO } from "date-fns";
 
 import { CardBoardProps } from "@/types";
 import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
@@ -13,6 +14,8 @@ export const CardBoard = ({
   tags,
   handleDragStart,
 }: CardBoardProps) => {
+  const timeAgo = formatDistanceToNow(parseISO(card.created_at));
+
   return (
     <>
       <DropIndicator beforeId={card.card_id} column={status} />
@@ -33,7 +36,9 @@ export const CardBoard = ({
         </div>
         <hr className="border-muted" />
         <div className="relative p-3">
-          <h1 className="first-letter:capitalize tracking-wide">{title}</h1>
+          <h1 className="first-letter:capitalize tracking-wide">
+            {title.length > 26 ? `${title.slice(0, 26)}...` : title}
+          </h1>
           <div className="flex items-center gap-2 mt-4">
             <Tag className="w-4 text-muted-foreground/75" absoluteStrokeWidth />
             <CardTag className="bg-yellow-700/15 text-yellow-500">Saas</CardTag>
@@ -48,8 +53,8 @@ export const CardBoard = ({
                 <Link className="w-3" absoluteStrokeWidth />3
               </div>
             </div>
-            <div className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-white">
-              <History className="w-3" absoluteStrokeWidth /> 4d
+            <div className="flex items-center gap-1 text-xs text-muted-foreground/75">
+              <History className="w-3" absoluteStrokeWidth /> {timeAgo}
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Bell } from "lucide-react";
@@ -16,8 +17,15 @@ export const Notification = () => {
         </span>
         <Bell className="w-5 text-muted-foreground/75" absoluteStrokeWidth />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mr-2 mt-2 p-4 min-h-64 min-w-64">
-        <DropdownMenuLabel className="text-lg font-medium">Notifications</DropdownMenuLabel>
+      <DropdownMenuContent className="mr-8 mt-2 min-h-24 min-w-64">
+        <DropdownMenuLabel className="flex w-full justify-between items-center">
+          <span>Notifications</span>
+          <span className="text-xs text-blue-500 hover:text-blue-600 cursor-pointer">
+            View all
+          </span>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <div className="text-sm text-center mt-4">No unread notifications.</div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

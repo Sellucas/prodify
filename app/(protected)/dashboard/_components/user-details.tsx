@@ -27,7 +27,7 @@ export const UserDetails = () => {
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="p-4 mr-2 mt-1">
+      <DropdownMenuContent className="p-4 mr-8 mt-1">
         <DropdownMenuLabel className="flex gap-2 mb-2">
           <Avatar>
             <AvatarImage src={user?.image_url || ""} alt="user" />
@@ -36,7 +36,7 @@ export const UserDetails = () => {
             </AvatarFallback>
           </Avatar>
           <div>
-            <h2 className="text-lg font-medium">{user?.display_name}</h2>
+            <h2 className="text-lg">{user?.display_name}</h2>
             <p className="text-xs font-light">{user?.email}</p>
           </div>
         </DropdownMenuLabel>

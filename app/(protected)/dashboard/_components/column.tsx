@@ -149,18 +149,17 @@ export const Column = ({
         active ? `bg-muted` : `bg-background2`
       }`}
     >
-      <div
-        className={`flex items-center gap-2 justify-between border-l-4 pl-2 border-${color}-500`}
-      >
+      <div className="flex items-center gap-2 relative">
+        <div className={`bg-${color}-500 w-1 h-full rounded-xl`} />
         <div className="flex items-center gap-2">
           <h3 className="font-semibold text-muted-foreground">{title}</h3>
           <div className="text-sm bg-foreground2 flex items-center px-2 justify-center text-muted-foreground rounded-[4px]">
             {filteredCards.length}
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <Plus className="w-5 text-muted-foreground" />
-          <FaEllipsisVertical className="w-4 text-muted-foreground" />
+        <div className="absolute right-0 flex items-center gap-2">
+          <Plus className="w-5 text-muted-foreground hover:text-muted-foreground/50 cursor-pointer" />
+          <FaEllipsisVertical className="w-4 text-muted-foreground hover:text-muted-foreground/50 cursor-pointer" />
         </div>
       </div>
       <div

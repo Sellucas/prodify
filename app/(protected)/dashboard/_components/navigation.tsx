@@ -73,14 +73,14 @@ const Navigation = () => {
         <div className="flex flex-col gap-3">
           {navItemsTop.map(({ href, name, icon: Icon }) => (
             <NavigationLink key={href} href={href} name={name}>
-              <Icon className="min-w-8" absoluteStrokeWidth />
+              <Icon className="min-w-6" absoluteStrokeWidth />
             </NavigationLink>
           ))}
         </div>
         <div>
           {navItemsBottom.map(({ href, name, icon: Icon }) => (
             <NavigationLink key={href} href={href} name={name}>
-              <Icon className="min-w-8" absoluteStrokeWidth />
+              <Icon className="min-w-6" absoluteStrokeWidth />
             </NavigationLink>
           ))}
         </div>

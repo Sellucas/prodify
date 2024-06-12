@@ -62,7 +62,7 @@ const BoardPage = () => {
             ))
           ) : (
             <div className="mx-auto space-y-12 w-96 text-center text-xl text-gray-500">
-              <h1>No board created yet!</h1>
+              <h1 className="text-white">No board created yet!</h1>
               <div className="aspect-video w-full relative">
                 <Image
                   src="/no-data.svg"

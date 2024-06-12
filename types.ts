@@ -5,6 +5,7 @@ export interface ICard {
   description: string;
   status: "backlog" | "todo" | "doing" | "reviewing" | "done";
   position: number;
+  created_at: string;
 }
 
 export interface IColumnProps {

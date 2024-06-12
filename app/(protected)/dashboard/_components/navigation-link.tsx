@@ -14,7 +14,7 @@ const NavigationLink = ({ children, name, href }: Props) => {
   return (
     <Link
       href={href}
-      className={`flex p-1 rounded-[8px] cursor-pointer stroke-[0.75] text-muted-foreground border-2 border-transparent place-items-center gap-3 transition-colors duration-100 ${
+      className={`flex p-1 rounded-[8px] cursor-pointer stroke-[0.75] text-muted-foreground border-2 border-background2 place-items-center gap-3 transition-colors duration-100 ${
         isActive
           ? "text-white bg-primary-foreground border-secondary"
           : "hover:text-white hover:bg-primary-foreground hover:border-secondary"
