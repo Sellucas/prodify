@@ -10,7 +10,9 @@ export const BoardHeader = ({
 }) => {
   return (
     <div className="flex justify-between items-center w-full pb-6 lg:px-12 px-4 max-w-[1660px]">
-      <h1 className="text-3xl lg:text-4xl first-letter:capitalize">{title}</h1>
+      <h1 className="text-4xl font-medium leading-none tracking-tighter text-balance sm:text-2xl md:text-3xl lg:text-4xl">
+        {title}
+      </h1>
       <ManageSheet label={"New card"} title={"Add new card"}>
         <CardForm boardId={boardId} />
       </ManageSheet>

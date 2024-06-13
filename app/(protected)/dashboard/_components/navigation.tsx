@@ -48,12 +48,11 @@ const Navigation = () => {
   const handleMouseLeave = () => setIsOpen(false);
 
   const navItemsTop = [
-    { href: "/dashboard", name: "Overview", icon: LayoutDashboard },
+    { href: "/dashboard/board", name: "Projects", icon: FolderOpen },
     { href: "/dashboard/analytics", name: "Analytics", icon: BarChartBig },
     { href: "/dashboard/schedule", name: "Schedule", icon: CalendarCheck },
     { href: "/dashboard/notes", name: "Notes", icon: NotebookPen },
     { href: "/dashboard/roadmap", name: "Roadmap", icon: Route },
-    { href: "/dashboard/board", name: "Projects", icon: FolderOpen },
   ];
 
   const navItemsBottom = [

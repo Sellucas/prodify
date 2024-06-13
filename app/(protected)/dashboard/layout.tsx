@@ -6,7 +6,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="w-full max-h-screen cursor-default">
       <NavbarDashboard />
       <Navigation />
-      <div className="mt-16 ml-20">{children}</div>
+      <div className="mt-20 ml-20">{children}</div>
     </div>
   );
 };
