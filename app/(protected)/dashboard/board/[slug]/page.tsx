@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+
 import { Column } from "@/app/(protected)/dashboard/_components/column";
 import { getAllCards } from "@/actions/get-user-card";
 import { ICard } from "@/types";
 import { BoardHeader } from "../../_components/board-header";
 
-const TestPage = ({ params }: { params: { slug: string } }) => {
+const KanbanPage = ({ params }: { params: { slug: string } }) => {
   const [cards, setCards] = useState<ICard[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
@@ -72,4 +73,4 @@ const TestPage = ({ params }: { params: { slug: string } }) => {
   );
 };
 
-export default TestPage;
+export default KanbanPage;

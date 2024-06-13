@@ -16,7 +16,7 @@ import NavigationLink from "@/app/(protected)/dashboard/_components/navigation-l
 
 const containerVariants = {
   close: {
-    width: "3.2rem",
+    width: "2.8rem",
     transition: {
       type: "spring",
       damping: 15,
@@ -65,11 +65,11 @@ const Navigation = () => {
       variants={containerVariants}
       animate={containerControls}
       initial="close"
-      className="bg-background2 flex flex-col z-10 gap-5 pt-16 pb-5 px-1 fixed top-0 left-0 h-full border-r border-muted"
+      className="bg-background2 flex flex-col z-50 gap-5 mt-[55px] pb-16 px-1 fixed top-0 left-0 h-full border-r border-muted"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="flex flex-col justify-between h-full">
+      <div className="flex flex-col justify-between h-full mt-2">
         <div className="flex flex-col gap-3">
           {navItemsTop.map(({ href, name, icon: Icon }) => (
             <NavigationLink key={href} href={href} name={name}>
