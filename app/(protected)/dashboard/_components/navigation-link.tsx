@@ -5,9 +5,10 @@ interface Props {
   children: React.ReactNode;
   name: string;
   href: string;
+  isOpen: boolean;
 }
 
-const NavigationLink = ({ children, name, href }: Props) => {
+const NavigationLink = ({ children, name, href, isOpen }: Props) => {
   const pathname = usePathname();
   const isActive = pathname === href;
 
@@ -21,7 +22,13 @@ const NavigationLink = ({ children, name, href }: Props) => {
       }`}
     >
       {children}
-      <p className="overflow-clip whitespace-nowrap text-sm">{name}</p>
+      <p
+        className={`overflow-clip whitespace-nowrap text-sm transition-opacity duration-300 ${
+          isOpen ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        {name}
+      </p>
     </Link>
   );
 };

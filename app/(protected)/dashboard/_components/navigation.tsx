@@ -6,7 +6,6 @@ import {
   BarChartBig,
   CalendarCheck,
   FolderOpen,
-  LayoutDashboard,
   NotebookPen,
   Route,
   SlidersHorizontal,
@@ -64,21 +63,21 @@ const Navigation = () => {
       variants={containerVariants}
       animate={containerControls}
       initial="close"
-      className="bg-background2 flex flex-col z-50 gap-5 mt-[55px] pb-16 px-1 fixed top-0 left-0 h-full border-r border-muted"
+      className="bg-background2 flex flex-col z-50 gap-5 mt-[55px] pb-16 px-1 fixed top-0 left-0 h-full border-r border-muted overflow-hidden"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div className="flex flex-col justify-between h-full mt-2">
         <div className="flex flex-col gap-3">
           {navItemsTop.map(({ href, name, icon: Icon }) => (
-            <NavigationLink key={href} href={href} name={name}>
+            <NavigationLink key={href} href={href} name={name} isOpen={isOpen}>
               <Icon className="min-w-6" absoluteStrokeWidth />
             </NavigationLink>
           ))}
         </div>
         <div>
           {navItemsBottom.map(({ href, name, icon: Icon }) => (
-            <NavigationLink key={href} href={href} name={name}>
+            <NavigationLink key={href} href={href} name={name} isOpen={isOpen}>
               <Icon className="min-w-6" absoluteStrokeWidth />
             </NavigationLink>
           ))}
