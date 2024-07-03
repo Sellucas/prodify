@@ -9,20 +9,17 @@ import { ICard } from "@/types";
 import { BoardHeader } from "../../_components/board-header";
 
 const KanbanPage = ({ params }: { params: { slug: string } }) => {
-  const [cards, setCards] = useState<ICard[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
+  const [cards, setCards] = useState<ICard[]>([]);
 
   useEffect(() => {
     const fetchCards = async () => {
       try {
         const fetchedCards = await getAllCards(params.slug);
         setCards(fetchedCards);
-        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching user boards:", error);
-        setIsLoading(false);
       }
     };
 

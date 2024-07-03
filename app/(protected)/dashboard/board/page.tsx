@@ -10,32 +10,18 @@ import { SearchBar } from "@/app/(protected)/dashboard/_components/search-bar";
 import { ManageSheet } from "@/app/(protected)/dashboard/_components/manage-sheet";
 import { BoardForm } from "@/app/(protected)/dashboard/_components/board-form";
 import { BoardItem } from "@/app/(protected)/dashboard/_components/board-item";
+import useBoardStore from "@/lib/board-store";
+import { calculateProgress, calculateTotalTasks } from "@/lib/utils";
 
 const BoardPage = () => {
-  const [progress, setProgress] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const [boards, setBoards] = useState<any[] | null>(null);
   const { user } = useUser();
+  const { boards, cards, isLoading, fetchBoardsAndCards } = useBoardStore();
 
   useEffect(() => {
-    const fetchBoards = async () => {
-      try {
-        if (user?.user_id) {
-          const fetchedBoards = await getAllBoards(user.user_id);
-          setBoards(fetchedBoards);
-          setIsLoading(false);
-        } else {
-          console.error("User ID is undefined");
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.error("Error fetching user boards:", error);
-        setIsLoading(false);
-      }
-    };
-
-    fetchBoards();
-  }, [user?.user_id]);
+    if (user?.user_id) {
+      fetchBoardsAndCards(user.user_id);
+    }
+  }, [user?.user_id, fetchBoardsAndCards]);
 
   return (
     <div className="container">
@@ -55,7 +41,8 @@ const BoardPage = () => {
                 slug={board_id}
                 title={title}
                 description={description}
-                progress={75}
+                progress={calculateProgress(cards, board_id)}
+                total_tasks={calculateTotalTasks(cards, board_id)}
                 key={i}
                 created_at={created_at}
               />

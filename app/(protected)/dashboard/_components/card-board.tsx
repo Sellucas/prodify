@@ -1,10 +1,11 @@
-import { History, Link, MessageCircle, Tag } from "lucide-react";
 import { motion } from "framer-motion";
 import { formatDistanceToNow, parseISO } from "date-fns";
+import { History, MessageCircle, Tag, Trash } from "lucide-react";
 
 import { CardBoardProps } from "@/types";
-import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
 import { DropIndicator } from "./drop-indicator";
+import { deleteCard } from "@/actions/delete-card";
+import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
 
 export const CardBoard = ({
   id,
@@ -15,6 +16,17 @@ export const CardBoard = ({
   handleDragStart,
 }: CardBoardProps) => {
   const timeAgo = formatDistanceToNow(parseISO(card.created_at));
+
+  const handleDeleteClick = async () => {
+    try {
+      const response = await deleteCard(card.card_id);
+      if (response.error) {
+        console.error("Failed to delete card:", response.error);
+      }
+    } catch (error) {
+      console.error("Error deleting the card:", error);
+    }
+  };
 
   return (
     <>
@@ -49,8 +61,11 @@ export const CardBoard = ({
               <div className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-white">
                 <MessageCircle className="w-3" absoluteStrokeWidth />4
               </div>
-              <div className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-white">
-                <Link className="w-3" absoluteStrokeWidth />3
+              <div
+                className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-red-600"
+                onClick={handleDeleteClick}
+              >
+                <Trash className="w-3" absoluteStrokeWidth />
               </div>
             </div>
             <div className="flex items-center gap-1 text-xs text-muted-foreground/75">

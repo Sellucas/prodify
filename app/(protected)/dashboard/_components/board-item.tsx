@@ -17,14 +17,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Progress } from "@/components/ui/progress";
-import { formatCreatedAt } from "@/utils/formatCreatedAt ";
+import { formatCreatedAt } from "@/lib/utils";
 
 interface BoardItemProps {
   title: string;
-  description: string;
+  description: string | null;
   progress: number;
   created_at: string;
   slug: string;
+  total_tasks: number;
 }
 
 export const BoardItem = ({
@@ -33,6 +34,7 @@ export const BoardItem = ({
   description,
   progress,
   slug,
+  total_tasks,
 }: BoardItemProps) => {
   const url = `/dashboard/board/${slug}?title=${encodeURIComponent(title)}`;
 
@@ -65,7 +67,7 @@ export const BoardItem = ({
           <div>
             <p className="flex justify-between text-sm mb-2">
               <span>{progress}% Completed</span>
-              <span>1/2 tasks</span>
+              <span>{total_tasks} tasks</span>
             </p>
             <Progress value={progress} className="w-[100%]" />
           </div>
