@@ -18,6 +18,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Progress } from "@/components/ui/progress";
 import { formatCreatedAt } from "@/lib/utils";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface BoardItemProps {
   title: string;
@@ -43,9 +49,18 @@ export const BoardItem = ({
       <Card className="w-[322px] h-60 border-2 border-muted bg-primary-foreground hover:bg-primary-foreground/50 relative transition-all ease-in-out duration-300">
         <CardHeader className="h-20 py-4">
           <div className="flex justify-between items-center">
-            <CardTitle className="capitalize">
-              {title.length > 13 ? `${title.slice(0, 13)}...` : title}
-            </CardTitle>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger>
+                  <CardTitle className="capitalize">
+                    {title.length > 13 ? `${title.slice(0, 13)}...` : title}
+                  </CardTitle>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-sm text-muted-foreground">{title}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
             <DropdownMenu>
               <DropdownMenuTrigger className="hover:bg-muted p-2 rounded-full">
                 <FaEllipsisVertical />
