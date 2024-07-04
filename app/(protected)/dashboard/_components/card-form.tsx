@@ -1,5 +1,3 @@
-"use client";
-
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,40 +21,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { useUser } from "@/context/user-context";
-import { addCard } from "@/actions/add-card";
 
-export const CardForm = ({ boardId }: { boardId: string }) => {
-  const { user, loading } = useUser();
+type CardFormProps = {
+  onSubmit: (values: z.infer<typeof CardSchema>) => void;
+  defaultValues?: z.infer<typeof CardSchema>;
+};
 
+const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
   const form = useForm<z.infer<typeof CardSchema>>({
     resolver: zodResolver(CardSchema),
-    defaultValues: {
+    defaultValues: defaultValues || {
       title: "",
       description: "",
       status: "backlog",
     },
   });
-
-  const onSubmit = async (values: z.infer<typeof CardSchema>) => {
-    try {
-      if (!user) {
-        throw new Error("User not found");
-      }
-
-      const cardData = {
-        ...values,
-        board_id: boardId,
-        user_id: user.user_id,
-      };
-
-      await addCard(cardData);
-
-      form.reset();
-    } catch (error) {
-      console.error("Error inserting the card:", error);
-    }
-  };
 
   return (
     <Form {...form}>
@@ -124,3 +103,5 @@ export const CardForm = ({ boardId }: { boardId: string }) => {
     </Form>
   );
 };
+
+export default CardForm;

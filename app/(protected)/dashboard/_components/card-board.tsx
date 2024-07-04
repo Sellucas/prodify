@@ -1,11 +1,13 @@
 import { motion } from "framer-motion";
 import { formatDistanceToNow, parseISO } from "date-fns";
-import { History, MessageCircle, Tag, Trash } from "lucide-react";
+import { History, MessageCircle, Settings, Tag, Trash } from "lucide-react";
 
 import { CardBoardProps } from "@/types";
 import { DropIndicator } from "./drop-indicator";
 import { deleteCard } from "@/actions/delete-card";
 import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
+import { ManageSheet } from "./manage-sheet";
+import CardUpdateForm from "./card-update-form";
 
 export const CardBoard = ({
   id,
@@ -43,8 +45,18 @@ export const CardBoard = ({
         }
         className="cursor-grab h-44 rounded-xl border-2 border-muted bg-foreground2 active:cursor-grabbing"
       >
-        <div className="px-3 py-2 text-xs text-muted-foreground/75">
-          Priority: <span className="text-foreground">High</span>
+        <div className="flex justify-between px-3 items-center text-xs text-muted-foreground/75">
+          <p>
+            Priority: <span className="text-foreground">High</span>
+          </p>
+          <p>
+            <ManageSheet
+              title={"Edit the form below to update the card"}
+              isUpdate
+            >
+              <CardUpdateForm card={card} />
+            </ManageSheet>
+          </p>
         </div>
         <hr className="border-muted" />
         <div className="relative p-3">
