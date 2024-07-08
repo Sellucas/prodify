@@ -4,6 +4,7 @@ import { ExternalLink, Plus, Settings } from "lucide-react";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -13,6 +14,7 @@ import { Button } from "@/components/ui/button";
 interface ManageSheetProps {
   children: ReactNode;
   title?: String;
+  description?: String;
   label?: String;
   isUpdate?: boolean;
 }
@@ -20,6 +22,7 @@ interface ManageSheetProps {
 export const ManageSheet = ({
   children,
   title,
+  description,
   label,
   isUpdate,
 }: ManageSheetProps) => {
@@ -44,6 +47,9 @@ export const ManageSheet = ({
       <SheetContent className="w-full">
         <SheetHeader className="mb-4 text-left">
           <SheetTitle className="text-2xl">{title}</SheetTitle>
+          <SheetDescription className="text-sm text-muted-foreground">
+            {description}
+          </SheetDescription>
         </SheetHeader>
         {children}
       </SheetContent>

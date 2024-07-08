@@ -27,7 +27,7 @@ const BoardPage = () => {
     <div className="container">
       <div className="flex justify-between gap-8">
         <SearchBar />
-        <ManageSheet label="New board" title="Add new board">
+        <ManageSheet label="New board" title="Add new board" description="Create a new board to organize your tasks.">
           <BoardForm />
         </ManageSheet>
       </div>

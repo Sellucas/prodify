@@ -8,6 +8,7 @@ import { deleteCard } from "@/actions/delete-card";
 import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
 import { ManageSheet } from "./manage-sheet";
 import CardUpdateForm from "./card-update-form";
+import { DialogDeleteCard } from "./dialog-delete-card";
 
 export const CardBoard = ({
   id,
@@ -18,17 +19,6 @@ export const CardBoard = ({
   handleDragStart,
 }: CardBoardProps) => {
   const timeAgo = formatDistanceToNow(parseISO(card.created_at));
-
-  const handleDeleteClick = async () => {
-    try {
-      const response = await deleteCard(card.card_id);
-      if (response.error) {
-        console.error("Failed to delete card:", response.error);
-      }
-    } catch (error) {
-      console.error("Error deleting the card:", error);
-    }
-  };
 
   return (
     <>
@@ -52,6 +42,7 @@ export const CardBoard = ({
           <p>
             <ManageSheet
               title={"Edit the form below to update the card"}
+              description={"Update the card details to reflect the changes."}
               isUpdate
             >
               <CardUpdateForm card={card} />
@@ -73,12 +64,7 @@ export const CardBoard = ({
               <div className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-white">
                 <MessageCircle className="w-3" absoluteStrokeWidth />4
               </div>
-              <div
-                className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-red-600"
-                onClick={handleDeleteClick}
-              >
-                <Trash className="w-3" absoluteStrokeWidth />
-              </div>
+              <DialogDeleteCard card={card} />
             </div>
             <div className="flex items-center gap-1 text-xs text-muted-foreground/75">
               <History className="w-3" absoluteStrokeWidth /> {timeAgo}

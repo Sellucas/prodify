@@ -1,13 +1,13 @@
 export interface ICard {
   board_id: string;
   card_id: string;
-  title: string;
-  description: string;
-  status: "backlog" | "todo" | "doing" | "reviewing" | "done";
-  position: number;
   created_at: string;
+  description: string;
+  position: number;
+  status: "backlog" | "todo" | "doing" | "reviewing" | "done";
+  title: string;
+  user_id: string;
 }
-
 export interface IColumnProps {
   title: string;
   color: string;
