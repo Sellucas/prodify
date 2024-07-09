@@ -25,7 +25,7 @@ export default function RootLayout({
           <main className="w-full h-full relative flex items-center justify-center">
             {children}
           </main>
-          <Toaster />
+          <Toaster richColors/>
         </UserProvider>
       </body>
     </html>

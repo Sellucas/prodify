@@ -1,15 +1,15 @@
 "use client";
 
-import { FaEllipsisVertical } from "react-icons/fa6";
 import { useState } from "react";
+import { Plus } from "lucide-react";
+import { FaEllipsisVertical } from "react-icons/fa6";
 
 import { ICard, IColumnProps } from "@/types";
-import { CardBoard } from "@/app/(protected)/dashboard/_components/card-board";
-import { DropIndicator } from "./drop-indicator";
 import { Database } from "@/lib/types/supabase";
+import { DropIndicator } from "./drop-indicator";
 import { updateCardStatus } from "@/actions/update-card-status";
 import { updateCardPositions } from "@/actions/update-card-position";
-import { Plus } from "lucide-react";
+import { CardBoard } from "@/app/(protected)/dashboard/_components/card-board";
 
 export const Column = ({
   title,
