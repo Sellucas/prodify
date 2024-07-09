@@ -1,4 +1,3 @@
-import { ManageSheet } from "@/app/(protected)/dashboard/_components/manage-sheet";
 import { CardCreateForm } from "./card-create-form";
 
 export const BoardHeader = ({
@@ -13,9 +12,7 @@ export const BoardHeader = ({
       <h1 className="text-4xl font-medium leading-none tracking-tighter text-balance sm:text-2xl md:text-3xl lg:text-4xl">
         {title}
       </h1>
-      <ManageSheet label={"New card"} title={"Add new card"} description={"Create a new card to add to the board."}>
-        <CardCreateForm boardId={boardId} />
-      </ManageSheet>
+      <CardCreateForm boardId={boardId} />
     </div>
   );
 };

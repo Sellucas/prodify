@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
-import { Navbar } from "@/components/navbar";
 import { UserProvider } from "@/context/user-context";
 
 const font = Inter({ subsets: ["latin"] });
@@ -22,9 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <UserProvider>
-          <div className="w-full h-full relative flex items-center justify-center">
+          <main className="w-full h-full relative flex items-center justify-center">
             {children}
-          </div>
+          </main>
         </UserProvider>
       </body>
     </html>

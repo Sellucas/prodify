@@ -1,33 +1,33 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import {
-  BadgeCheck,
   Brush,
-  CalendarClock,
-  FileSearch,
   Laptop,
   Lightbulb,
+  BadgeCheck,
+  FileSearch,
   ShieldCheck,
+  CalendarClock,
 } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 import {
   Accordion,
-  AccordionContent,
   AccordionItem,
+  AccordionContent,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Logo } from "@/components/logo";
-import RadialGradient from "@/components/ui/radial-gradient";
-import { BorderBeam } from "@/components/ui/border-beam";
-import LinearGradient from "@/components/ui/linear-gradient";
-import Particles from "@/components/ui/particles";
 import { Cta } from "@/components/cta";
-import { Pricing } from "@/components/pricing";
-import { HoverEffect } from "@/components/ui/card-hover-effect";
+import { Logo } from "@/components/logo";
 import { Navbar } from "@/components/navbar";
+import { Pricing } from "@/components/pricing";
+import Particles from "@/components/ui/particles";
 import { AnimateView } from "@/components/animate-view";
+import { BorderBeam } from "@/components/ui/border-beam";
+import RadialGradient from "@/components/ui/radial-gradient";
+import LinearGradient from "@/components/ui/linear-gradient";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
 
 const HomePage = () => {
   const faq = [

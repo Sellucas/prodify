@@ -1,13 +1,17 @@
 "use client";
 
-import { useUser } from "@/context/user-context";
-import { addCard } from "@/actions/add-card";
 import { z } from "zod";
-import { CardSchema } from "@/schemas";
+import { useState } from "react";
+
 import CardForm from "./card-form";
+import { CardSchema } from "@/schemas";
+import { addCard } from "@/actions/add-card";
+import { ManageSheet } from "./manage-sheet";
+import { useUser } from "@/context/user-context";
 
 export const CardCreateForm = ({ boardId }: { boardId: string }) => {
   const { user, loading } = useUser();
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleSubmit = async (values: z.infer<typeof CardSchema>) => {
     try {
@@ -22,10 +26,26 @@ export const CardCreateForm = ({ boardId }: { boardId: string }) => {
       };
 
       await addCard(cardData);
+      setIsSheetOpen(false);
     } catch (error) {
       console.error("Error inserting the card:", error);
     }
   };
 
-  return <CardForm onSubmit={handleSubmit} />;
+  const handleOpen = () => setIsSheetOpen(true);
+  const handleClose = () => setIsSheetOpen(false);
+
+  return (
+    <ManageSheet
+      label={"New card"}
+      title={"Add new card"}
+      description={"Create a new card to add to the board."}
+      isUpdate={false}
+      isOpen={isSheetOpen}
+      onOpen={handleOpen}
+      onClose={handleClose}
+    >
+      <CardForm onSubmit={handleSubmit} />
+    </ManageSheet>
+  );
 };

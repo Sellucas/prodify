@@ -1,14 +1,12 @@
 import { motion } from "framer-motion";
 import { formatDistanceToNow, parseISO } from "date-fns";
-import { History, MessageCircle, Settings, Tag, Trash } from "lucide-react";
+import { History, MessageCircle, Tag } from "lucide-react";
 
 import { CardBoardProps } from "@/types";
-import { DropIndicator } from "./drop-indicator";
-import { deleteCard } from "@/actions/delete-card";
-import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
-import { ManageSheet } from "./manage-sheet";
 import CardUpdateForm from "./card-update-form";
-import { DialogDeleteCard } from "./dialog-delete-card";
+import { DropIndicator } from "./drop-indicator";
+import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
+import { DialogDeleteCard } from "./card-delete-dialog";
 
 export const CardBoard = ({
   id,
@@ -40,13 +38,7 @@ export const CardBoard = ({
             Priority: <span className="text-foreground">High</span>
           </p>
           <p>
-            <ManageSheet
-              title={"Edit the form below to update the card"}
-              description={"Update the card details to reflect the changes."}
-              isUpdate
-            >
-              <CardUpdateForm card={card} />
-            </ManageSheet>
+            <CardUpdateForm card={card} />
           </p>
         </div>
         <hr className="border-muted" />

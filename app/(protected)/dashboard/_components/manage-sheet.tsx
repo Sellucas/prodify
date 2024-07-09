@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { ExternalLink, Plus, Settings } from "lucide-react";
+import { ExternalLink, Plus } from "lucide-react";
 
 import {
   Sheet,
@@ -17,6 +17,9 @@ interface ManageSheetProps {
   description?: String;
   label?: String;
   isUpdate?: boolean;
+  isOpen?: boolean;
+  onOpen: () => void;
+  onClose: () => void;
 }
 
 export const ManageSheet = ({
@@ -25,9 +28,12 @@ export const ManageSheet = ({
   description,
   label,
   isUpdate,
+  isOpen,
+  onOpen,
+  onClose,
 }: ManageSheetProps) => {
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={(open) => (open ? onOpen() : onClose())}>
       <SheetTrigger>
         {isUpdate ? (
           <ExternalLink className="w-4" absoluteStrokeWidth />
