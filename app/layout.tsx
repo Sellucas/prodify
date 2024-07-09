@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 import { UserProvider } from "@/context/user-context";
 
 const font = Inter({ subsets: ["latin"] });
@@ -24,6 +25,7 @@ export default function RootLayout({
           <main className="w-full h-full relative flex items-center justify-center">
             {children}
           </main>
+          <Toaster />
         </UserProvider>
       </body>
     </html>

@@ -1,6 +1,7 @@
 "use client";
 
 import { z } from "zod";
+import { toast } from "sonner";
 import { useState } from "react";
 
 import CardForm from "./card-form";
@@ -27,6 +28,7 @@ export const CardCreateForm = ({ boardId }: { boardId: string }) => {
 
       await addCard(cardData);
       setIsSheetOpen(false);
+      toast.success("Card created successfully");
     } catch (error) {
       console.error("Error inserting the card:", error);
     }

@@ -1,6 +1,7 @@
 "use client";
 
 import { z } from "zod";
+import { toast } from "sonner";
 import { useState } from "react";
 
 import { ICard } from "@/types";
@@ -20,6 +21,7 @@ const CardUpdateForm = ({ card }: CardUpdateFormProps) => {
     try {
       await updateCard(card.card_id, values);
       setIsSheetOpen(false);
+      toast.success("Card updated successfully");
     } catch (error) {
       console.error("Error updating the card:", error);
     }

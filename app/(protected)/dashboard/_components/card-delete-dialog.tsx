@@ -1,4 +1,5 @@
 "use client";
+import { toast } from "sonner";
 import { useState } from "react";
 import { Trash } from "lucide-react";
 
@@ -25,6 +26,7 @@ export const DialogDeleteCard = ({ card }: { card: ICard }) => {
         console.error("Failed to delete card:", response.error);
       } else {
         setIsOpen(false);
+        toast.success("Card deleted successfully");
       }
     } catch (error) {
       console.error("Error deleting the card:", error);
