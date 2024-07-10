@@ -1,5 +1,5 @@
-import { UserDetails } from "@/app/(protected)/dashboard/_components/user-details";
 import { Logo } from "@/components/logo";
+import { UserDetails } from "@/app/(protected)/dashboard/_components/user-details";
 
 export const Header = () => {
   return (

@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 
-import { Logo } from "./logo";
-import { Button } from "./ui/button";
-import { AnimateView } from "./animate-view";
+import { Logo } from "@/components/logo";
+import { Button } from "@/components/ui/button";
+import { AnimateView } from "@/components/animate-view";
 
 export const Navbar = () => {
   return (

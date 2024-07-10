@@ -10,7 +10,7 @@ interface Props {
 
 const NavigationLink = ({ children, name, href, isOpen }: Props) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  const isActive = pathname.startsWith(href);
 
   return (
     <Link

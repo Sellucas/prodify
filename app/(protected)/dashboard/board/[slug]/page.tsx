@@ -6,9 +6,9 @@ import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
 
 import { ICard } from "@/types";
 import { getAllCards } from "@/actions/get-user-card";
-import { BoardHeader } from "../../_components/board-header";
 import { subscribeToCardChanges } from "@/lib/subscribe-card-changes";
 import { Column } from "@/app/(protected)/dashboard/_components/column";
+import { BoardHeader } from "@/app/(protected)/dashboard/_components/board-header";
 
 const KanbanPage = ({ params }: { params: { slug: string } }) => {
   const searchParams = useSearchParams();

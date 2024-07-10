@@ -1,4 +1,4 @@
-import { CardCreateForm } from "./card-create-form";
+import { CardCreateForm } from "@/app/(protected)/dashboard/_components/card-create-form";
 
 export const BoardHeader = ({
   boardId,

@@ -6,6 +6,19 @@
   display: none;
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #101214;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #353539;
+}
+
 @layer base {
   :root {
     --background: 220 7% 8%;

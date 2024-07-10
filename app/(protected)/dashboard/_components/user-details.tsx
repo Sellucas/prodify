@@ -3,16 +3,16 @@
 import Link from "next/link";
 import { LogOut, SlidersHorizontal, User } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
-  DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogoutButton } from "@/components/logout-button";
 import { useUser } from "@/context/user-context";
+import { LogoutButton } from "@/components/logout-button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const UserDetails = () => {
   const { user, loading } = useUser();

@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { FaChartSimple } from "react-icons/fa6";
-import { Comfortaa } from "next/font/google";
 import Image from "next/image";
+import { Comfortaa } from "next/font/google";
 
 const font = Comfortaa({ subsets: ["latin"] });
 

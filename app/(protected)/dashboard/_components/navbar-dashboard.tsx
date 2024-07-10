@@ -1,6 +1,6 @@
 import { Logo } from "@/components/logo";
 import { UserDetails } from "@/app/(protected)/dashboard/_components/user-details";
-import { Notification } from "./notification";
+import { Notification } from "@/app/(protected)/dashboard/_components/notification";
 
 export const NavbarDashboard = () => {
   return (

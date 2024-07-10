@@ -1,5 +1,5 @@
 import Navigation from "@/app/(protected)/dashboard/_components/navigation";
-import { NavbarDashboard } from "./_components/navbar-dashboard";
+import { NavbarDashboard } from "@/app/(protected)/dashboard/_components/navbar-dashboard";
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (

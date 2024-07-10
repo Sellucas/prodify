@@ -1,17 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useEffect } from "react";
 
-import { LoadingCard } from "@/components/loading-card";
-import { getAllBoards } from "@/actions/get-user-board";
+import useBoardStore from "@/lib/board-store";
 import { useUser } from "@/context/user-context";
+import { LoadingCard } from "@/components/loading-card";
+import { calculateProgress, calculateTotalTasks } from "@/lib/utils";
 import { SearchBar } from "@/app/(protected)/dashboard/_components/search-bar";
-import { ManageSheet } from "@/app/(protected)/dashboard/_components/manage-sheet";
 import { BoardForm } from "@/app/(protected)/dashboard/_components/board-form";
 import { BoardItem } from "@/app/(protected)/dashboard/_components/board-item";
-import useBoardStore from "@/lib/board-store";
-import { calculateProgress, calculateTotalTasks } from "@/lib/utils";
 
 const BoardPage = () => {
   const { user } = useUser();
@@ -27,9 +25,7 @@ const BoardPage = () => {
     <div className="container">
       <div className="flex justify-between gap-8">
         <SearchBar />
-        <ManageSheet label="New board" title="Add new board" description="Create a new board to organize your tasks.">
-          <BoardForm />
-        </ManageSheet>
+        <BoardForm />
       </div>
       {isLoading ? (
         <LoadingCard />

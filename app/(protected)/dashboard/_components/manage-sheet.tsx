@@ -36,7 +36,7 @@ export const ManageSheet = ({
     <Sheet open={isOpen} onOpenChange={(open) => (open ? onOpen() : onClose())}>
       <SheetTrigger>
         {isUpdate ? (
-          <ExternalLink className="w-4" absoluteStrokeWidth />
+          <ExternalLink className="w-4 hover:text-white" absoluteStrokeWidth />
         ) : (
           <Button
             size="sm"

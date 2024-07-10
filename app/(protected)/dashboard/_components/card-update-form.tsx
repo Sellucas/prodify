@@ -5,10 +5,10 @@ import { toast } from "sonner";
 import { useState } from "react";
 
 import { ICard } from "@/types";
-import CardForm from "./card-form";
 import { CardSchema } from "@/schemas";
-import { ManageSheet } from "./manage-sheet";
 import { updateCard } from "@/actions/update-card";
+import CardForm from "@/app/(protected)/dashboard/_components/card-form";
+import { ManageSheet } from "@/app/(protected)/dashboard/_components/manage-sheet";
 
 type CardUpdateFormProps = {
   card: ICard;

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import ShineBorder from "./ui/shine-border";
 import { cn } from "@/lib/utils";
+import ShineBorder from "@/components/ui/shine-border";
 
 interface PricingProps {
   children: React.ReactNode;

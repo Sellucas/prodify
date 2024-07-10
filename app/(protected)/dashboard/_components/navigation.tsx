@@ -1,15 +1,15 @@
 "use client";
 
-import { motion, useAnimationControls } from "framer-motion";
-import { useState, useEffect } from "react";
 import {
-  BarChartBig,
-  CalendarCheck,
-  FolderOpen,
-  NotebookPen,
   Route,
+  FolderOpen,
+  BarChartBig,
+  NotebookPen,
+  CalendarCheck,
   SlidersHorizontal,
 } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, useAnimationControls } from "framer-motion";
 
 import NavigationLink from "@/app/(protected)/dashboard/_components/navigation-link";
 
@@ -63,7 +63,7 @@ const Navigation = () => {
       variants={containerVariants}
       animate={containerControls}
       initial="close"
-      className="bg-background2 flex flex-col z-50 gap-5 mt-[55px] pb-16 px-1 fixed top-0 left-0 h-full border-r border-muted overflow-hidden"
+      className="bg-background2 flex flex-col z-50 gap-5 mt-[55px] pb-16 px-1.5 fixed top-0 left-0 h-full border-r border-muted overflow-hidden"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -71,14 +71,14 @@ const Navigation = () => {
         <div className="flex flex-col gap-3">
           {navItemsTop.map(({ href, name, icon: Icon }) => (
             <NavigationLink key={href} href={href} name={name} isOpen={isOpen}>
-              <Icon className="min-w-6" absoluteStrokeWidth />
+              <Icon className="min-w-5 max-w-5" absoluteStrokeWidth />
             </NavigationLink>
           ))}
         </div>
         <div>
           {navItemsBottom.map(({ href, name, icon: Icon }) => (
             <NavigationLink key={href} href={href} name={name} isOpen={isOpen}>
-              <Icon className="min-w-6" absoluteStrokeWidth />
+              <Icon className="min-w-5 max-w-5" absoluteStrokeWidth />
             </NavigationLink>
           ))}
         </div>

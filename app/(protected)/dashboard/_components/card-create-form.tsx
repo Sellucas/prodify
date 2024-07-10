@@ -4,11 +4,11 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { useState } from "react";
 
-import CardForm from "./card-form";
 import { CardSchema } from "@/schemas";
 import { addCard } from "@/actions/add-card";
-import { ManageSheet } from "./manage-sheet";
 import { useUser } from "@/context/user-context";
+import CardForm from "@/app/(protected)/dashboard/_components/card-form";
+import { ManageSheet } from "@/app/(protected)/dashboard/_components/manage-sheet";
 
 export const CardCreateForm = ({ boardId }: { boardId: string }) => {
   const { user, loading } = useUser();

@@ -3,10 +3,10 @@ import { formatDistanceToNow, parseISO } from "date-fns";
 import { History, MessageCircle, Tag } from "lucide-react";
 
 import { CardBoardProps } from "@/types";
-import CardUpdateForm from "./card-update-form";
-import { DropIndicator } from "./drop-indicator";
 import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
-import { DialogDeleteCard } from "./card-delete-dialog";
+import CardUpdateForm from "@/app/(protected)/dashboard/_components/card-update-form";
+import { DropIndicator } from "@/app/(protected)/dashboard/_components/drop-indicator";
+import { DialogDeleteCard } from "@/app/(protected)/dashboard/_components/card-delete-dialog";
 
 export const CardBoard = ({
   id,
