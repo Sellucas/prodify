@@ -23,7 +23,7 @@ const BoardPage = () => {
 
   return (
     <div className="container">
-      <div className="flex justify-between gap-8">
+      <div className="flex justify-between pt-6 gap-8">
         <SearchBar />
         <BoardForm />
       </div>

@@ -62,7 +62,7 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
   return (
     <>
       <BoardHeader boardId={params.slug} title={title as string} />
-      <div className="flex flex-row w-full h-full gap-8 overflow-x-scroll max-w-[1660px] mx-auto no-scrollbar">
+      <div className="flex flex-row  w-full h-full gap-8 overflow-x-scroll max-w-[1568px] mx-auto no-scrollbar">
         <Column
           title="Backlog"
           status="backlog"
