@@ -7,6 +7,7 @@ export interface ICard {
   status: "backlog" | "todo" | "doing" | "reviewing" | "done";
   title: string;
   user_id: string;
+  card_tags?: ICardTag[];
 }
 export interface IColumnProps {
   title: string;
@@ -21,16 +22,15 @@ export type CardBoardProps = {
   id: string;
   status: "backlog" | "todo" | "doing" | "reviewing" | "done";
   card: ICard;
-  tags?: ICardTagProps[];
   handleDragStart: (
     event: React.DragEvent<HTMLDivElement>,
     card: ICard
   ) => void;
 };
 
-export interface ICardTagProps {
-  children: React.ReactNode;
-  className?: string;
+export interface ICardTag {
+  tag_id: number;
+  name: string;
 }
 
 export interface IDropIndicatorProps {

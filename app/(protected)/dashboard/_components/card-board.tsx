@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { formatDistanceToNow, parseISO } from "date-fns";
 import { History, MessageCircle, Tag } from "lucide-react";
 
-import { CardBoardProps } from "@/types";
+import { CardBoardProps, ICardTag } from "@/types";
 import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
 import CardUpdateForm from "@/app/(protected)/dashboard/_components/card-update-form";
 import { DropIndicator } from "@/app/(protected)/dashboard/_components/drop-indicator";
@@ -13,7 +13,6 @@ export const CardBoard = ({
   title,
   status,
   card,
-  tags,
   handleDragStart,
 }: CardBoardProps) => {
   const timeAgo = formatDistanceToNow(parseISO(card.created_at));
@@ -42,16 +41,26 @@ export const CardBoard = ({
           </p>
         </div>
         <hr className="border-muted" />
-        <div className="relative p-3">
+        <div className="relative p-3 h-32">
           <h1 className="first-letter:capitalize tracking-wide">
             {title.length > 26 ? `${title.slice(0, 26)}...` : title}
           </h1>
           <div className="flex items-center gap-2 mt-4">
-            <Tag className="w-4 text-muted-foreground/75" absoluteStrokeWidth />
-            <CardTag className="bg-yellow-700/15 text-yellow-500">Saas</CardTag>
-            <CardTag className="bg-cyan-700/15 text-cyan-500">Web</CardTag>
+            {card.card_tags && card.card_tags.length > 0 ? (
+              <>
+                <Tag
+                  className="w-4 text-muted-foreground/75"
+                  absoluteStrokeWidth
+                />
+                {card.card_tags.map((tag: ICardTag, index: number) => (
+                  <CardTag key={index} name={tag.name} tag_id={tag.tag_id} />
+                ))}
+              </>
+            ) : (
+              <span />
+            )}
           </div>
-          <div className="flex items-center justify-between gap-2 mt-8">
+          <div className="flex items-center justify-between gap-2 w-60 absolute bottom-0">
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-white">
                 <MessageCircle className="w-3" absoluteStrokeWidth />4

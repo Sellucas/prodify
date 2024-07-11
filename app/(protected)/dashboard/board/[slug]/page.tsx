@@ -5,10 +5,10 @@ import { useSearchParams } from "next/navigation";
 import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
 
 import { ICard } from "@/types";
-import { getAllCards } from "@/actions/get-user-card";
 import { subscribeToCardChanges } from "@/lib/subscribe-card-changes";
 import { Column } from "@/app/(protected)/dashboard/_components/column";
 import { BoardHeader } from "@/app/(protected)/dashboard/_components/board-header";
+import { fetchCardsWithTags } from "@/actions/get-cards-with-tags";
 
 const KanbanPage = ({ params }: { params: { slug: string } }) => {
   const searchParams = useSearchParams();
@@ -18,8 +18,15 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const fetchedCards = await getAllCards(params.slug);
-        setCards(fetchedCards);
+        const fetchedCards = await fetchCardsWithTags(params.slug);
+        const mappedCards: ICard[] = fetchedCards.map((card) => ({
+          ...card,
+          card_tags: card.card_tags.map((tag) => ({
+            tag_id: tag.tag_id,
+            name: tag.name?.name ?? "",
+          })),
+        }));
+        setCards(mappedCards);
       } catch (error) {
         console.error("Error fetching user cards:", error);
       }
