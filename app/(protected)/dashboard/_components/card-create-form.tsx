@@ -20,13 +20,15 @@ export const CardCreateForm = ({ boardId }: { boardId: string }) => {
         throw new Error("User not found");
       }
 
-      const cardData = {
-        ...values,
+      const { ...cardData } = values;
+
+      const cardPayload = {
+        ...cardData,
         board_id: boardId,
         user_id: user.user_id,
       };
 
-      await addCard(cardData);
+      await addCard(cardPayload);
       setIsSheetOpen(false);
       toast.success("Card created successfully");
     } catch (error) {

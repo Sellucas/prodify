@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { formatDistanceToNow, parseISO } from "date-fns";
 import { History, MessageCircle, Tag } from "lucide-react";
 
-import { CardBoardProps, ICardTag } from "@/types";
+import { CardBoardProps } from "@/types";
 import { CardTag } from "@/app/(protected)/dashboard/_components/card-tag";
 import CardUpdateForm from "@/app/(protected)/dashboard/_components/card-update-form";
 import { DropIndicator } from "@/app/(protected)/dashboard/_components/drop-indicator";
@@ -46,15 +46,13 @@ export const CardBoard = ({
             {title.length > 26 ? `${title.slice(0, 26)}...` : title}
           </h1>
           <div className="flex items-center gap-2 mt-4">
-            {card.card_tags && card.card_tags.length > 0 ? (
+            {card.tag ? (
               <>
                 <Tag
                   className="w-4 text-muted-foreground/75"
                   absoluteStrokeWidth
                 />
-                {card.card_tags.map((tag: ICardTag, index: number) => (
-                  <CardTag key={index} name={tag.name} tag_id={tag.tag_id} />
-                ))}
+                <CardTag name={card.tag} />
               </>
             ) : (
               <span />

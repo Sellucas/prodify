@@ -1,29 +1,31 @@
 import { cn } from "@/lib/utils";
-import { ICardTag } from "@/types";
 
-const tagClasses: { [key: number]: string } = {
-  1: "bg-yellow-700/15 text-yellow-500",
-  2: "bg-cyan-700/15 text-cyan-500",
-  3: "bg-blue-700/15 text-blue-500",
-  4: "bg-purple-700/15 text-purple-500",
-  5: "bg-pink-700/15 text-pink-500",
-  6: "bg-red-700/15 text-red-500",
-  7: "bg-green-700/15 text-green-500",
-  8: "bg-gray-700/15 text-gray-500",
-  9: "bg-orange-700/15 text-orange-500",
-  10: "bg-lime-700/15 text-lime-500",
-  11: "bg-sky-700/15 text-sky-500",
-  12: "bg-emerald-700/15 text-emerald-500",
+const tagClasses: { [key: string]: string } = {
+  code: "bg-yellow-700/15 text-yellow-500",
+  design: "bg-cyan-700/15 text-cyan-500",
+  "code review": "bg-blue-700/15 text-blue-500",
+  research: "bg-purple-700/15 text-purple-500",
+  bug: "bg-pink-700/15 text-pink-500",
+  enchantment: "bg-red-700/15 text-red-500",
+  documentation: "bg-green-700/15 text-green-500",
+  testing: "bg-gray-700/15 text-gray-500",
+  discussion: "bg-orange-700/15 text-orange-500",
+  implementation: "bg-lime-700/15 text-lime-500",
+  feedback: "bg-sky-700/15 text-sky-500",
+  refactoring: "bg-emerald-700/15 text-emerald-500",
 };
 
-export const CardTag = ({ name, tag_id }: ICardTag) => {
+type CardTagProps = {
+  name: string;
+};
+
+export const CardTag = ({ name }: CardTagProps) => {
   return (
     <span
       className={cn(
         "flex flex-row items-center text-xs px-2 py-1 rounded-full capitalize",
-        tagClasses[tag_id] || null
+        name ? tagClasses[name] : null
       )}
-      id={tag_id.toString()}
     >
       {name}
     </span>

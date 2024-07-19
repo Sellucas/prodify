@@ -1,10 +1,11 @@
-import { supabaseClient } from "@/utils/supabase/client";
 import { TablesInsert } from "@/lib/types/supabase";
+import { supabaseClient } from "@/utils/supabase/client";
 
 export async function addCard(cardData: TablesInsert<"cards">) {
   try {
     const supabase = supabaseClient();
-    const { data, error: insertError } = await supabase
+
+    const { data: card, error: insertError } = await supabase
       .from("cards")
       .insert([cardData]);
 
@@ -12,7 +13,7 @@ export async function addCard(cardData: TablesInsert<"cards">) {
       throw insertError;
     }
 
-    return { data, error: null };
+    return { data: card, error: null };
   } catch (error) {
     if (error instanceof Error) {
       console.error("Error inserting the card:", error);

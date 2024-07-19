@@ -1,6 +1,7 @@
 import { supabaseClient } from "@/utils/supabase/client";
+import { ICard } from "@/types";
 
-export async function getAllCards(boardId: string) {
+export async function getAllCards(boardId: string): Promise<ICard[]> {
   try {
     const supabase = supabaseClient();
     const { data: filteredCards, error } = await supabase
@@ -12,7 +13,22 @@ export async function getAllCards(boardId: string) {
       throw error;
     }
 
-    return filteredCards ?? null;
+    return (filteredCards ?? []).map((card) => ({
+      ...card,
+      tag: card.tag as
+        | "code"
+        | "design"
+        | "code review"
+        | "research"
+        | "bug"
+        | "enchantment"
+        | "documentation"
+        | "testing"
+        | "discussion"
+        | "implementation"
+        | "feedback"
+        | "refactoring",
+    }));
   } catch (error) {
     if (error instanceof Error) {
       console.error("Error fetching cards:", error.message);

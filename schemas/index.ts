@@ -6,6 +6,21 @@ export const CardSchema = z.object({
   status: z
     .enum(["backlog", "todo", "doing", "reviewing", "done"])
     .default("backlog"),
+  tag: z
+    .enum([
+      "code",
+      "design",
+      "code review",
+      "research",
+      "bug",
+      "enchantment",
+      "documentation",
+      "testing",
+      "discussion",
+      "implementation",
+      "feedback",
+      "refactoring",
+    ]).default("code"),
   position: z.number().default(999),
 });
 

@@ -1,5 +1,3 @@
-"use client";
-
 import { z } from "zod";
 import { toast } from "sonner";
 import { useState } from "react";
@@ -24,6 +22,7 @@ const CardUpdateForm = ({ card }: CardUpdateFormProps) => {
       toast.success("Card updated successfully");
     } catch (error) {
       console.error("Error updating the card:", error);
+      toast.error("Error updating the card");
     }
   };
 
@@ -46,6 +45,7 @@ const CardUpdateForm = ({ card }: CardUpdateFormProps) => {
           description: card.description,
           status: card.status,
           position: card.position,
+          tag: card.tag,
         }}
       />
     </ManageSheet>

@@ -7,8 +7,21 @@ export interface ICard {
   status: "backlog" | "todo" | "doing" | "reviewing" | "done";
   title: string;
   user_id: string;
-  card_tags?: ICardTag[];
+  tag:
+    | "code"
+    | "design"
+    | "code review"
+    | "research"
+    | "bug"
+    | "enchantment"
+    | "documentation"
+    | "testing"
+    | "discussion"
+    | "implementation"
+    | "feedback"
+    | "refactoring";
 }
+
 export interface IColumnProps {
   title: string;
   color: string;
@@ -27,11 +40,6 @@ export type CardBoardProps = {
     card: ICard
   ) => void;
 };
-
-export interface ICardTag {
-  tag_id: number;
-  name: string;
-}
 
 export interface IDropIndicatorProps {
   beforeId: string;

@@ -34,6 +34,7 @@ const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
       title: "",
       description: "",
       status: "backlog",
+      tag: "code",
     },
   });
 
@@ -77,6 +78,44 @@ const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
                       <SelectItem value="doing">In Progress</SelectItem>
                       <SelectItem value="reviewing">To Review</SelectItem>
                       <SelectItem value="done">Complete</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="tag"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Tags</FormLabel>
+                <FormControl>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value ?? undefined}
+                  >
+                    <SelectTrigger className="w-[140px]">
+                      <SelectValue placeholder="Tags" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="code">Code</SelectItem>
+                      <SelectItem value="design">Design</SelectItem>
+                      <SelectItem value="code review">Code Review</SelectItem>
+                      <SelectItem value="research">Research</SelectItem>
+                      <SelectItem value="bug">Bug</SelectItem>
+                      <SelectItem value="enchantment">Enchantment</SelectItem>
+                      <SelectItem value="documentation">
+                        Documentation
+                      </SelectItem>
+                      <SelectItem value="testing">Testing</SelectItem>
+                      <SelectItem value="discussion">Discussion</SelectItem>
+                      <SelectItem value="implementation">
+                        Implementation
+                      </SelectItem>
+                      <SelectItem value="feedback">Feedback</SelectItem>
+                      <SelectItem value="refactoring">Refactoring</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormControl>
