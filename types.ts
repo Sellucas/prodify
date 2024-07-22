@@ -20,6 +20,7 @@ export interface ICard {
     | "implementation"
     | "feedback"
     | "refactoring";
+  priority: "high" | "medium" | "low";
 }
 
 export interface IColumnProps {

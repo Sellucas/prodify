@@ -21,6 +21,7 @@ export const CardSchema = z.object({
       "feedback",
       "refactoring",
     ]).default("code"),
+  priority: z.enum(["high", "medium", "low"]).default("medium"),
   position: z.number().default(999),
 });
 

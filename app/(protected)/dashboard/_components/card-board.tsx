@@ -34,7 +34,7 @@ export const CardBoard = ({
       >
         <div className="flex justify-between px-3 items-center text-xs text-muted-foreground/75">
           <p>
-            Priority: <span className="text-foreground">High</span>
+            Priority: <span className="text-foreground capitalize">{card.priority}</span>
           </p>
           <p>
             <CardUpdateForm card={card} />

@@ -35,6 +35,7 @@ const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
       description: "",
       status: "backlog",
       tag: "code",
+      priority: "medium",
     },
   });
 
@@ -94,7 +95,7 @@ const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
                 <FormControl>
                   <Select
                     onValueChange={field.onChange}
-                    defaultValue={field.value ?? undefined}
+                    defaultValue={field.value}
                   >
                     <SelectTrigger className="w-[140px]">
                       <SelectValue placeholder="Tags" />
@@ -116,6 +117,31 @@ const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
                       </SelectItem>
                       <SelectItem value="feedback">Feedback</SelectItem>
                       <SelectItem value="refactoring">Refactoring</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="priority"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Priority</FormLabel>
+                <FormControl>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <SelectTrigger className="w-[140px]">
+                      <SelectValue placeholder="Priority" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="high">High</SelectItem>
+                      <SelectItem value="medium">Medium</SelectItem>
+                      <SelectItem value="low">Low</SelectItem>
                     </SelectContent>
                   </Select>
                 </FormControl>

@@ -46,6 +46,7 @@ const CardUpdateForm = ({ card }: CardUpdateFormProps) => {
           status: card.status,
           position: card.position,
           tag: card.tag,
+          priority: card.priority,
         }}
       />
     </ManageSheet>

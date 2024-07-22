@@ -15,6 +15,7 @@ export async function getAllCards(boardId: string): Promise<ICard[]> {
 
     return (filteredCards ?? []).map((card) => ({
       ...card,
+      priority: card.priority as "high" | "medium" | "low",
       tag: card.tag as
         | "code"
         | "design"
