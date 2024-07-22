@@ -92,7 +92,7 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
           setCards={setCards}
         />
         <Column
-          title="Complete"
+          title="Completed"
           status="done"
           color="green"
           cards={cards}

@@ -32,9 +32,10 @@ export const CardBoard = ({
         }
         className="cursor-grab h-44 rounded-xl border-2 border-muted bg-foreground2 active:cursor-grabbing"
       >
-        <div className="flex justify-between px-3 items-center text-xs text-muted-foreground/75">
+        <div className="flex justify-between py-1 px-3 items-center text-xs text-muted-foreground/75">
           <p>
-            Priority: <span className="text-foreground capitalize">{card.priority}</span>
+            Priority:{" "}
+            <span className="text-foreground capitalize">{card.priority}</span>
           </p>
           <p>
             <CardUpdateForm card={card} />
@@ -46,22 +47,13 @@ export const CardBoard = ({
             {title.length > 26 ? `${title.slice(0, 26)}...` : title}
           </h1>
           <div className="flex items-center gap-2 mt-4">
-            {card.tag ? (
-              <>
-                <Tag
-                  className="w-4 text-muted-foreground/75"
-                  absoluteStrokeWidth
-                />
-                <CardTag name={card.tag} />
-              </>
-            ) : (
-              <span />
-            )}
+            <Tag className="w-4 text-muted-foreground/75" absoluteStrokeWidth />
+            <CardTag name={card.tag} />
           </div>
           <div className="flex items-center justify-between gap-2 w-60 absolute bottom-0">
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-white">
-                <MessageCircle className="w-3" absoluteStrokeWidth />4
+              <div className="flex items-center gap-1 text-xs text-muted-foreground/75 hover:text-white cursor-not-allowed">
+                <MessageCircle className="w-3" absoluteStrokeWidth />
               </div>
               <DialogDeleteCard card={card} />
             </div>

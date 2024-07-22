@@ -145,7 +145,7 @@ export const Column = ({
 
   return (
     <div
-      className={`flex flex-col min-h-[70vh] w-72 p-3 transition-colors rounded-xl shrink-0 ${
+      className={`flex flex-col min-h-[70vh] w-72 py-4 px-3 transition-colors rounded-xl shrink-0 ${
         active ? `bg-muted` : `bg-background2`
       }`}
     >
@@ -153,7 +153,7 @@ export const Column = ({
         <div className={`bg-${color}-500 w-1 h-full rounded-xl`} />
         <div className="flex items-center gap-2">
           <h3 className="font-semibold text-muted-foreground">{title}</h3>
-          <div className="text-sm bg-foreground2 flex items-center px-2 justify-center text-muted-foreground rounded-[4px]">
+          <div className="text-sm bg-foreground2 flex items-center px-2 justify-center font-semibold text-muted-foreground rounded-[4px]">
             {filteredCards.length}
           </div>
         </div>
