@@ -7,8 +7,9 @@ import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
 import { ICard } from "@/types";
 import { subscribeToCardChanges } from "@/lib/subscribe-card-changes";
 import { Column } from "@/app/(protected)/dashboard/_components/column";
-import { BoardHeader } from "@/app/(protected)/dashboard/_components/board-header";
 import { getAllCards } from "@/actions/get-user-card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CardCreateForm } from "@/app/(protected)/dashboard/_components/card-create-form";
 
 const KanbanPage = ({ params }: { params: { slug: string } }) => {
   const searchParams = useSearchParams();
@@ -60,9 +61,27 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
   }, [params.slug]);
 
   return (
-    <>
-      <BoardHeader boardId={params.slug} title={title as string} />
-      <div className="flex flex-row  w-full h-full gap-8 overflow-x-scroll max-w-[1568px] mx-auto no-scrollbar">
+    <Tabs defaultValue="board">
+      <div className="flex justify-between items-center w-full py-6 max-w-[1568px] mx-auto sticky top-14 z-10 bg-background">
+        <h1 className="text-4xl font-medium leading-none tracking-tighter text-balance sm:text-2xl md:text-3xl lg:text-4xl">
+          {title}
+        </h1>
+        <div className="flex gap-4 items-center">
+          <TabsList className="rounded-[10px]">
+            <TabsTrigger value="board" className="rounded-[10px]">
+              Board
+            </TabsTrigger>
+            <TabsTrigger value="list" className="rounded-[10px]">
+              List
+            </TabsTrigger>
+          </TabsList>
+          <CardCreateForm boardId={params.slug} />
+        </div>
+      </div>
+      <TabsContent
+        value="board"
+        className="flex flex-row  w-full h-full gap-8 overflow-x-scroll max-w-[1568px] mx-auto no-scrollbar"
+      >
         <Column
           title="Backlog"
           status="backlog"
@@ -98,8 +117,11 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
           cards={cards}
           setCards={setCards}
         />
-      </div>
-    </>
+      </TabsContent>
+      <TabsContent value="list" className="flex flex-row  w-full h-full gap-8 overflow-x-scroll max-w-[1568px] mx-auto no-scrollbar">
+        <div>List test</div>
+      </TabsContent>
+    </Tabs>
   );
 };
 
