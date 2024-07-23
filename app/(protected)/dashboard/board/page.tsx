@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import useBoardStore from "@/lib/board-store";
 import { useUser } from "@/context/user-context";
@@ -17,6 +17,7 @@ import { IBoard } from "@/types";
 const BoardPage = () => {
   const { user } = useUser();
   const { boards, cards, isLoading, fetchBoardsAndCards, addBoard, updateBoard, removeBoard } = useBoardStore();
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     if (user?.user_id) {
@@ -45,18 +46,22 @@ const BoardPage = () => {
     }
   }, [user?.user_id, fetchBoardsAndCards, addBoard, updateBoard, removeBoard]);
 
+  const filteredBoards = boards.filter(board =>
+    board.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="container">
       <div className="flex justify-between pt-6 gap-8">
-        <SearchBar />
+        <SearchBar onSearch={(term) => setSearchTerm(term)} />
         <BoardForm />
       </div>
       {isLoading ? (
         <LoadingCard />
       ) : (
         <div className="mt-12 gap-4 flex flex-wrap">
-          {boards && boards.length > 0 ? (
-            boards.map(({ title, description, created_at, board_id }, i) => (
+          {filteredBoards && filteredBoards.length > 0 ? (
+            filteredBoards.map(({ title, description, created_at, board_id }, i) => (
               <BoardItem
                 slug={board_id}
                 title={title}
