@@ -63,7 +63,7 @@ export const BoardItem = ({
                 <FaEllipsisVertical />
               </DropdownMenuTrigger>
               <DropdownMenuContent onClick={(e) => e.stopPropagation()}>
-                <DropdownMenuLabel className="flex items-center gap-2">
+                <DropdownMenuLabel className="flex items-center gap-2 cursor-not-allowed">
                   <Settings className="w-4 h-4" /> Settings
                 </DropdownMenuLabel>
                 <DropdownMenuLabel className="flex items-center gap-2">
