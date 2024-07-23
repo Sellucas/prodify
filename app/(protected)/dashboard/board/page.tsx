@@ -16,14 +16,24 @@ import { IBoard } from "@/types";
 
 const BoardPage = () => {
   const { user } = useUser();
-  const { boards, cards, isLoading, fetchBoardsAndCards, addBoard, updateBoard, removeBoard } = useBoardStore();
+  const {
+    boards,
+    cards,
+    isLoading,
+    fetchBoardsAndCards,
+    addBoard,
+    updateBoard,
+    removeBoard,
+  } = useBoardStore();
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     if (user?.user_id) {
       fetchBoardsAndCards(user.user_id);
 
-      const handleBoardChange = (payload: RealtimePostgresChangesPayload<IBoard>) => {
+      const handleBoardChange = (
+        payload: RealtimePostgresChangesPayload<IBoard>
+      ) => {
         const { eventType, new: newBoard, old: oldBoard } = payload;
 
         if (eventType === "INSERT" && newBoard) {
@@ -38,7 +48,10 @@ const BoardPage = () => {
         }
       };
 
-      const subscription = subscribeToBoardChanges(user.user_id, handleBoardChange);
+      const subscription = subscribeToBoardChanges(
+        user.user_id,
+        handleBoardChange
+      );
 
       return () => {
         subscription.unsubscribe();
@@ -46,7 +59,7 @@ const BoardPage = () => {
     }
   }, [user?.user_id, fetchBoardsAndCards, addBoard, updateBoard, removeBoard]);
 
-  const filteredBoards = boards.filter(board =>
+  const filteredBoards = boards.filter((board) =>
     board.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -61,18 +74,32 @@ const BoardPage = () => {
       ) : (
         <div className="mt-12 gap-4 flex flex-wrap">
           {filteredBoards && filteredBoards.length > 0 ? (
-            filteredBoards.map(({ title, description, created_at, board_id }, i) => (
-              <BoardItem
-                slug={board_id}
-                title={title}
-                description={description}
-                progress={calculateProgress(cards, board_id)}
-                total_tasks={calculateTotalTasks(cards, board_id)}
-                key={i}
-                created_at={created_at}
-                boardId={board_id}
-              />
-            ))
+            filteredBoards.map(
+              ({ title, description, created_at, board_id }, i) => (
+                <BoardItem
+                  slug={board_id}
+                  title={title}
+                  description={description}
+                  progress={calculateProgress(cards, board_id)}
+                  total_tasks={calculateTotalTasks(cards, board_id)}
+                  key={i}
+                  created_at={created_at}
+                  boardId={board_id}
+                />
+              )
+            )
+          ) : boards.length > 0 ? (
+            <div className="mx-auto space-y-12 w-96 text-center text-xl text-gray-500">
+              <h1 className="text-white">No board found!</h1>
+              <div className="aspect-video w-full relative">
+                <Image
+                  src="/no-data.svg"
+                  alt="UI Representation of Dashboard Prodify"
+                  fill
+                  priority
+                />
+              </div>
+            </div>
           ) : (
             <div className="mx-auto space-y-12 w-96 text-center text-xl text-gray-500">
               <h1 className="text-white">No board created yet!</h1>
