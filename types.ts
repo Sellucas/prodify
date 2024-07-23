@@ -54,3 +54,21 @@ export interface IUserProfile {
   image_url: string | null;
   user_id: string;
 }
+
+export interface BoardItemProps {
+  title: string;
+  description: string | null;
+  progress: number;
+  created_at: string;
+  slug: string;
+  total_tasks: number;
+  boardId: string;
+}
+
+export interface IBoard {
+  board_id: string;
+  created_at: string;
+  description: string | null;
+  title: string;
+  user_id: string;
+}

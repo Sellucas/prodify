@@ -2,20 +2,16 @@ import { create } from "zustand";
 
 import { getAllBoards } from "@/actions/get-user-board";
 import { getAllCards } from "@/actions/get-user-card";
-import { ICard } from "@/types";
-
-interface Board {
-  board_id: string;
-  title: string;
-  description: string | null;
-  created_at: string;
-}
+import { ICard, IBoard } from "@/types";
 
 interface BoardState {
-  boards: Board[];
+  boards: IBoard[];
   cards: Record<string, ICard[]>;
   isLoading: boolean;
   fetchBoardsAndCards: (userId: string) => Promise<void>;
+  addBoard: (board: IBoard) => void;
+  updateBoard: (board: IBoard) => void;
+  removeBoard: (boardId: string) => void;
 }
 
 const useBoardStore = create<BoardState>((set) => ({
@@ -42,6 +38,19 @@ const useBoardStore = create<BoardState>((set) => ({
       set({ isLoading: false });
     }
   },
+
+  addBoard: (board) => set((state) => ({ boards: [...state.boards, board] })),
+  
+  updateBoard: (board) => set((state) => ({
+    boards: state.boards.map((b) => (b.board_id === board.board_id ? board : b))
+  })),
+  
+  removeBoard: (boardId) => set((state) => ({
+    boards: state.boards.filter((b) => b.board_id !== boardId),
+    cards: Object.fromEntries(
+      Object.entries(state.cards).filter(([key]) => key !== boardId)
+    )
+  })),
 }));
 
 export default useBoardStore;

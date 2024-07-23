@@ -47,7 +47,7 @@ export const BoardForm = () => {
       await addBoard(boardData);
 
       form.reset();
-      window.location.reload();
+      setIsSheetOpen(false);
     } catch (error) {
       console.error("Error inserting the board:", error);
     }

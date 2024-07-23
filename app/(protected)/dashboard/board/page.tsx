@@ -10,16 +10,40 @@ import { calculateProgress, calculateTotalTasks } from "@/lib/utils";
 import { SearchBar } from "@/app/(protected)/dashboard/_components/search-bar";
 import { BoardForm } from "@/app/(protected)/dashboard/_components/board-form";
 import { BoardItem } from "@/app/(protected)/dashboard/_components/board-item";
+import { subscribeToBoardChanges } from "@/lib/subscribe-board-changes";
+import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
+import { IBoard } from "@/types";
 
 const BoardPage = () => {
   const { user } = useUser();
-  const { boards, cards, isLoading, fetchBoardsAndCards } = useBoardStore();
+  const { boards, cards, isLoading, fetchBoardsAndCards, addBoard, updateBoard, removeBoard } = useBoardStore();
 
   useEffect(() => {
     if (user?.user_id) {
       fetchBoardsAndCards(user.user_id);
+
+      const handleBoardChange = (payload: RealtimePostgresChangesPayload<IBoard>) => {
+        const { eventType, new: newBoard, old: oldBoard } = payload;
+
+        if (eventType === "INSERT" && newBoard) {
+          addBoard(newBoard);
+        } else if (eventType === "UPDATE" && newBoard) {
+          updateBoard(newBoard);
+        } else if (eventType === "DELETE") {
+          const boardToDelete = oldBoard || newBoard;
+          if (boardToDelete?.board_id) {
+            removeBoard(boardToDelete.board_id);
+          }
+        }
+      };
+
+      const subscription = subscribeToBoardChanges(user.user_id, handleBoardChange);
+
+      return () => {
+        subscription.unsubscribe();
+      };
     }
-  }, [user?.user_id, fetchBoardsAndCards]);
+  }, [user?.user_id, fetchBoardsAndCards, addBoard, updateBoard, removeBoard]);
 
   return (
     <div className="container">
@@ -41,6 +65,7 @@ const BoardPage = () => {
                 total_tasks={calculateTotalTasks(cards, board_id)}
                 key={i}
                 created_at={created_at}
+                boardId={board_id}
               />
             ))
           ) : (

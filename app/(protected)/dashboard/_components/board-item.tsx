@@ -24,15 +24,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { formatCreatedAt } from "@/lib/utils";
 import { Progress } from "@/components/ui/progress";
-
-interface BoardItemProps {
-  title: string;
-  description: string | null;
-  progress: number;
-  created_at: string;
-  slug: string;
-  total_tasks: number;
-}
+import { DialogDeleteBoard } from "./board-delete-dialog";
+import { BoardItemProps } from "@/types";
 
 export const BoardItem = ({
   title,
@@ -41,6 +34,7 @@ export const BoardItem = ({
   progress,
   slug,
   total_tasks,
+  boardId,
 }: BoardItemProps) => {
   const url = `/dashboard/board/${slug}?title=${encodeURIComponent(title)}`;
 
@@ -62,15 +56,18 @@ export const BoardItem = ({
               </Tooltip>
             </TooltipProvider>
             <DropdownMenu>
-              <DropdownMenuTrigger className="hover:bg-muted p-2 rounded-full">
+              <DropdownMenuTrigger
+                className="hover:bg-muted p-2 rounded-full"
+                onClick={(e) => e.stopPropagation()}
+              >
                 <FaEllipsisVertical />
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent onClick={(e) => e.stopPropagation()}>
                 <DropdownMenuLabel className="flex items-center gap-2">
                   <Settings className="w-4 h-4" /> Settings
                 </DropdownMenuLabel>
                 <DropdownMenuLabel className="flex items-center gap-2">
-                  <Trash2 className="w-4 h-4" /> Delete
+                  <DialogDeleteBoard boardId={boardId} />
                 </DropdownMenuLabel>
               </DropdownMenuContent>
             </DropdownMenu>
