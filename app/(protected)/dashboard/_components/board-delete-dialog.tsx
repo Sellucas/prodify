@@ -35,7 +35,7 @@ export const DialogDeleteBoard = ({ boardId }: { boardId: string }) => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger
-        className="flex items-center gap-2 cursor-pointer hover:text-red-600"
+        className="flex items-center gap-2 cursor-pointer text-red-600 hover:text-red-700"
         asChild
       >
         <p>

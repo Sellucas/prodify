@@ -2,17 +2,17 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
 
+import { IBoard } from "@/types";
 import useBoardStore from "@/lib/board-store";
 import { useUser } from "@/context/user-context";
 import { LoadingCard } from "@/components/loading-card";
 import { calculateProgress, calculateTotalTasks } from "@/lib/utils";
+import { subscribeToBoardChanges } from "@/lib/subscribe-board-changes";
 import { SearchBar } from "@/app/(protected)/dashboard/_components/search-bar";
 import { BoardForm } from "@/app/(protected)/dashboard/_components/board-form";
 import { BoardItem } from "@/app/(protected)/dashboard/_components/board-item";
-import { subscribeToBoardChanges } from "@/lib/subscribe-board-changes";
-import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
-import { IBoard } from "@/types";
 
 const BoardPage = () => {
   const { user } = useUser();
