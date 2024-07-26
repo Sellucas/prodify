@@ -11,7 +11,7 @@ import { updateCardStatus } from "@/actions/update-card-status";
 import { updateCardPositions } from "@/actions/update-card-position";
 import { CardBoard } from "@/app/(protected)/dashboard/_components/card-board";
 
-export const Column = ({
+export const KanbanColumn = ({
   title,
   color,
   status,

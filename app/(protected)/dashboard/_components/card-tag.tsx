@@ -17,14 +17,16 @@ const tagClasses: { [key: string]: string } = {
 
 type CardTagProps = {
   name: string;
+  className?: string;
 };
 
-export const CardTag = ({ name }: CardTagProps) => {
+export const CardTag = ({ name, className }: CardTagProps) => {
   return (
     <span
       className={cn(
         "flex flex-row items-center text-xs px-2 py-1 rounded-full capitalize",
-        name ? tagClasses[name] : null
+        name ? tagClasses[name] : null,
+        className
       )}
     >
       {name}

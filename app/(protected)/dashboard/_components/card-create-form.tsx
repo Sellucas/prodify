@@ -41,9 +41,9 @@ export const CardCreateForm = ({ boardId }: { boardId: string }) => {
 
   return (
     <ManageSheet
-      label={"New card"}
-      title={"Add new card"}
-      description={"Create a new card to add to the board."}
+      label={"New task"}
+      title={"Add new task"}
+      description={"Create a new task to add to the board."}
       isUpdate={false}
       isOpen={isSheetOpen}
       onOpen={handleOpen}

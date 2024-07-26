@@ -15,8 +15,15 @@ import {
 import { ICard } from "@/types";
 import { Button } from "@/components/ui/button";
 import { deleteCard } from "@/actions/delete-card";
+import { cn } from "@/lib/utils";
 
-export const DialogDeleteCard = ({ card }: { card: ICard }) => {
+export const DialogDeleteCard = ({
+  card,
+  className,
+}: {
+  card: ICard;
+  className?: string;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDeleteClick = async () => {
@@ -39,7 +46,7 @@ export const DialogDeleteCard = ({ card }: { card: ICard }) => {
         className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-red-600"
         asChild
       >
-        <Trash className="w-3" absoluteStrokeWidth />
+        <Trash className={cn("size-3", className)} absoluteStrokeWidth />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

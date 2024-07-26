@@ -5,10 +5,12 @@ import { useSearchParams } from "next/navigation";
 import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
 
 import { ICard } from "@/types";
-import { subscribeToCardChanges } from "@/lib/subscribe-card-changes";
-import { Column } from "@/app/(protected)/dashboard/_components/column";
 import { getAllCards } from "@/actions/get-user-card";
+import { subscribeToCardChanges } from "@/lib/subscribe-card-changes";
+import { ListTab } from "@/app/(protected)/dashboard/_components/list-tab";
+import { columns } from "@/app/(protected)/dashboard/_components/list-column";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { KanbanColumn } from "@/app/(protected)/dashboard/_components/kanban-column";
 import { CardCreateForm } from "@/app/(protected)/dashboard/_components/card-create-form";
 
 const KanbanPage = ({ params }: { params: { slug: string } }) => {
@@ -62,8 +64,8 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
 
   return (
     <Tabs defaultValue="board">
-      <div className="flex justify-between items-center w-full py-6 max-w-[1568px] mx-auto sticky top-14 z-10 bg-background">
-        <h1 className="text-4xl font-medium leading-none tracking-tighter text-balance sm:text-2xl md:text-3xl lg:text-4xl">
+      <div className="flex justify-between items-center w-full py-4 max-w-[1568px] mx-auto sticky top-14 z-10 bg-background">
+        <h1 className="text-4xl leading-none tracking-tighter text-balance sm:text-2xl md:text-3xl lg:text-4xl">
           {title}
         </h1>
         <div className="flex gap-4 items-center">
@@ -82,35 +84,35 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
         value="board"
         className="flex flex-row  w-full h-full gap-8 overflow-x-scroll max-w-[1568px] mx-auto no-scrollbar"
       >
-        <Column
+        <KanbanColumn
           title="Backlog"
           status="backlog"
           color="neutral"
           cards={cards}
           setCards={setCards}
         />
-        <Column
+        <KanbanColumn
           title="To Do"
           status="todo"
           color="red"
           cards={cards}
           setCards={setCards}
         />
-        <Column
+        <KanbanColumn
           title="In Progress"
           status="doing"
           color="blue"
           cards={cards}
           setCards={setCards}
         />
-        <Column
+        <KanbanColumn
           title="To Review"
           status="reviewing"
           color="amber"
           cards={cards}
           setCards={setCards}
         />
-        <Column
+        <KanbanColumn
           title="Completed"
           status="done"
           color="green"
@@ -118,8 +120,11 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
           setCards={setCards}
         />
       </TabsContent>
-      <TabsContent value="list" className="flex flex-row  w-full h-full gap-8 overflow-x-scroll max-w-[1568px] mx-auto no-scrollbar">
-        <div>List test</div>
+      <TabsContent
+        value="list"
+        className="flex flex-row w-full h-full overflow-x-scroll max-w-[1568px] mx-auto no-scrollbar"
+      >
+        <ListTab columns={columns} data={cards} />
       </TabsContent>
     </Tabs>
   );

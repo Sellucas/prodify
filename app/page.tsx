@@ -150,7 +150,7 @@ const HomePage = () => {
               className="relative z-10 aspect-video w-11/12 rounded-xl border-2 border-[#1e1e1e]"
             >
               <Image
-                src={"/holder.jpg"}
+                src={"/kanbanboard-hero.png"}
                 alt="UI Representation of Dashboard Prodify"
                 fill
                 className="rounded-xl"
