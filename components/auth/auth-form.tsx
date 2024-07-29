@@ -10,14 +10,14 @@ import { supabaseClient } from "@/utils/supabase/client";
 export const AuthForm = () => {
   const params = useSearchParams();
   const next = params.get("next");
-  const origin = process.env.NEXT_PUBLIC_SITE_URL || location.origin;
+  const origin = process.env.NEXT_PUBLIC_SITE_URL
 
   const handleLoginWithOAuth = (provider: "github" | "google") => {
     const supabase = supabaseClient();
     supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${origin}/auth/callback?next=${next}`,
+        redirectTo: origin + "/auth/callback?next=" + next,
       },
     });
   };

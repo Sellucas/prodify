@@ -57,16 +57,17 @@ export async function middleware(request: NextRequest) {
 
   const { data } = await supabase.auth.getSession();
   const url = new URL(request.url);
+  const origin = process.env.NEXT_PUBLIC_SITE_URL
 
   if (data.session) {
     if (url.pathname === "/auth/login") {
-      return NextResponse.redirect(new URL("/dashboard/board", request.url));
+      return NextResponse.redirect(new URL("/dashboard/board", origin));
     }
     return response;
   } else {
-    if (protectedPaths.some(path => url.pathname.startsWith(path))) {
+    if (protectedPaths.some((path) => url.pathname.startsWith(path))) {
       return NextResponse.redirect(
-        new URL("/auth/login?next=" + url.pathname, request.url)
+        new URL("/auth/login?next=" + url.pathname, origin)
       );
     }
     return response;
