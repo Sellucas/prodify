@@ -193,7 +193,7 @@ const HomePage = () => {
             </AnimateView>
             <AnimateView direction="up" transition={{ delay: 0.4 }}>
               <h2 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
-                it&apos;s easy to Get started
+                It&apos;s easy to Get started
               </h2>
             </AnimateView>
             <AnimateView direction="up" transition={{ delay: 0.6 }}>
