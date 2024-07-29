@@ -9,6 +9,8 @@ export async function middleware(request: NextRequest) {
     },
   });
 
+  const origin = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -57,7 +59,6 @@ export async function middleware(request: NextRequest) {
 
   const { data } = await supabase.auth.getSession();
   const url = new URL(request.url);
-  const origin = process.env.NEXT_PUBLIC_SITE_URL
 
   if (data.session) {
     if (url.pathname === "/auth/login") {
