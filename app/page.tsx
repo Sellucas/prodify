@@ -154,6 +154,7 @@ const HomePage = () => {
                 alt="UI Representation of Dashboard Prodify"
                 fill
                 className="rounded-xl"
+                priority
               />
               <BorderBeam />
             </AnimateView>

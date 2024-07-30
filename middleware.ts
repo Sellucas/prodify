@@ -1,6 +1,6 @@
-import { createServerClient, type CookieOptions } from "@supabase/ssr";
-import { NextResponse, type NextRequest } from "next/server";
 import { protectedPaths } from "./constants";
+import { NextResponse, type NextRequest } from "next/server";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
 
 export async function middleware(request: NextRequest) {
   let response = NextResponse.next({
@@ -8,8 +8,6 @@ export async function middleware(request: NextRequest) {
       headers: request.headers,
     },
   });
-
-  const origin = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -62,13 +60,13 @@ export async function middleware(request: NextRequest) {
 
   if (data.session) {
     if (url.pathname === "/auth/login") {
-      return NextResponse.redirect(new URL("/dashboard/board", origin));
+      return NextResponse.redirect(new URL("/dashboard/board", request.url));
     }
     return response;
   } else {
     if (protectedPaths.some((path) => url.pathname.startsWith(path))) {
       return NextResponse.redirect(
-        new URL("/auth/login?next=" + url.pathname, origin)
+        new URL("/auth/login?next=" + url.pathname, request.url)
       );
     }
     return response;

@@ -15,7 +15,7 @@ import { LogoutButton } from "@/components/logout-button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const UserDetails = () => {
-  const { user, loading } = useUser();
+  const { user } = useUser();
 
   return (
     <DropdownMenu>

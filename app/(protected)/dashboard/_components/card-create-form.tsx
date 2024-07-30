@@ -11,7 +11,7 @@ import CardForm from "@/app/(protected)/dashboard/_components/card-form";
 import { ManageSheet } from "@/app/(protected)/dashboard/_components/manage-sheet";
 
 export const CardCreateForm = ({ boardId }: { boardId: string }) => {
-  const { user, loading } = useUser();
+  const { user } = useUser();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleSubmit = async (values: z.infer<typeof CardSchema>) => {

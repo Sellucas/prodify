@@ -1,5 +1,6 @@
-import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from "clsx";
+
 import { ICard } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
@@ -19,10 +20,10 @@ export const calculateProgress = (
   boardId: string
 ): number => {
   const boardCards = cards[boardId] || [];
-  const totalCards = boardCards.length;
-  const doneCards = boardCards.filter((card) => card.status === "done").length;
-  const progress = totalCards > 0 ? (doneCards / totalCards) * 100 : 0;
-  return Math.round(progress);
+  const completedTasks = boardCards.filter(
+    (card) => card.status === "done"
+  ).length;
+  return (completedTasks / boardCards.length) * 100;
 };
 
 export const calculateTotalTasks = (

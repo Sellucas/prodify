@@ -22,7 +22,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ManageSheet } from "@/app/(protected)/dashboard/_components/manage-sheet";
 
 export const BoardForm = () => {
-  const { user, loading } = useUser();
+  const { user } = useUser();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const form = useForm<z.infer<typeof BoardSchema>>({
