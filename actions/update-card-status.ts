@@ -1,11 +1,12 @@
-import { supabaseClient } from "@/utils/supabase/client";
+"use server";
+import { supabaseServer } from "@/utils/supabase/server";
 
 export async function updateCardStatus(
   cardId: string,
   status: "backlog" | "todo" | "doing" | "reviewing" | "done"
 ) {
   try {
-    const supabase = supabaseClient();
+    const supabase = supabaseServer();
     const { data, error } = await supabase
       .from("cards")
       .update({ status })
@@ -17,12 +18,6 @@ export async function updateCardStatus(
 
     return data ?? null;
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error updating card status:", error.message);
-      throw error;
-    } else {
-      console.error("Unknown error updating card status:", error);
-      throw new Error("Unknown error");
-    }
+    throw error;
   }
 }

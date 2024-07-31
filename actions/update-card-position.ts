@@ -1,10 +1,12 @@
-import { supabaseClient } from "@/utils/supabase/client";
+"use server";
+
+import { supabaseServer } from "@/utils/supabase/server";
 
 export async function updateCardPositions(
   cards: { card_id: string; position: number }[]
 ) {
   try {
-    const supabase = supabaseClient();
+    const supabase = supabaseServer();
 
     for (const card of cards) {
       const { error } = await supabase
@@ -19,12 +21,6 @@ export async function updateCardPositions(
 
     return cards;
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error updating card positions:", error.message);
-      throw error;
-    } else {
-      console.error("Unknown error updating card positions:", error);
-      throw new Error("Unknown error");
-    }
+    throw error;
   }
 }

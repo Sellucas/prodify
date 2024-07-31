@@ -1,12 +1,14 @@
-import { supabaseClient } from "@/utils/supabase/client";
+"use server";
+
 import { TablesUpdate } from "@/lib/types/supabase";
+import { supabaseServer } from "@/utils/supabase/server";
 
 export async function updateCard(
   cardId: string,
   cardData: TablesUpdate<"cards">
 ) {
   try {
-    const supabase = supabaseClient();
+    const supabase = supabaseServer();
     const { data, error } = await supabase
       .from("cards")
       .update(cardData)
@@ -18,7 +20,6 @@ export async function updateCard(
 
     return data;
   } catch (error) {
-    console.error("Error updating the card:", error);
     throw error;
   }
 }

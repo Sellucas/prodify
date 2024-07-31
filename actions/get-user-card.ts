@@ -1,9 +1,11 @@
-import { supabaseClient } from "@/utils/supabase/client";
+"use server";
+
 import { ICard } from "@/types";
+import { supabaseServer } from "@/utils/supabase/server";
 
 export async function getAllCards(boardId: string): Promise<ICard[]> {
   try {
-    const supabase = supabaseClient();
+    const supabase = supabaseServer();
     const { data: filteredCards, error } = await supabase
       .from("cards")
       .select("*")
@@ -31,12 +33,6 @@ export async function getAllCards(boardId: string): Promise<ICard[]> {
         | "refactoring",
     }));
   } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error fetching cards:", error.message);
-      throw error;
-    } else {
-      console.error("Unknown error fetching cards:", error);
-      throw new Error("Unknown error");
-    }
+    throw error;
   }
 }

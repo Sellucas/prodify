@@ -1,9 +1,10 @@
 "use client";
 
 import * as z from "zod";
+import { toast } from "sonner";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 import {
   Form,
@@ -33,7 +34,9 @@ export const BoardForm = () => {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof BoardSchema>) => {
+  const onSubmit: SubmitHandler<z.infer<typeof BoardSchema>> = async (
+    values
+  ) => {
     try {
       if (!user) {
         throw new Error("User not found");
@@ -44,12 +47,21 @@ export const BoardForm = () => {
         user_id: user.user_id,
       };
 
-      await addBoard(boardData);
+      console.log("Submitting board data:", boardData);
+
+      const result = await addBoard(boardData);
+
+      if (result.error) {
+        console.error("Add board error:", result.error);
+        throw new Error(result.error);
+      }
 
       form.reset();
       setIsSheetOpen(false);
+      toast.success("Board created successfully");
     } catch (error) {
       console.error("Error inserting the board:", error);
+      toast.error("Failed to create board");
     }
   };
 

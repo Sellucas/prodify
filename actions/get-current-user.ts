@@ -1,8 +1,10 @@
+"use server";
+
 import { IUserProfile } from "@/types";
-import { supabaseClient } from "@/utils/supabase/client";
+import { supabaseServer } from "@/utils/supabase/server";
 
 export async function getCurrentUser(): Promise<IUserProfile | null> {
-  const supabase = supabaseClient();
+  const supabase = supabaseServer();
   const { data: sessionData, error: sessionError } =
     await supabase.auth.getSession();
 

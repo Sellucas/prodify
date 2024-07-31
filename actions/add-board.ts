@@ -1,25 +1,21 @@
-import { supabaseClient } from "@/utils/supabase/client";
+"use server";
+
 import { TablesInsert } from "@/lib/types/supabase";
+import { supabaseServer } from "@/utils/supabase/server";
 
 export async function addBoard(boardData: TablesInsert<"boards">) {
   try {
-    const supabase = supabaseClient();
-    const { data, error: insertError } = await supabase
-      .from("boards")
-      .insert([boardData]);
+    const supabase = supabaseServer();
+    const { data, error } = await supabase.from("boards").insert([boardData]);
 
-    if (insertError) {
-      throw insertError;
+    if (error) {
+      console.error("Supabase error:", error);
+      return { error: error.message };
     }
 
-    return { data, error: null };
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error("Error inserting the board:", error);
-      return { data: null, error };
-    } else {
-      console.error("Unknown error inserting the board:", error);
-      return { data: null, error: new Error("Unknown error") };
-    }
+    return { data };
+  } catch (error: any) {
+    console.error("Catch error:", error);
+    return { error: error.message };
   }
 }
