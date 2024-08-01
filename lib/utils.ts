@@ -23,7 +23,8 @@ export const calculateProgress = (
   const completedTasks = boardCards.filter(
     (card) => card.status === "done"
   ).length;
-  return (completedTasks / boardCards.length) * 100;
+  const progress = (completedTasks / boardCards.length) * 100;
+  return Math.round(progress);
 };
 
 export const calculateTotalTasks = (

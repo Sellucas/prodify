@@ -1,10 +1,12 @@
-import { supabaseClient } from "@/utils/supabase/client";
+"use server";
+
+import { supabaseServer } from "@/utils/supabase/server";
 
 export async function updateCardPositions(
   cards: { card_id: string; position: number }[]
 ) {
   try {
-    const supabase = supabaseClient();
+    const supabase = supabaseServer();
 
     for (const card of cards) {
       const { error } = await supabase
