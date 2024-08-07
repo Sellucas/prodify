@@ -52,7 +52,7 @@ export async function middleware(request: NextRequest) {
           });
         },
       },
-    }
+    },
   );
 
   const { data } = await supabase.auth.getSession();
@@ -66,7 +66,7 @@ export async function middleware(request: NextRequest) {
   } else {
     if (protectedPaths.some((path) => url.pathname.startsWith(path))) {
       return NextResponse.redirect(
-        new URL("/auth/login?next=" + url.pathname, request.url)
+        new URL("/auth/login?next=" + url.pathname, request.url),
       );
     }
     return response;

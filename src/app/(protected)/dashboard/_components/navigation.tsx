@@ -63,11 +63,11 @@ export const Navigation = () => {
       variants={containerVariants}
       animate={containerControls}
       initial="close"
-      className="bg-background2 flex flex-col z-50 gap-5 mt-[55px] pb-16 px-1.5 fixed top-0 left-0 h-full border-r border-muted overflow-hidden"
+      className="fixed left-0 top-0 z-50 mt-[55px] flex h-full flex-col gap-5 overflow-hidden border-r border-muted bg-background2 px-1.5 pb-16"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="flex flex-col justify-between h-full mt-2">
+      <div className="mt-2 flex h-full flex-col justify-between">
         <div className="flex flex-col gap-3">
           {navItemsTop.map(({ href, name, icon: Icon }) => (
             <NavigationLink key={href} href={href} name={name} isOpen={isOpen}>

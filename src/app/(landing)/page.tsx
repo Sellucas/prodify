@@ -19,7 +19,7 @@ const HomePage = () => {
     );
   }
   return (
-    <div className="bg-black cursor-default w-full">
+    <div className="w-full cursor-default bg-black">
       <Navbar />
       <div className="pt-40">
         <HeroSection />

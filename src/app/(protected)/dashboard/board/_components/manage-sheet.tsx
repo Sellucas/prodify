@@ -40,10 +40,10 @@ export const ManageSheet = ({
         ) : (
           <Button
             size="sm"
-            className="rounded-xl h-10 text-white bg-blue-500 font-semibold relative overflow-hidden px-5 py-2.5 transition-all duration-300 hover:bg-blue-600 hover:ring-2 hover:ring-blue-500 hover:ring-offset-2"
+            className="relative h-10 overflow-hidden rounded-xl bg-blue-500 px-5 py-2.5 font-semibold text-white transition-all duration-300 hover:bg-blue-600 hover:ring-2 hover:ring-blue-500 hover:ring-offset-2"
             asChild
           >
-            <span className="flex gap-1 relative">
+            <span className="relative flex gap-1">
               <Plus className="w-4" strokeWidth={3} />
               <span className="hidden md:block">{label}</span>
             </span>

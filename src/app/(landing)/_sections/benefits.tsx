@@ -1,10 +1,10 @@
 import {
   Brush,
-  CalendarClock,
-  FileSearch,
   Laptop,
   Lightbulb,
+  FileSearch,
   ShieldCheck,
+  CalendarClock,
 } from "lucide-react";
 
 import { Cta } from "@/components/cta";
@@ -58,15 +58,15 @@ const benefits = [
 
 export const BenefitsSection = () => {
   return (
-    <section className="container flex flex-col justify-center items-center lg:gap-12 mb-48">
-      <div className="text-center space-y-2">
+    <section className="container mb-48 flex flex-col items-center justify-center lg:gap-12">
+      <div className="space-y-2 text-center">
         <AnimateView direction="up">
-          <span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#1e293b,55%,#939393)] bg-[length:250%_100%] bg-clip-text  text-transparent font-bold uppercase text-sm tracking-wider">
+          <span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#1e293b,55%,#939393)] bg-[length:250%_100%] bg-clip-text text-sm font-bold uppercase tracking-wider text-transparent">
             Benefit Features
           </span>
         </AnimateView>
         <AnimateView direction="up" transition={{ delay: 0.4 }}>
-          <h2 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
+          <h2 className="text-balance text-center text-4xl font-medium leading-none tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             Powerful personal planner to boost your conversion rate.
           </h2>
         </AnimateView>

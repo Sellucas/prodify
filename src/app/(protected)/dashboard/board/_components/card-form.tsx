@@ -58,7 +58,7 @@ const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
             </FormItem>
           )}
         />
-        <div className="flex flex-col items-left gap-4 md:flex-row md:items-center md:gap-0 w-full justify-between">
+        <div className="items-left flex w-full flex-col justify-between gap-4 md:flex-row md:items-center md:gap-0">
           <FormField
             control={form.control}
             name="status"

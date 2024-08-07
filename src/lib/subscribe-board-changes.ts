@@ -4,7 +4,7 @@ import { IBoard } from "@/types";
 
 export const subscribeToBoardChanges = (
   userId: string,
-  handleBoardChange: (payload: RealtimePostgresChangesPayload<IBoard>) => void
+  handleBoardChange: (payload: RealtimePostgresChangesPayload<IBoard>) => void,
 ) => {
   const supabase = supabaseClient();
 
@@ -18,7 +18,7 @@ export const subscribeToBoardChanges = (
         table: "boards",
         filter: `user_id=eq.${userId}`,
       },
-      handleBoardChange
+      handleBoardChange,
     )
     .subscribe();
 

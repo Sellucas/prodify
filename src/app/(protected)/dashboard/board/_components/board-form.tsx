@@ -35,7 +35,7 @@ export const BoardForm = () => {
   });
 
   const onSubmit: SubmitHandler<z.infer<typeof BoardSchema>> = async (
-    values
+    values,
   ) => {
     try {
       if (!user) {

@@ -8,8 +8,8 @@ export const BoardHeader = ({
   title: string;
 }) => {
   return (
-    <div className="flex justify-between items-center w-full py-6 max-w-[1568px] mx-auto sticky top-14 z-10 bg-background">
-      <h1 className="text-4xl font-medium leading-none tracking-tighter text-balance sm:text-2xl md:text-3xl lg:text-4xl">
+    <div className="sticky top-14 z-10 mx-auto flex w-full max-w-[1568px] items-center justify-between bg-background py-6">
+      <h1 className="text-balance text-4xl font-medium leading-none tracking-tighter sm:text-2xl md:text-3xl lg:text-4xl">
         {title}
       </h1>
       <CardCreateForm boardId={boardId} />

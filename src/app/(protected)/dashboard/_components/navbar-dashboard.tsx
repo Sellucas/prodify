@@ -4,8 +4,8 @@ import { Notification } from "@/app/(protected)/dashboard/_components/notificati
 
 export const NavbarDashboard = () => {
   return (
-    <div className="fixed top-0 z-50 border-b border-muted h-14 w-full bg-background2">
-      <div className="px-4 flex justify-between items-center h-full">
+    <div className="fixed top-0 z-50 h-14 w-full border-b border-muted bg-background2">
+      <div className="flex h-full items-center justify-between px-4">
         <Logo />
         <div className="flex items-center gap-4">
           <Notification />

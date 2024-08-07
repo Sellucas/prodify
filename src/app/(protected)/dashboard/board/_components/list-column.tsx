@@ -48,7 +48,7 @@ export const columns: ColumnDef<ICard>[] = [
       return (
         <Button
           variant="ghost"
-          className="p-2 rounded-[10px]"
+          className="rounded-[10px] p-2"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Status
@@ -57,7 +57,7 @@ export const columns: ColumnDef<ICard>[] = [
       );
     },
     cell: ({ row }) => {
-      return <div className="capitalize ml-2">{row.original.status}</div>;
+      return <div className="ml-2 capitalize">{row.original.status}</div>;
     },
   },
   {
@@ -66,7 +66,7 @@ export const columns: ColumnDef<ICard>[] = [
       return (
         <Button
           variant="ghost"
-          className="p-2 rounded-[10px]"
+          className="rounded-[10px] p-2"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Priority
@@ -75,7 +75,7 @@ export const columns: ColumnDef<ICard>[] = [
       );
     },
     cell: ({ row }) => {
-      return <div className="capitalize ml-2">{row.original.priority}</div>;
+      return <div className="ml-2 capitalize">{row.original.priority}</div>;
     },
   },
   {
@@ -84,7 +84,7 @@ export const columns: ColumnDef<ICard>[] = [
       return (
         <Button
           variant="ghost"
-          className="p-2 rounded-[10px]"
+          className="rounded-[10px] p-2"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Tag
@@ -102,7 +102,7 @@ export const columns: ColumnDef<ICard>[] = [
       return (
         <Button
           variant="ghost"
-          className="p-2 rounded-[10px]"
+          className="rounded-[10px] p-2"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Created At

@@ -24,9 +24,9 @@ export const CardTag = ({ name, className }: CardTagProps) => {
   return (
     <span
       className={cn(
-        "flex flex-row items-center text-xs px-2 py-1 rounded-full capitalize",
+        "flex flex-row items-center rounded-full px-2 py-1 text-xs capitalize",
         name ? tagClasses[name] : null,
-        className
+        className,
       )}
     >
       {name}

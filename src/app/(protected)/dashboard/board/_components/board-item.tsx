@@ -40,9 +40,9 @@ export const BoardItem = ({
 
   return (
     <Link href={url}>
-      <Card className="w-[322px] h-60 border-2 border-muted bg-primary-foreground hover:bg-primary-foreground/50 relative transition-all ease-in-out duration-300">
+      <Card className="relative h-60 w-[322px] border-2 border-muted bg-primary-foreground transition-all duration-300 ease-in-out hover:bg-primary-foreground/50">
         <CardHeader className="h-20 py-4">
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -57,14 +57,14 @@ export const BoardItem = ({
             </TooltipProvider>
             <DropdownMenu>
               <DropdownMenuTrigger
-                className="hover:bg-muted p-2 rounded-full"
+                className="rounded-full p-2 hover:bg-muted"
                 onClick={(e) => e.stopPropagation()}
               >
                 <FaEllipsisVertical />
               </DropdownMenuTrigger>
               <DropdownMenuContent onClick={(e) => e.stopPropagation()}>
-                <DropdownMenuLabel className="flex items-center gap-2 cursor-not-allowed">
-                  <Settings className="w-4 h-4" /> Settings
+                <DropdownMenuLabel className="flex cursor-not-allowed items-center gap-2">
+                  <Settings className="h-4 w-4" /> Settings
                 </DropdownMenuLabel>
                 <DropdownMenuLabel className="flex items-center gap-2">
                   <DialogDeleteBoard boardId={boardId} />
@@ -77,16 +77,16 @@ export const BoardItem = ({
         <hr />
         <CardContent className="mt-6">
           <div>
-            <p className="flex justify-between text-sm mb-2">
+            <p className="mb-2 flex justify-between text-sm">
               <span>{progress}% Completed</span>
               <span>{total_tasks} tasks</span>
             </p>
             <Progress value={progress} className="w-[100%]" />
           </div>
         </CardContent>
-        <CardFooter className="text-xs text-muted-foreground flex items-center absolute bottom-0">
+        <CardFooter className="absolute bottom-0 flex items-center text-xs text-muted-foreground">
           Created at:{" "}
-          <span className="ml-1 bg-muted rounded-xl px-2 py-1">
+          <span className="ml-1 rounded-xl bg-muted px-2 py-1">
             {formatCreatedAt(created_at)}
           </span>
         </CardFooter>

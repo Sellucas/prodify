@@ -49,7 +49,7 @@ export function ListTab<TData, TValue>({
 }: ListTabProps<TData, TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
+    [],
   );
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
@@ -113,9 +113,9 @@ export function ListTab<TData, TValue>({
                 <Plus className="size-3" />
                 Status{" "}
                 {selectedStatus && (
-                  <div className="flex items-center ml-1 gap-2">
+                  <div className="ml-1 flex items-center gap-2">
                     <Separator orientation="vertical" className="h-4" />
-                    <p className="bg-muted py-1 px-2 rounded-[10px] text-xs capitalize">
+                    <p className="rounded-[10px] bg-muted px-2 py-1 text-xs capitalize">
                       {selectedStatus}
                     </p>
                   </div>
@@ -154,9 +154,9 @@ export function ListTab<TData, TValue>({
                 <Plus className="size-3" />
                 Priority{" "}
                 {selectedPriority && (
-                  <div className="flex items-center ml-1 gap-2">
+                  <div className="ml-1 flex items-center gap-2">
                     <Separator orientation="vertical" className="h-4" />
-                    <p className="bg-muted py-1 px-2 rounded-[10px] text-xs capitalize">
+                    <p className="rounded-[10px] bg-muted px-2 py-1 text-xs capitalize">
                       {selectedPriority}
                     </p>
                   </div>
@@ -187,9 +187,9 @@ export function ListTab<TData, TValue>({
                 <Plus className="size-3" />
                 Tag{" "}
                 {selectedTag && (
-                  <div className="flex items-center ml-1 gap-2">
+                  <div className="ml-1 flex items-center gap-2">
                     <Separator orientation="vertical" className="h-4" />
-                    <p className="bg-muted py-1 px-2 rounded-[10px] text-xs capitalize">
+                    <p className="rounded-[10px] bg-muted px-2 py-1 text-xs capitalize">
                       {selectedTag}
                     </p>
                   </div>
@@ -282,7 +282,7 @@ export function ListTab<TData, TValue>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="border rounded-[10px]">
+      <div className="rounded-[10px] border">
         <Table>
           <TableHeader className="bg-foreground2">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -294,7 +294,7 @@ export function ListTab<TData, TValue>({
                         ? null
                         : flexRender(
                             header.column.columnDef.header,
-                            header.getContext()
+                            header.getContext(),
                           )}
                     </TableHead>
                   );
@@ -313,7 +313,7 @@ export function ListTab<TData, TValue>({
                     <TableCell key={cell.id} className="capitalize">
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext()
+                        cell.getContext(),
                       )}
                     </TableCell>
                   ))}

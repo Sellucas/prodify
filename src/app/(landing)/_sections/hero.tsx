@@ -10,7 +10,7 @@ import RadialGradient from "@/components/ui/radial-gradient";
 export const HeroSection = () => {
   return (
     <section className="relative">
-      <div className="container flex flex-col gap-32 items-center mb-48 text-center">
+      <div className="container mb-48 flex flex-col items-center gap-32 text-center">
         <div className="relative">
           <AnimateView direction="up">
             <span className="inline-flex cursor-pointer items-center justify-center rounded-full border border-[#272726] bg-black px-3 py-1 text-xs font-medium text-gray-300 backdrop-blur-3xl">
@@ -20,7 +20,7 @@ export const HeroSection = () => {
             </span>
           </AnimateView>
           <AnimateView direction="up">
-            <h1 className="bg-gradient-to-br from-white from-30% to-white/40 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent text-balance sm:text-6xl md:text-7xl lg:text-8xl">
+            <h1 className="text-balance bg-gradient-to-br from-white from-30% to-white/40 bg-clip-text py-6 text-5xl font-medium leading-none tracking-tighter text-transparent sm:text-6xl md:text-7xl lg:text-8xl">
               Simplify tasks, manage time for more efficient results.
             </h1>
           </AnimateView>

@@ -4,7 +4,7 @@ import { ICard } from "@/types";
 
 export const subscribeToCardChanges = (
   boardId: string,
-  handleCardChange: (payload: RealtimePostgresChangesPayload<ICard>) => void
+  handleCardChange: (payload: RealtimePostgresChangesPayload<ICard>) => void,
 ) => {
   const supabase = supabaseClient();
 
@@ -18,7 +18,7 @@ export const subscribeToCardChanges = (
         table: "cards",
         filter: `board_id=eq.${boardId}`,
       },
-      handleCardChange
+      handleCardChange,
     )
     .subscribe();
 

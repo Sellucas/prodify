@@ -43,7 +43,7 @@ export const DialogDeleteCard = ({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger
-        className="flex items-center gap-1 text-xs text-muted-foreground/75 cursor-pointer hover:text-red-600"
+        className="flex cursor-pointer items-center gap-1 text-xs text-muted-foreground/75 hover:text-red-600"
         asChild
       >
         <Trash className={cn("size-3", className)} absoluteStrokeWidth />

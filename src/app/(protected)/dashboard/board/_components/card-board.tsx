@@ -27,32 +27,32 @@ export const CardBoard = ({
         onDragStart={(event) =>
           handleDragStart(
             event as unknown as React.DragEvent<HTMLDivElement>,
-            card
+            card,
           )
         }
-        className="cursor-grab h-44 rounded-xl border-2 border-muted bg-foreground2 active:cursor-grabbing"
+        className="h-44 cursor-grab rounded-xl border-2 border-muted bg-foreground2 active:cursor-grabbing"
       >
-        <div className="flex justify-between py-1 px-3 items-center text-xs text-muted-foreground/75">
+        <div className="flex items-center justify-between px-3 py-1 text-xs text-muted-foreground/75">
           <p>
             Priority:{" "}
-            <span className="text-foreground capitalize">{card.priority}</span>
+            <span className="capitalize text-foreground">{card.priority}</span>
           </p>
           <p>
             <CardUpdateForm card={card} />
           </p>
         </div>
         <hr className="border-muted" />
-        <div className="relative p-3 h-32">
-          <h1 className="first-letter:capitalize tracking-wide">
+        <div className="relative h-32 p-3">
+          <h1 className="tracking-wide first-letter:capitalize">
             {title.length > 26 ? `${title.slice(0, 26)}...` : title}
           </h1>
-          <div className="flex items-center gap-2 mt-4">
+          <div className="mt-4 flex items-center gap-2">
             <Tag className="w-4 text-muted-foreground/75" absoluteStrokeWidth />
             <CardTag name={card.tag} />
           </div>
-          <div className="flex items-center justify-between gap-2 w-60 absolute bottom-0">
+          <div className="absolute bottom-0 flex w-60 items-center justify-between gap-2">
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1 text-xs text-muted-foreground/75 hover:text-white cursor-not-allowed">
+              <div className="flex cursor-not-allowed items-center gap-1 text-xs text-muted-foreground/75 hover:text-white">
                 <MessageCircle className="w-3" absoluteStrokeWidth />
               </div>
               <DialogDeleteCard card={card} />

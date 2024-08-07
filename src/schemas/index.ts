@@ -20,7 +20,8 @@ export const CardSchema = z.object({
       "implementation",
       "feedback",
       "refactoring",
-    ]).default("code"),
+    ])
+    .default("code"),
   priority: z.enum(["high", "medium", "low"]).default("medium"),
   position: z.number().default(999),
 });

@@ -5,8 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
 
 import { ICard } from "@/types";
-import { getAllCards } from "./actions";
 import { subscribeToCardChanges } from "@/lib/subscribe-card-changes";
+import { getAllCards } from "@/app/(protected)/dashboard/board/[slug]/actions";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ListTab } from "@/app/(protected)/dashboard/board/_components/list-tab";
 import { columns } from "@/app/(protected)/dashboard/board/_components/list-column";
@@ -33,7 +33,7 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
 
   useEffect(() => {
     const handleCardChange = (
-      payload: RealtimePostgresChangesPayload<ICard>
+      payload: RealtimePostgresChangesPayload<ICard>,
     ) => {
       const { eventType, new: newCard, old: oldCard } = payload;
 
@@ -42,14 +42,14 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
       } else if (eventType === "UPDATE" && newCard) {
         setCards((prevCards) =>
           prevCards.map((card) =>
-            card.card_id === newCard.card_id ? newCard : card
-          )
+            card.card_id === newCard.card_id ? newCard : card,
+          ),
         );
       } else if (eventType === "DELETE") {
         const cardToDelete = oldCard || newCard;
         if (cardToDelete) {
           setCards((prevCards) =>
-            prevCards.filter((card) => card.card_id !== cardToDelete.card_id)
+            prevCards.filter((card) => card.card_id !== cardToDelete.card_id),
           );
         }
       }
@@ -64,11 +64,11 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
 
   return (
     <Tabs defaultValue="board">
-      <div className="flex justify-between items-center w-full py-4 max-w-[1568px] mx-auto sticky top-14 z-10 bg-background">
-        <h1 className="text-4xl leading-none tracking-tighter text-balance sm:text-2xl md:text-3xl lg:text-4xl">
+      <div className="sticky top-14 z-10 mx-auto flex w-full max-w-[1568px] items-center justify-between bg-background py-4">
+        <h1 className="text-balance text-4xl leading-none tracking-tighter sm:text-2xl md:text-3xl lg:text-4xl">
           {title}
         </h1>
-        <div className="flex gap-4 items-center">
+        <div className="flex items-center gap-4">
           <TabsList className="rounded-[10px]">
             <TabsTrigger value="board" className="rounded-[10px]">
               Board
@@ -82,7 +82,7 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
       </div>
       <TabsContent
         value="board"
-        className="flex flex-row  w-full h-full gap-8 overflow-x-scroll max-w-[1568px] mx-auto no-scrollbar"
+        className="no-scrollbar mx-auto flex h-full w-full max-w-[1568px] flex-row gap-8 overflow-x-scroll"
       >
         <KanbanColumn
           title="Backlog"
@@ -122,7 +122,7 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
       </TabsContent>
       <TabsContent
         value="list"
-        className="flex flex-row w-full h-full overflow-x-scroll max-w-[1568px] mx-auto no-scrollbar"
+        className="no-scrollbar mx-auto flex h-full w-full max-w-[1568px] flex-row overflow-x-scroll"
       >
         <ListTab columns={columns} data={cards} />
       </TabsContent>

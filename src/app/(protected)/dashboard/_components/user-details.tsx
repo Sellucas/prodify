@@ -27,8 +27,8 @@ export const UserDetails = () => {
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="p-4 mr-8 mt-1">
-        <DropdownMenuLabel className="flex gap-2 mb-2">
+      <DropdownMenuContent className="mr-8 mt-1 p-4">
+        <DropdownMenuLabel className="mb-2 flex gap-2">
           <Avatar>
             <AvatarImage src={user?.image_url || ""} alt="user" />
             <AvatarFallback>
@@ -42,13 +42,13 @@ export const UserDetails = () => {
         </DropdownMenuLabel>
         <DropdownMenuItem>
           <Link href={"/dashboard/settings"} className="flex gap-2">
-            <SlidersHorizontal className="h-4 w-4 mr-2" absoluteStrokeWidth />
+            <SlidersHorizontal className="mr-2 h-4 w-4" absoluteStrokeWidth />
             Manage Account
           </Link>
         </DropdownMenuItem>
         <LogoutButton>
-          <DropdownMenuItem className="cursor-pointer flex gap-2">
-            <LogOut className="h-4 w-4 mr-2" absoluteStrokeWidth />
+          <DropdownMenuItem className="flex cursor-pointer gap-2">
+            <LogOut className="mr-2 h-4 w-4" absoluteStrokeWidth />
             Logout
           </DropdownMenuItem>
         </LogoutButton>

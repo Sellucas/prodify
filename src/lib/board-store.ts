@@ -40,17 +40,21 @@ const useBoardStore = create<BoardState>((set) => ({
   },
 
   addBoard: (board) => set((state) => ({ boards: [...state.boards, board] })),
-  
-  updateBoard: (board) => set((state) => ({
-    boards: state.boards.map((b) => (b.board_id === board.board_id ? board : b))
-  })),
-  
-  removeBoard: (boardId) => set((state) => ({
-    boards: state.boards.filter((b) => b.board_id !== boardId),
-    cards: Object.fromEntries(
-      Object.entries(state.cards).filter(([key]) => key !== boardId)
-    )
-  })),
+
+  updateBoard: (board) =>
+    set((state) => ({
+      boards: state.boards.map((b) =>
+        b.board_id === board.board_id ? board : b,
+      ),
+    })),
+
+  removeBoard: (boardId) =>
+    set((state) => ({
+      boards: state.boards.filter((b) => b.board_id !== boardId),
+      cards: Object.fromEntries(
+        Object.entries(state.cards).filter(([key]) => key !== boardId),
+      ),
+    })),
 }));
 
 export default useBoardStore;

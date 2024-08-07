@@ -5,10 +5,10 @@ import { NavbarDashboard } from "@/app/(protected)/dashboard/_components/navbar-
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <UserProvider>
-      <div className="w-full max-h-screen cursor-default">
+      <div className="max-h-screen w-full cursor-default">
         <NavbarDashboard />
         <Navigation />
-        <div className="pt-14 ml-20">{children}</div>
+        <div className="ml-20 pt-14">{children}</div>
       </div>
     </UserProvider>
   );

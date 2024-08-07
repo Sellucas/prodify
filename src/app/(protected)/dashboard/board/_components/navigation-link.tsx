@@ -15,10 +15,10 @@ const NavigationLink = ({ children, name, href, isOpen }: Props) => {
   return (
     <Link
       href={href}
-      className={`flex p-1 rounded-[8px] cursor-pointer stroke-[0.75] text-muted-foreground border-2 border-background2 place-items-center gap-3 transition-colors duration-100 ${
+      className={`flex cursor-pointer place-items-center gap-3 rounded-[8px] border-2 border-background2 stroke-[0.75] p-1 text-muted-foreground transition-colors duration-100 ${
         isActive
-          ? "text-white bg-primary-foreground border-secondary"
-          : "hover:text-white hover:bg-primary-foreground hover:border-secondary"
+          ? "border-secondary bg-primary-foreground text-white"
+          : "hover:border-secondary hover:bg-primary-foreground hover:text-white"
       }`}
     >
       {children}

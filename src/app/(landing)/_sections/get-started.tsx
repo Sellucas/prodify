@@ -6,7 +6,7 @@ import { AnimateView } from "@/components/animate-view";
 export const GetStartedSection = () => {
   return (
     <section className="relative">
-      <div className="flex flex-col items-center gap-8 text-center mb-48">
+      <div className="mb-48 flex flex-col items-center gap-8 text-center">
         <AnimateView direction="up">
           <Image
             src={"/logo.png"}
@@ -17,13 +17,13 @@ export const GetStartedSection = () => {
           />
         </AnimateView>
         <AnimateView direction="up" transition={{ delay: 0.4 }}>
-          <h1 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl z-10">
+          <h1 className="z-10 text-balance text-center text-4xl font-medium leading-none tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             Get started with <br /> Prodify now.
           </h1>
         </AnimateView>
         <AnimateView direction="up" transition={{ delay: 0.6 }}>
           <Link
-            className="group relative inline-flex h-9 items-center justify-center overflow-hidden rounded-xl bg-[#111111] px-4 text-neutral-50 text-sm z-10"
+            className="group relative z-10 inline-flex h-9 items-center justify-center overflow-hidden rounded-xl bg-[#111111] px-4 text-sm text-neutral-50"
             href="/auth/login"
           >
             <span className="absolute h-0 w-0 rounded-full bg-blue-500 transition-all duration-300 group-hover:h-56 group-hover:w-32"></span>

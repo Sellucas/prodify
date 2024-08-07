@@ -50,14 +50,14 @@ const faq = [
 export const FaqSection = () => {
   return (
     <section className="mb-48">
-      <div className="text-center space-y-4 mb-12">
+      <div className="mb-12 space-y-4 text-center">
         <AnimateView direction="up">
-          <h1 className="text-center text-4xl font-medium leading-none tracking-tighter text-balance sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="text-balance text-center text-4xl font-medium leading-none tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             Frequently Asked Questions
           </h1>
         </AnimateView>
         <AnimateView direction="up" transition={{ delay: 0.4 }}>
-          <p className="text-sm tracking-tight text-gray-400 md:text-base pt-4">
+          <p className="pt-4 text-sm tracking-tight text-gray-400 md:text-base">
             Quick answers to questions you may have about Prodify. Can&apos;t
             find <br /> what you&apos;re looking for?{" "}
             <Link className="underline" href={"/"}>
@@ -67,7 +67,7 @@ export const FaqSection = () => {
         </AnimateView>
       </div>
       <AnimateView direction="down" transition={{ delay: 0.6 }}>
-        <Accordion type="single" collapsible className="max-w-4xl mx-auto">
+        <Accordion type="single" collapsible className="mx-auto max-w-4xl">
           {faq.map(({ value, title, description }, index) => (
             <AccordionItem key={index} value={value}>
               <AccordionTrigger className="text-lg">{title}</AccordionTrigger>

@@ -38,7 +38,7 @@ export type CardBoardProps = {
   card: ICard;
   handleDragStart: (
     event: React.DragEvent<HTMLDivElement>,
-    card: ICard
+    card: ICard,
   ) => void;
 };
 

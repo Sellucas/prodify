@@ -75,7 +75,7 @@ export async function getAllCards(boardId: string): Promise<ICard[]> {
 }
 
 export async function updateCardPositions(
-  cards: { card_id: string; position: number }[]
+  cards: { card_id: string; position: number }[],
 ) {
   try {
     const supabase = supabaseServer();
@@ -99,7 +99,7 @@ export async function updateCardPositions(
 
 export async function updateCardStatus(
   cardId: string,
-  status: "backlog" | "todo" | "doing" | "reviewing" | "done"
+  status: "backlog" | "todo" | "doing" | "reviewing" | "done",
 ) {
   try {
     const supabase = supabaseServer();
@@ -120,7 +120,7 @@ export async function updateCardStatus(
 
 export async function updateCard(
   cardId: string,
-  cardData: TablesUpdate<"cards">
+  cardData: TablesUpdate<"cards">,
 ) {
   try {
     const supabase = supabaseServer();

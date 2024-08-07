@@ -35,11 +35,11 @@ export const DialogDeleteBoard = ({ boardId }: { boardId: string }) => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger
-        className="flex items-center gap-2 cursor-pointer text-red-600 hover:text-red-700"
+        className="flex cursor-pointer items-center gap-2 text-red-600 hover:text-red-700"
         asChild
       >
         <p>
-          <Trash className="w-4 h-4" absoluteStrokeWidth /> Delete
+          <Trash className="h-4 w-4" absoluteStrokeWidth /> Delete
         </p>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

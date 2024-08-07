@@ -3,7 +3,7 @@ import { UserDetails } from "@/app/(protected)/dashboard/_components/user-detail
 
 export const Header = () => {
   return (
-    <div className="flex items-center justify-between z-20 bg-white w-full h-14 py-2 px-6 border-b-2 border-solid border-gray-300 relative">
+    <div className="relative z-20 flex h-14 w-full items-center justify-between border-b-2 border-solid border-gray-300 bg-white px-6 py-2">
       <Logo />
       <div className="flex items-center">
         <UserDetails />

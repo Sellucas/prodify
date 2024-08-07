@@ -8,7 +8,10 @@ import { ICard, IColumnProps } from "@/types";
 import { Database } from "@/lib/types/supabase";
 import { DropIndicator } from "./drop-indicator";
 import { CardBoard } from "@/app/(protected)/dashboard/board/_components/card-board";
-import { updateCardPositions, updateCardStatus } from "@/app/(protected)/dashboard/board/[slug]/actions";
+import {
+  updateCardPositions,
+  updateCardStatus,
+} from "@/app/(protected)/dashboard/board/[slug]/actions";
 
 export const KanbanColumn = ({
   title,
@@ -45,7 +48,7 @@ export const KanbanColumn = ({
 
   const getNearestIndicator = (
     e: React.DragEvent<HTMLDivElement>,
-    indicators: HTMLElement[]
+    indicators: HTMLElement[],
   ) => {
     const DISTANCE_OFFSET = 50;
     const el = indicators.reduce(
@@ -64,14 +67,14 @@ export const KanbanColumn = ({
       {
         offset: Number.NEGATIVE_INFINITY,
         element: indicators[indicators.length - 1],
-      }
+      },
     );
     return el;
   };
 
   const getIndicators = (): HTMLElement[] => {
     return Array.from(
-      document.querySelectorAll(`[data-column="${status}"]`)
+      document.querySelectorAll(`[data-column="${status}"]`),
     ) as HTMLElement[];
   };
 
@@ -99,7 +102,7 @@ export const KanbanColumn = ({
         try {
           await updateCardStatus(
             cardId,
-            status as Database["public"]["Enums"]["status"]
+            status as Database["public"]["Enums"]["status"],
           );
 
           cardToTransfer = {
@@ -127,7 +130,7 @@ export const KanbanColumn = ({
             copy.map((card) => ({
               card_id: card.card_id,
               position: card.position,
-            }))
+            })),
           );
         } catch (error) {
           console.error("Failed to update card status:", error);
@@ -144,28 +147,28 @@ export const KanbanColumn = ({
 
   return (
     <div
-      className={`flex flex-col min-h-[70vh] w-72 py-4 px-3 transition-colors rounded-xl shrink-0 ${
+      className={`flex min-h-[70vh] w-72 shrink-0 flex-col rounded-xl px-3 py-4 transition-colors ${
         active ? `bg-muted` : `bg-background2`
       }`}
     >
-      <div className="flex items-center gap-2 relative">
-        <div className={`bg-${color}-500 w-1 h-full rounded-xl`} />
+      <div className="relative flex items-center gap-2">
+        <div className={`bg-${color}-500 h-full w-1 rounded-xl`} />
         <div className="flex items-center gap-2">
           <h3 className="font-semibold text-muted-foreground">{title}</h3>
-          <div className="text-sm bg-foreground2 flex items-center px-2 justify-center font-semibold text-muted-foreground rounded-[4px]">
+          <div className="flex items-center justify-center rounded-[4px] bg-foreground2 px-2 text-sm font-semibold text-muted-foreground">
             {filteredCards.length}
           </div>
         </div>
         <div className="absolute right-0 flex items-center gap-2">
-          <Plus className="w-5 text-muted-foreground hover:text-muted-foreground/50 cursor-pointer" />
-          <FaEllipsisVertical className="w-4 text-muted-foreground hover:text-muted-foreground/50 cursor-pointer" />
+          <Plus className="w-5 cursor-pointer text-muted-foreground hover:text-muted-foreground/50" />
+          <FaEllipsisVertical className="w-4 cursor-pointer text-muted-foreground hover:text-muted-foreground/50" />
         </div>
       </div>
       <div
         onDrop={handleDrop}
         onDragLeave={handleDragLeave}
         onDragOver={handleDragOver}
-        className="grow mt-2"
+        className="mt-2 grow"
       >
         {filteredCards.map((card) => {
           return (

@@ -1,5 +1,6 @@
 import { Search } from "lucide-react";
 import { useState, useEffect } from "react";
+
 import { Input } from "@/components/ui/input";
 
 interface SearchBarProps {
@@ -14,8 +15,8 @@ export const SearchBar = ({ onSearch }: SearchBarProps) => {
   }, [searchTerm, onSearch]);
 
   return (
-    <div className="relative flex items-center w-full h-10">
-      <div className="ml-2 absolute text-gray-300">
+    <div className="relative flex h-10 w-full items-center">
+      <div className="absolute ml-2 text-gray-300">
         <Search />
       </div>
       <Input
