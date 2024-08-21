@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { formatDistanceToNow, parseISO } from "date-fns";
-import { History, MessageCircle, Tag } from "lucide-react";
+import { History, MessageCircle, Tag, Trash } from "lucide-react";
 
 import { CardBoardProps } from "@/types";
 import { CardTag } from "@/app/(protected)/dashboard/board/_components/card-tag";
@@ -55,7 +55,12 @@ export const CardBoard = ({
               <div className="flex cursor-not-allowed items-center gap-1 text-xs text-muted-foreground/75 hover:text-white">
                 <MessageCircle className="w-3" absoluteStrokeWidth />
               </div>
-              <DialogDeleteCard card={card} />
+              <DialogDeleteCard
+                card={card}
+                trigger={
+                  <Trash className="size-3 text-muted-foreground/75 hover:text-red-600" />
+                }
+              />
             </div>
             <div className="flex items-center gap-1 text-xs text-muted-foreground/75">
               <History className="w-3" absoluteStrokeWidth /> {timeAgo}

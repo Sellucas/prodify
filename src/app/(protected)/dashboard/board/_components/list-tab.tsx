@@ -37,16 +37,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 import { DataTablePagination } from "./list-pagination";
+import { DialogDeleteCard } from "./card-delete-dialog";
+import { ICard } from "@/types";
 
-interface ListTabProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
+interface ListTabProps<TValue> {
+  columns: ColumnDef<ICard, TValue>[];
+  data: ICard[];
 }
 
-export function ListTab<TData, TValue>({
-  columns,
-  data,
-}: ListTabProps<TData, TValue>) {
+export function ListTab<TValue>({ columns, data }: ListTabProps<TValue>) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     [],
@@ -72,6 +71,10 @@ export function ListTab<TData, TValue>({
     },
   });
 
+  const selectedRows = table
+    .getRowModel()
+    .rows.filter((row) => row.getIsSelected());
+  const selectedCards = selectedRows.map((row) => row.original);
   const selectedStatus =
     (table.getColumn("status")?.getFilterValue() as string) ?? "";
   const selectedPriority =
@@ -91,6 +94,10 @@ export function ListTab<TData, TValue>({
     selectedPriority ||
     selectedTag ||
     (table.getColumn("title")?.getFilterValue() as string);
+
+  const handleDeleteSuccess = () => {
+    setRowSelection({});
+  };
 
   return (
     <div className="w-full">
@@ -249,38 +256,55 @@ export function ListTab<TData, TValue>({
             </Button>
           )}
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              className="ml-auto flex items-center gap-1 rounded-[10px]"
-            >
-              <Settings2 className="size-3" />
-              View
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                );
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="ml-auto flex items-center gap-2">
+          {table.getFilteredSelectedRowModel().rows.length > 0 && (
+            <DialogDeleteCard
+              card={selectedCards}
+              onDeleteSuccess={handleDeleteSuccess}
+              trigger={
+                <Button
+                  variant="destructive"
+                  className="flex items-center gap-1 rounded-[10px]"
+                >
+                  <X className="size-3" />
+                  Delete
+                </Button>
+              }
+            />
+          )}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="ml-auto flex items-center gap-1 rounded-[10px]"
+              >
+                <Settings2 className="size-3" />
+                View
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  );
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
       <div className="rounded-[10px] border">
         <Table>

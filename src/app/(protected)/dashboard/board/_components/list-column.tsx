@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronsUpDown } from "lucide-react";
+import { ChevronsUpDown, Trash } from "lucide-react";
 import { ColumnDef } from "@tanstack/react-table";
 import { formatDistanceToNow, parseISO } from "date-fns";
 
@@ -122,7 +122,12 @@ export const columns: ColumnDef<ICard>[] = [
       return (
         <div className="flex items-center justify-end gap-4">
           <CardUpdateForm card={card} />
-          <DialogDeleteCard card={card} className="size-4 text-red-600" />
+          <DialogDeleteCard
+            card={card}
+            trigger={
+              <Trash className="size-3 text-muted-foreground/75 hover:text-red-600" />
+            }
+          />
         </div>
       );
     },
