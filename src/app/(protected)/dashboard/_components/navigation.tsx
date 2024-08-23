@@ -4,8 +4,6 @@ import {
   Route,
   FolderOpen,
   BarChartBig,
-  NotebookPen,
-  CalendarCheck,
   SlidersHorizontal,
 } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -48,10 +46,8 @@ export const Navigation = () => {
 
   const navItemsTop = [
     { href: "/dashboard/board", name: "Projects", icon: FolderOpen },
-    { href: "/dashboard/analytics", name: "Analytics", icon: BarChartBig },
-    { href: "/dashboard/schedule", name: "Schedule", icon: CalendarCheck },
-    { href: "/dashboard/notes", name: "Notes", icon: NotebookPen },
     { href: "/dashboard/roadmap", name: "Roadmap", icon: Route },
+    { href: "/dashboard/analytics", name: "Analytics", icon: BarChartBig },
   ];
 
   const navItemsBottom = [

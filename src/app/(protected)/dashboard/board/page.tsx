@@ -96,7 +96,7 @@ const BoardPage = () => {
               <h1 className="text-white">No board found!</h1>
               <div className="relative aspect-video w-full">
                 <Image
-                  src="/no-data.svg"
+                  src="/empty-state/no-data.svg"
                   alt="UI Representation of Dashboard Prodify"
                   fill
                   priority
@@ -108,7 +108,7 @@ const BoardPage = () => {
               <h1 className="text-white">No board created yet!</h1>
               <div className="relative aspect-video w-full">
                 <Image
-                  src="/no-data.svg"
+                  src="/empty-state/no-data.svg"
                   alt="UI Representation of Dashboard Prodify"
                   fill
                   priority
