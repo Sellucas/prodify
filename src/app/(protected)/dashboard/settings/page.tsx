@@ -37,7 +37,7 @@ const SettingsPage = () => {
   return (
     <div className="container flex flex-row gap-12 pt-6">
       <div className="flex flex-col gap-12">
-        <Card className="h-52 w-[620px] py-4">
+        <Card className="h-52 w-[620px] py-4 rounded-[6px]">
           <CardContent className="flex h-3/4 flex-row items-center justify-between">
             <div className="space-y-2">
               <h1>User Profile</h1>
@@ -59,7 +59,7 @@ const SettingsPage = () => {
           </CardFooter>
         </Card>
 
-        <Card className="h-52 w-[620px] py-4">
+        <Card className="h-52 w-[620px] py-4 rounded-[6px]">
           <CardContent className="flex h-3/4 flex-col items-start justify-between">
             <div className="space-y-2">
               <h1>User Name</h1>
@@ -100,7 +100,7 @@ const SettingsPage = () => {
       </div>
 
       <div className="flex flex-col gap-12">
-        <Card className="h-52 w-[620px] py-4">
+        <Card className="h-52 w-[620px] py-4 rounded-[6px]">
           <CardContent className="flex h-3/4 flex-col items-start justify-between">
             <div className="space-y-2">
               <h1>User Email</h1>
@@ -117,7 +117,7 @@ const SettingsPage = () => {
           </CardFooter>
         </Card>
 
-        <Card className="h-52 w-[620px] py-4">
+        <Card className="h-52 w-[620px] py-4 rounded-[6px]">
           <CardContent className="flex h-3/4 flex-col items-start justify-between">
             <div className="space-y-2">
               <h1>Account Creation Date</h1>

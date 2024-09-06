@@ -12,6 +12,9 @@ import { ListTab } from "@/app/(protected)/dashboard/board/_components/list-tab"
 import { columns } from "@/app/(protected)/dashboard/board/_components/list-column";
 import { KanbanColumn } from "@/app/(protected)/dashboard/board/_components/kanban-column";
 import { CardCreateForm } from "@/app/(protected)/dashboard/board/_components/card-create-form";
+import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const KanbanPage = ({ params }: { params: { slug: string } }) => {
   const searchParams = useSearchParams();
@@ -65,15 +68,25 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
   return (
     <Tabs defaultValue="board">
       <div className="sticky top-14 z-10 mx-auto flex w-full max-w-[1568px] items-center justify-between bg-background py-4">
-        <h1 className="text-balance text-4xl leading-none tracking-tighter sm:text-2xl md:text-3xl lg:text-4xl">
-          {title}
-        </h1>
         <div className="flex items-center gap-4">
-          <TabsList className="rounded-[10px]">
-            <TabsTrigger value="board" className="rounded-[10px]">
+          <h1 className="text-balance text-4xl leading-none tracking-tighter sm:text-2xl md:text-3xl lg:text-4xl">
+            {title}
+          </h1>
+          <Button
+            variant={"ghost"}
+            className="rounded-[6px] px-2 text-muted-foreground"
+          >
+            <Link className="flex items-center gap-2" href={"/dashboard/board"}>
+              <ChevronLeft className="w-4" /> Back
+            </Link>
+          </Button>
+        </div>
+        <div className="flex items-center gap-4">
+          <TabsList className="rounded-[6px]">
+            <TabsTrigger value="board" className="rounded-[6px]">
               Board
             </TabsTrigger>
-            <TabsTrigger value="list" className="rounded-[10px]">
+            <TabsTrigger value="list" className="rounded-[6px]">
               List
             </TabsTrigger>
           </TabsList>

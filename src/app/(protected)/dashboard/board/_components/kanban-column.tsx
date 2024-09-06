@@ -147,7 +147,7 @@ export const KanbanColumn = ({
 
   return (
     <div
-      className={`flex min-h-[70vh] w-72 shrink-0 flex-col rounded-xl px-3 py-4 transition-colors ${
+      className={`flex min-h-[70vh] w-72 shrink-0 flex-col rounded-[6px] px-3 py-4 transition-colors ${
         active ? `bg-muted` : `bg-background2`
       }`}
     >

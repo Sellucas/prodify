@@ -30,7 +30,7 @@ export const CardBoard = ({
             card,
           )
         }
-        className="h-44 cursor-grab rounded-xl border-2 border-muted bg-foreground2 active:cursor-grabbing"
+        className="h-44 cursor-grab rounded-[6px] border-2 border-muted bg-foreground2 active:cursor-grabbing"
       >
         <div className="flex items-center justify-between px-3 py-1 text-xs text-muted-foreground/75">
           <p>

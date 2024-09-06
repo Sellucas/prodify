@@ -72,3 +72,14 @@ export interface IBoard {
   title: string;
   user_id: string;
 }
+
+export type CustomNodeData = {
+  label: string;
+};
+
+export type CustomNodeProps = {
+  data: CustomNodeData;
+  shape: ShapeType;
+};
+
+export type ShapeType = "rectangle" | "parallelogram" | "circle" | "ellipse";

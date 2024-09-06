@@ -40,7 +40,7 @@ export const ManageSheet = ({
         ) : (
           <Button
             size="sm"
-            className="relative h-10 overflow-hidden rounded-xl bg-blue-500 px-5 py-2.5 font-semibold text-white transition-all duration-300 hover:bg-blue-600 hover:ring-2 hover:ring-blue-500 hover:ring-offset-2"
+            className="relative h-10 overflow-hidden rounded-[6px] bg-blue-500 px-5 py-2.5 font-semibold text-white transition-all duration-300 hover:bg-blue-600 hover:ring-2 hover:ring-blue-500 hover:ring-offset-2"
             asChild
           >
             <span className="relative flex gap-1">

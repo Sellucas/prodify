@@ -30,3 +30,12 @@ export const BoardSchema = z.object({
   title: z.string().min(3),
   description: z.string().max(60).optional(),
 });
+
+export const NodeSchema = z.object({
+  label: z.string().min(1, "Label is required"),
+  type: z
+    .enum(["circle", "ellipse", "rectangle", "parallelogram"])
+    .default("rectangle"),
+  x: z.number().int(),
+  y: z.number().int(),
+});
