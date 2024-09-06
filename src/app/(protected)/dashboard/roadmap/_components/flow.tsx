@@ -128,7 +128,7 @@ const Flow = () => {
       if (
         hasChanges &&
         !confirm(
-          "Você tem alterações não salvas. Tem certeza de que deseja sair?",
+          "You have unsaved changes. Are you sure you want to exit?",
         )
       ) {
         throw new Error("Route change aborted");
