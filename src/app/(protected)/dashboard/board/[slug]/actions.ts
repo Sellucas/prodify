@@ -1,22 +1,18 @@
 "use server";
 
-import { ICard } from "@/types";
-import { supabaseServer } from "@/utils/supabase/server";
-import { TablesInsert, TablesUpdate } from "@/lib/types/supabase";
+import { supabaseServer } from "@/supabase/server";
+import { TablesInsert, TablesUpdate } from "@/supabase/types/supabase";
 
 export async function addCard(cardData: TablesInsert<"cards">) {
   try {
     const supabase = supabaseServer();
-
     const { data, error } = await supabase.from("cards").insert([cardData]);
 
-    if (error) {
-      console.error("Supabase error:", error);
-      return { error: error.message };
-    }
+    if (error) throw new Error(error.message);
 
     return { data };
   } catch (error: any) {
+    console.error("Error adding card:", error.message);
     return { error: error.message };
   }
 }
@@ -29,48 +25,12 @@ export async function deleteCard(cardId: string) {
       .delete()
       .eq("card_id", cardId);
 
-    if (error) {
-      console.error("Supabase error:", error);
-      return { error: error.message };
-    }
+    if (error) throw new Error(error.message);
 
     return { data };
   } catch (error: any) {
+    console.error("Error deleting card:", error.message);
     return { error: error.message };
-  }
-}
-
-export async function getAllCards(boardId: string): Promise<ICard[]> {
-  try {
-    const supabase = supabaseServer();
-    const { data: filteredCards, error } = await supabase
-      .from("cards")
-      .select("*")
-      .eq("board_id", boardId);
-
-    if (error) {
-      throw error;
-    }
-
-    return (filteredCards ?? []).map((card) => ({
-      ...card,
-      priority: card.priority as "high" | "medium" | "low",
-      tag: card.tag as
-        | "code"
-        | "design"
-        | "code review"
-        | "research"
-        | "bug"
-        | "enchantment"
-        | "documentation"
-        | "testing"
-        | "discussion"
-        | "implementation"
-        | "feedback"
-        | "refactoring",
-    }));
-  } catch (error) {
-    throw error;
   }
 }
 
@@ -79,21 +39,20 @@ export async function updateCardPositions(
 ) {
   try {
     const supabase = supabaseServer();
-
-    for (const card of cards) {
+    const updates = cards.map(async (card) => {
       const { error } = await supabase
         .from("cards")
         .update({ position: card.position })
         .eq("card_id", card.card_id);
 
-      if (error) {
-        throw error;
-      }
-    }
+      if (error) throw new Error(error.message);
+    });
 
-    return cards;
-  } catch (error) {
-    throw error;
+    await Promise.all(updates);
+    return { data: cards };
+  } catch (error: any) {
+    console.error("Error updating card positions:", error.message);
+    return { error: error.message };
   }
 }
 
@@ -108,13 +67,12 @@ export async function updateCardStatus(
       .update({ status })
       .eq("card_id", cardId);
 
-    if (error) {
-      throw error;
-    }
+    if (error) throw new Error(error.message);
 
-    return data ?? null;
-  } catch (error) {
-    throw error;
+    return { data };
+  } catch (error: any) {
+    console.error("Error updating card status:", error.message);
+    return { error: error.message };
   }
 }
 
@@ -129,12 +87,11 @@ export async function updateCard(
       .update(cardData)
       .eq("card_id", cardId);
 
-    if (error) {
-      throw error;
-    }
+    if (error) throw new Error(error.message);
 
-    return data;
-  } catch (error) {
-    throw error;
+    return { data };
+  } catch (error: any) {
+    console.error("Error updating card:", error.message);
+    return { error: error.message };
   }
 }

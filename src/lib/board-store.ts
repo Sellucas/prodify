@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
 import { ICard, IBoard } from "@/types";
-import { getAllBoards } from "@/app/(protected)/dashboard/board/actions";
-import { getAllCards } from "@/app/(protected)/dashboard/board/[slug]/actions";
+
+import { getAllBoards, getAllCards } from "@/supabase/queries";
 
 interface BoardState {
   boards: IBoard[];
@@ -21,7 +21,7 @@ const useBoardStore = create<BoardState>((set) => ({
 
   fetchBoardsAndCards: async (userId: string) => {
     try {
-      const fetchedBoards = await getAllBoards(userId);
+      const fetchedBoards = await getAllBoards();
       set({ boards: fetchedBoards });
 
       const cardPromises = fetchedBoards.map(async (board) => {

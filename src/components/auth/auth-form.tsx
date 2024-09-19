@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { supabaseClient } from "@/utils/supabase/client";
+import { supabaseClient } from "@/supabase/client";
 
 export const AuthForm = () => {
   const params = useSearchParams();

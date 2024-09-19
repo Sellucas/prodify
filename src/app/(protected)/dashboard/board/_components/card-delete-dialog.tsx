@@ -2,7 +2,6 @@
 
 import { toast } from "sonner";
 import { useState } from "react";
-import { Trash, X } from "lucide-react";
 
 import {
   Dialog,
@@ -27,8 +26,10 @@ export const DialogDeleteCard = ({
   onDeleteSuccess?: () => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDeleteClick = async () => {
+    setIsDeleting(true);
     try {
       if (Array.isArray(card)) {
         for (const singleCard of card) {
@@ -48,9 +49,12 @@ export const DialogDeleteCard = ({
 
       setIsOpen(false);
       onDeleteSuccess && onDeleteSuccess();
-      toast.success("Card(s) deleted successfully");
+      toast.success("Card deleted successfully");
     } catch (error) {
       console.error("Error deleting the card:", error);
+      toast.error("Failed to delete card(s)");
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -73,8 +77,9 @@ export const DialogDeleteCard = ({
             type="button"
             variant="destructive"
             onClick={handleDeleteClick}
+            disabled={isDeleting}
           >
-            Delete
+            {isDeleting ? "Deleting..." : "Delete"}
           </Button>
         </DialogFooter>
       </DialogContent>

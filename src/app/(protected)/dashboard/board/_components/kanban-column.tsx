@@ -5,7 +5,7 @@ import { Plus } from "lucide-react";
 import { FaEllipsisVertical } from "react-icons/fa6";
 
 import { ICard, IColumnProps } from "@/types";
-import { Database } from "@/lib/types/supabase";
+import { Database } from "@/supabase/types/supabase";
 import { DropIndicator } from "./drop-indicator";
 import { CardBoard } from "@/app/(protected)/dashboard/board/_components/card-board";
 import {

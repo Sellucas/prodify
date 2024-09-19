@@ -1,7 +1,7 @@
 "use server";
 
-import { TablesUpdate } from "@/lib/types/supabase";
-import { supabaseServer } from "@/utils/supabase/server";
+import { TablesUpdate } from "@/supabase/types/supabase";
+import { supabaseServer } from "@/supabase/server";
 
 export async function updateUser(
   userId: string,

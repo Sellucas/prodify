@@ -1,5 +1,5 @@
 import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
-import { supabaseClient } from "@/utils/supabase/client";
+import { supabaseClient } from "@/supabase/client";
 import { IBoard } from "@/types";
 
 export const subscribeToBoardChanges = (

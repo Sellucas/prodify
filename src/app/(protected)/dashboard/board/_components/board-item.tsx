@@ -40,7 +40,7 @@ export const BoardItem = ({
 
   return (
     <Link href={url}>
-      <Card className="relative h-60 w-[322px] rounded-none border-2 border-muted bg-primary-foreground transition-all duration-300 ease-in-out hover:bg-primary-foreground/50">
+      <Card className="relative h-60 w-[322px] rounded-[6px] border-2 border-muted bg-primary-foreground transition-all duration-300 ease-in-out hover:bg-primary-foreground/50">
         <CardHeader className="h-20 py-4">
           <div className="flex items-center justify-between">
             <TooltipProvider>

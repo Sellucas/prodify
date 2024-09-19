@@ -27,11 +27,12 @@ import "@xyflow/react/dist/style.css";
 import Circle from "./circle";
 import Ellipse from "./ellipse";
 import Rectangle from "./rectangle";
+import { saveFlow } from "../actions";
+import { NodeForm } from "./node-form";
 import { nodeColor } from "./node-color";
 import Parallelogram from "./parallelogram";
+import { getFlow } from "@/supabase/queries";
 import { Button } from "@/components/ui/button";
-import { NodeForm } from "./node-form";
-import { getFlow, saveFlow } from "../actions";
 import { useUser } from "@/context/user-context";
 
 const nodeTypes = {
@@ -41,7 +42,6 @@ const nodeTypes = {
   parallelogram: Parallelogram,
 };
 
-const flowKey = "prodify-flow";
 const proOptions = { hideAttribution: true };
 
 const Flow = () => {
@@ -87,7 +87,7 @@ const Flow = () => {
   const onRestore = useCallback(() => {
     const restoreFlow = async () => {
       try {
-        const flowData = await getFlow(user?.user_id!);
+        const flowData = await getFlow();
 
         if (flowData && flowData.length > 0) {
           const storedFlow = flowData[0].metadata as any;
@@ -109,7 +109,7 @@ const Flow = () => {
     };
 
     restoreFlow();
-  }, [setViewport, user?.user_id]);
+  }, [setViewport]);
 
   const handleAddNode = useCallback(
     (newNode: Node) => {

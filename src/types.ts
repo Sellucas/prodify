@@ -8,18 +8,18 @@ export interface ICard {
   title: string;
   user_id: string;
   tag:
+    | "bug"
     | "code"
     | "design"
-    | "code review"
-    | "research"
-    | "bug"
-    | "enchantment"
-    | "documentation"
     | "testing"
-    | "discussion"
-    | "implementation"
+    | "research"
     | "feedback"
-    | "refactoring";
+    | "discussion"
+    | "code review"
+    | "enchantment"
+    | "refactoring"
+    | "documentation"
+    | "implementation"
   priority: "high" | "medium" | "low";
 }
 

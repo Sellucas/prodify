@@ -1,15 +1,15 @@
 "use client";
 
 import {
-  createContext,
-  useContext,
-  useEffect,
   useState,
+  useEffect,
   ReactNode,
+  useContext,
+  createContext,
 } from "react";
 
 import { IUserProfile } from "@/types";
-import { getCurrentUser } from "@/app/(protected)/dashboard/actions";
+import { getCurrentUser } from "@/supabase/queries";
 
 interface UserContextType {
   user: IUserProfile | null;
@@ -26,7 +26,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     async function fetchUser() {
       try {
         const userData = await getCurrentUser();
-        setUser(userData);
+        setUser(userData ?? null);
       } catch (error) {
         console.error(error);
       } finally {

@@ -1,38 +1,37 @@
 "use client";
 
+import Link from "next/link";
+import { ChevronLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { RealtimePostgresChangesPayload } from "@supabase/supabase-js";
 
 import { ICard } from "@/types";
+import useBoardStore from "@/lib/board-store";
+import { Button } from "@/components/ui/button";
 import { subscribeToCardChanges } from "@/lib/subscribe-card-changes";
-import { getAllCards } from "@/app/(protected)/dashboard/board/[slug]/actions";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ListTab } from "@/app/(protected)/dashboard/board/_components/list-tab";
 import { columns } from "@/app/(protected)/dashboard/board/_components/list-column";
 import { KanbanColumn } from "@/app/(protected)/dashboard/board/_components/kanban-column";
 import { CardCreateForm } from "@/app/(protected)/dashboard/board/_components/card-create-form";
-import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const KanbanPage = ({ params }: { params: { slug: string } }) => {
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
-  const [cards, setCards] = useState<ICard[]>([]);
+
+  const { cards, fetchBoardsAndCards, boards, isLoading } = useBoardStore();
+  const [localCards, setLocalCards] = useState<ICard[]>(
+    cards[params.slug] || [],
+  );
 
   useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const fetchedCards = await getAllCards(params.slug);
-        setCards(fetchedCards);
-      } catch (error) {
-        console.error("Error fetching user cards:", error);
-      }
-    };
-
-    fetchCards();
-  }, [params.slug]);
+    if (!boards.length) {
+      fetchBoardsAndCards(params.slug);
+    } else {
+      setLocalCards(cards[params.slug] || []);
+    }
+  }, [params.slug, boards, cards, fetchBoardsAndCards]);
 
   useEffect(() => {
     const handleCardChange = (
@@ -41,9 +40,9 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
       const { eventType, new: newCard, old: oldCard } = payload;
 
       if (eventType === "INSERT" && newCard) {
-        setCards((prevCards) => [...prevCards, newCard]);
+        setLocalCards((prevCards) => [...prevCards, newCard]);
       } else if (eventType === "UPDATE" && newCard) {
-        setCards((prevCards) =>
+        setLocalCards((prevCards) =>
           prevCards.map((card) =>
             card.card_id === newCard.card_id ? newCard : card,
           ),
@@ -51,7 +50,7 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
       } else if (eventType === "DELETE") {
         const cardToDelete = oldCard || newCard;
         if (cardToDelete) {
-          setCards((prevCards) =>
+          setLocalCards((prevCards) =>
             prevCards.filter((card) => card.card_id !== cardToDelete.card_id),
           );
         }
@@ -101,43 +100,43 @@ const KanbanPage = ({ params }: { params: { slug: string } }) => {
           title="Backlog"
           status="backlog"
           color="neutral"
-          cards={cards}
-          setCards={setCards}
+          cards={localCards}
+          setCards={setLocalCards}
         />
         <KanbanColumn
           title="To Do"
           status="todo"
           color="red"
-          cards={cards}
-          setCards={setCards}
+          cards={localCards}
+          setCards={setLocalCards}
         />
         <KanbanColumn
           title="In Progress"
           status="doing"
           color="blue"
-          cards={cards}
-          setCards={setCards}
+          cards={localCards}
+          setCards={setLocalCards}
         />
         <KanbanColumn
           title="To Review"
           status="reviewing"
           color="amber"
-          cards={cards}
-          setCards={setCards}
+          cards={localCards}
+          setCards={setLocalCards}
         />
         <KanbanColumn
           title="Completed"
           status="done"
           color="green"
-          cards={cards}
-          setCards={setCards}
+          cards={localCards}
+          setCards={setLocalCards}
         />
       </TabsContent>
       <TabsContent
         value="list"
         className="no-scrollbar mx-auto flex h-full w-full max-w-[1568px] flex-row overflow-x-scroll"
       >
-        <ListTab columns={columns} data={cards} />
+        <ListTab columns={columns} data={localCards} />
       </TabsContent>
     </Tabs>
   );

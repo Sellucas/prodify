@@ -1,4 +1,5 @@
 import * as z from "zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -28,6 +29,8 @@ type CardFormProps = {
 };
 
 const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const form = useForm<z.infer<typeof CardSchema>>({
     resolver: zodResolver(CardSchema),
     defaultValues: defaultValues || {
@@ -39,10 +42,21 @@ const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
     },
   });
 
+  const handleSubmit = async (values: z.infer<typeof CardSchema>) => {
+    setIsSubmitting(true);
+    try {
+     await onSubmit(values);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(handleSubmit)}
         className="space-y-4 md:space-y-8"
       >
         <FormField
@@ -163,7 +177,9 @@ const CardForm = ({ onSubmit, defaultValues }: CardFormProps) => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Submitting..." : "Submit"}
+        </Button>
       </form>
     </Form>
   );

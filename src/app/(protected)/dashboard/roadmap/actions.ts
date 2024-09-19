@@ -1,21 +1,7 @@
 "use server";
 
-import { TablesInsert } from "@/lib/types/supabase";
-import { supabaseServer } from "@/utils/supabase/server";
-
-export async function getFlow(userId: string) {
-  const supabase = supabaseServer();
-  const { data, error } = await supabase
-    .from("flow")
-    .select("*")
-    .eq("user_id", userId);
-
-  if (error) {
-    throw new Error(`Error fetching flow: ${error.message}`);
-  }
-
-  return data;
-}
+import { TablesInsert } from "@/supabase/types/supabase";
+import { supabaseServer } from "@/supabase/server";
 
 export async function saveFlow(flowData: TablesInsert<"flow">) {
   try {

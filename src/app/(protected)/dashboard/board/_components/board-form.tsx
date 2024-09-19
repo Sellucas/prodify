@@ -25,6 +25,7 @@ import { ManageSheet } from "@/app/(protected)/dashboard/board/_components/manag
 export const BoardForm = () => {
   const { user } = useUser();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof BoardSchema>>({
     resolver: zodResolver(BoardSchema),
@@ -37,6 +38,7 @@ export const BoardForm = () => {
   const onSubmit: SubmitHandler<z.infer<typeof BoardSchema>> = async (
     values,
   ) => {
+    setIsSubmitting(true);
     try {
       if (!user) {
         throw new Error("User not found");
@@ -62,6 +64,8 @@ export const BoardForm = () => {
     } catch (error) {
       console.error("Error inserting the board:", error);
       toast.error("Failed to create board");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -112,7 +116,9 @@ export const BoardForm = () => {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </Button>
         </form>
       </Form>
     </ManageSheet>

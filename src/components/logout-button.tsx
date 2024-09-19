@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 
-import { supabaseClient } from "@/utils/supabase/client";
+import { supabaseClient } from "@/supabase/client";
 
 interface LogoutButtonProps {
   children?: React.ReactNode;
