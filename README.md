@@ -1,24 +1,45 @@
-# Prodify - Personal Planner
+![readme-prodify](https://github.com/user-attachments/assets/63e46a74-771e-439c-aade-fb3355a5ecbc)
 
-The Prodify is an application designed to help users organize their tasks, appointments, goals, and knowledge efficiently and intuitively. With a variety of features, the app aims to improve productivity and personal management, allowing users to track and plan their daily activities conveniently.
+<p align="center">
+	<h1 align="center"><b>Prodify</b></h1>
+<p align="center">
+    Simplify tasks, manage time for more efficient results.
+    <br />
+    <br />
+    <a href="https://prodify-planner.vercel.app">Website</a>
+    ·
+    <a href="https://github.com/Sellucas/prodify/issues">Issues</a>
+  </p>
+</p>
 
-## Key Features
+## About
 
-1. **Individual Kanban Board:**
-   - Organize your tasks into customizable columns, following the Kanban method.
-   - Visualize your activities in different stages of completion, such as "To Do," "In Progress," and "Done."
-   - Manage your tasks individually.
+The Prodify is an application designed to help users organize their tasks, goals, and knowledge efficiently and intuitively. With a variety of features, the app aims to improve productivity and personal management, allowing users to track and plan their daily activities conveniently.
 
-2. **Schedule:**
-   - Mark appointments, events, and important deadlines on an integrated calendar.
-   - Track your daily, weekly, and monthly activities in an organized and visually appealing manner.
-   - Receive reminders and notifications to help you meet your commitments.
+## Features
 
-3. **Roadmap:**
-   - Define and visualize your long-term personal goals.
-   - Map out a clear action plan to achieve your objectives, tracking your progress over time.
-   - Get an overview of your achievements and areas for development in a customized knowledge map.
+**Task management** : allows users to create, edit, and delete tasks. You can organize tasks by priority, due date, or custom categories, making it easier to manage daily activities and ensure that important tasks are completed on time.
 
-4. **Notes:**
-   - Take quick notes and organize your ideas in an integrated notepad.
-   - Access your notes easily whenever you need, keeping yourself organized and productive.
+**Roadmap interactivity**: The interactive roadmap helps users visualize their progress and plan their future tasks or goals. It provides a clear overview of what needs to be done and when, allowing for better long-term planning and task prioritization.
+
+**Goal tracking**: Users can set and track personal or professional goals with deadlines. This feature enables you to break down large goals into smaller, actionable steps, making it easier to stay focused and motivated as you work toward achieving them.
+
+## Technologies
+
+- Nextjs
+- Typescript
+- Tailwindcss
+- Shadcn
+- Supabase (database, storage, realtime, auth)
+- Vercel (Website, edge-config)
+- Date-fns
+- Zod
+- Zustand
+- React Hook Form
+- Recharts
+- TanStack React Table
+- Framer-motion
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
