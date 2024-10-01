@@ -19,9 +19,9 @@ const HomePage = () => {
     );
   }
   return (
-    <div className="w-full cursor-default bg-black">
+    <div className="w-screen cursor-default bg-black">
       <Navbar />
-      <div className="pt-40">
+      <div className="pt-0 md:pt-40">
         <HeroSection />
         <BenefitsSection />
         <PricingSection />

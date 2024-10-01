@@ -49,7 +49,7 @@ const faq = [
 
 export const FaqSection = () => {
   return (
-    <section className="mb-48">
+    <section className="mb-48 px-5">
       <div className="mb-12 space-y-4 text-center">
         <AnimateView direction="up">
           <h1 className="text-balance text-center text-4xl font-medium leading-none tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">

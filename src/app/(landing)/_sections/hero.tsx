@@ -10,7 +10,7 @@ import RadialGradient from "@/components/ui/radial-gradient";
 export const HeroSection = () => {
   return (
     <section className="relative">
-      <div className="container mb-48 flex flex-col items-center gap-32 text-center">
+      <div className="container mb-48 py-32 md:py-0 flex flex-col items-center gap-32 text-center">
         <div className="relative">
           <AnimateView direction="up">
             <span className="inline-flex cursor-pointer items-center justify-center rounded-full border border-[#272726] bg-black px-3 py-1 text-xs font-medium text-gray-300 backdrop-blur-3xl">
@@ -38,7 +38,7 @@ export const HeroSection = () => {
         <AnimateView
           direction="down"
           transition={{ delay: 0.8 }}
-          className="relative z-10 aspect-video w-11/12 rounded-xl border-2 border-[#1e1e1e]"
+          className="relative z-10 hidden md:block aspect-video w-11/12 rounded-xl border-2 border-[#1e1e1e]"
         >
           <Image
             src={"/kanbanboard-hero.png"}
